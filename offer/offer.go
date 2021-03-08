@@ -30,25 +30,25 @@ func FindRepeatNumber2(nums []int) int {
 	return -1
 }
 
-
 // https://leetcode-cn.com/problems/search-a-2d-matrix-ii
+// https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/
 func findNumberIn2DArray(matrix [][]int, target int) bool {
 	yLen := len(matrix)
 	if yLen == 0 {
-		return  false
+		return false
 	}
 	xLen := len(matrix[0])
 	if xLen == 0 {
-		return  false
+		return false
 	}
 	if matrix[0][0] > target {
-		return  false
+		return false
 	}
 	yMid := yLen >> 1
 	xMid := xLen >> 1
 
 	if matrix[yMid][xMid] > target {
-		
+
 	}
 
 	return false

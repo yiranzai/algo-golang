@@ -1,0 +1,22 @@
+---
+repos:
+  - repo: git://github.com/yiranzai/pre-commit-golang
+    rev: v0.3.6
+    hooks:
+      - id: go-fmt
+      - id: go-vet
+      - id: go-mod-tidy
+      - id: golines
+      - id: go-imports
+
+      #      - id: go-lint
+#      - id: go-imports
+#      - id: go-cyclo
+#        args: [-over=15]
+#      - id: validate-toml
+#      - id: no-go-testing
+#      - id: gometalinter
+#      - id: golangci-lint
+#      - id: go-critic
+#      - id: go-unit-tests
+#      - id: go-build
