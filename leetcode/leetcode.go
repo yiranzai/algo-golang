@@ -35,21 +35,3 @@ func replaceSpace(s string) string {
 	}
 	return strings.Join(result, "")
 }
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-/**
- * https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func reversePrint(head *ListNode) []int {
-	var result []int
-	return result
-}

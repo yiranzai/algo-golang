@@ -53,3 +53,146 @@ func findNumberIn2DArray(matrix [][]int, target int) bool {
 
 	return false
 }
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+type Node struct {
+	Val  int
+	Prev *Node
+	Next *Node
+}
+
+/**
+ * https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reversePrint(head *ListNode) []int {
+	var stack []int
+	if head == nil {
+		return stack
+	}
+	stack = append(stack, head.Val)
+	for head.Next != nil {
+		head = head.Next
+		stack = append(stack, head.Val)
+	}
+
+	length := len(stack)
+
+	for i := 0; i < length>>1; i++ {
+		stack[i], stack[length-1-i] = stack[length-1-i], stack[i]
+	}
+	return stack
+}
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+/**
+ * https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/
+ * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ *
+ */
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	var root *TreeNode
+
+	return root
+}
+
+/**
+*  https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/  -------------------------------------
+ */
+
+type CQueue struct {
+	Current, Head *Node
+}
+
+func Constructor() CQueue {
+	return CQueue{}
+}
+
+func (c *CQueue) AppendTail(value int) {
+	node := &Node{
+		Val:  value,
+		Prev: nil,
+		Next: c.Current,
+	}
+	if c.Current != nil {
+		c.Current.Prev = node
+	}
+	c.Current = node
+	if c.Head == nil {
+		c.Head = node
+	}
+}
+
+func (c *CQueue) DeleteHead() int {
+	if c.Head == nil {
+		return -1
+	}
+	res := c.Head.Val
+	c.Head = c.Head.Prev
+	if c.Head != nil {
+		c.Head.Next = nil
+	}
+	return res
+}
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.AppendTail(value);
+ * param_2 := obj.DeleteHead();
+ */
+
+/**
+*  https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/  -------------------------------------
+ */
+
+// https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/
+var bimap = make(map[int]int)
+
+func fib(n int) int {
+	if n == 0 {
+		return 0
+	}
+	if n == 1 {
+		return 1
+	}
+
+	a := bimap[n-1]
+	if a == 0 {
+		a = fib(n - 1)
+		bimap[n-1] = a
+	}
+
+	b := bimap[n-2]
+	if b == 0 {
+		b = fib(n - 2)
+		bimap[n-2] = b
+	}
+
+	return (a + b) % 1000000007
+}
+
+// https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
+func numWays(n int) int {
+	var result int
+	return result
+}
