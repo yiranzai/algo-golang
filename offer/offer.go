@@ -1,5 +1,9 @@
 package offer
 
+import (
+	"github.com/yiranzai/go-utils/math"
+)
+
 // offer1
 
 //FindRepeatNumber https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
@@ -192,7 +196,28 @@ func fib(n int) int {
 }
 
 // https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
+// https://leetcode-cn.com/problems/climbing-stairs/
 func numWays(n int) int {
 	var result int
 	return result
+}
+
+// https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
+// https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/
+
+func minArray(numbers []int) int {
+	return findMin(numbers, 0, len(numbers)-1)
+}
+
+func findMin(nums []int, start, end int) int {
+	if start == end {
+		return nums[end]
+	}
+	// 开头比结尾还小，直接返回开头的值
+	if nums[start] < nums[end] {
+		return nums[start]
+	}
+	mid := start + ((end - start) >> 1)
+
+	return math.MinInt(findMin(nums, start, mid), findMin(nums, mid+1, end))
 }

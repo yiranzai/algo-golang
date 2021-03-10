@@ -74,3 +74,20 @@ func Test_fib(t *testing.T) {
 	assert.Equal(t, fib(3), 2)
 	assert.Equal(t, fib(4), 3)
 }
+
+func Test_minArray(t *testing.T) {
+	assert.Equal(t, minArray([]int{1, 2, 3, 4, 5, 6, 7}), 1)
+	assert.Equal(t, minArray([]int{2, 3, 4, 5, 6, 7, 1}), 1)
+	assert.Equal(t, minArray([]int{2, 3, 4, 5, 6, 7, 1, 2}), 1)
+
+	assert.Equal(t, minArray([]int{1, 1, 1, 1, 1, 1, 1}), 1)
+}
+
+func Benchmark_minArray(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		minArray([]int{1, 2, 3, 4, 5, 6, 7})
+		minArray([]int{2, 3, 4, 5, 6, 7, 1})
+		minArray([]int{2, 3, 4, 5, 6, 7, 1, 2})
+		minArray([]int{1, 1, 1, 1, 1, 1, 1})
+	}
+}
