@@ -221,3 +221,31 @@ func findMin(nums []int, start, end int) int {
 
 	return math.MinInt(findMin(nums, start, mid), findMin(nums, mid+1, end))
 }
+
+// https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/
+// https://leetcode-cn.com/problems/word-search/
+func exist(board [][]byte, word string) bool {
+	if len(word) == 0 {
+		return true
+	}
+	w := []byte(word)
+	var base [][]byte
+	for y := 0; y < len(board); y++ {
+		for x := 0; x < len(board[0]); x++ {
+			if w[0] == board[x][y] {
+				copy(board, base)
+				if searchString(base, w, x, y) {
+					return true
+				}
+			}
+		}
+	}
+
+	return false
+}
+
+func searchString(board [][]byte, word []byte, x, y int) bool {
+	board[x][y] = ' '
+
+	return false
+}
