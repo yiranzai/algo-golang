@@ -91,3 +91,35 @@ func Benchmark_minArray(b *testing.B) {
 		minArray([]int{1, 1, 1, 1, 1, 1, 1})
 	}
 }
+
+func Test_exist(t *testing.T) {
+	// A B C E
+	// S F C S
+	// A D E E
+	board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
+	assert.Equal(t, exist(board, "ABCCED"), true)
+	assert.Equal(t, exist(board, "ED"), true)
+	assert.Equal(t, exist(board, "ASADFBCCEESE"), true)
+	assert.Equal(t, exist(board, "ABFSADEESCCE"), true)
+	assert.Equal(t, exist(board, "ABCESCFSADEE"), true)
+
+	// A B C E
+	// S F E S
+	// A D E E
+	board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'E', 'S'}, {'A', 'D', 'E', 'E'}}
+	assert.Equal(t, exist(board, "ABCESEEEFS"), true)
+}
+
+func BenchmarkName(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
+		exist(board, "ABCCED")
+		exist(board, "ED")
+		exist(board, "ASADFBCCEESE")
+		exist(board, "ABFSADEESCCE")
+		exist(board, "ABCESCFSADEE")
+
+		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'E', 'S'}, {'A', 'D', 'E', 'E'}}
+		exist(board, "ABCESEEEFS")
+	}
+}

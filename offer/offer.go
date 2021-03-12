@@ -224,17 +224,32 @@ func findMin(nums []int, start, end int) int {
 
 // https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/
 // https://leetcode-cn.com/problems/word-search/
+var (
+	lengthX int
+	lengthY int
+	lengthW int
+)
+
 func exist(board [][]byte, word string) bool {
-	if len(word) == 0 {
+	lengthW = len(word)
+	if lengthW == 0 {
 		return true
 	}
+	lengthY = len(board)
+	if lengthY != 0 {
+		lengthX = len(board[0])
+	}
 	w := []byte(word)
-	var base [][]byte
-	for y := 0; y < len(board); y++ {
-		for x := 0; x < len(board[0]); x++ {
-			if w[0] == board[x][y] {
-				copy(board, base)
-				if searchString(base, w, x, y) {
+	var base = make([][]byte, len(board))
+	for y := 0; y < lengthY; y++ {
+		for x := 0; x < lengthX; x++ {
+			if w[0] == board[y][x] {
+				copy(base, board)
+				for i := range base {
+					base[i] = make([]byte, len(board[i]))
+					copy(base[i], board[i])
+				}
+				if searchString(base, w[1:], x, y) {
 					return true
 				}
 			}
@@ -245,7 +260,62 @@ func exist(board [][]byte, word string) bool {
 }
 
 func searchString(board [][]byte, word []byte, x, y int) bool {
-	board[x][y] = ' '
+	if len(word) == 0 {
+		return true
+	}
+	var base = make([][]byte, len(board))
+	board[y][x] = ' '
+	if x != 0 {
+		if board[y][x-1] == word[0] {
+			copy(base, board)
+			for i := range base {
+				base[i] = make([]byte, len(board[i]))
+				copy(base[i], board[i])
+			}
+			if searchString(base, word[1:], x-1, y) {
+				return true
+			}
+		}
+	}
+
+	if x != lengthX-1 {
+		if board[y][x+1] == word[0] {
+			copy(base, board)
+			for i := range base {
+				base[i] = make([]byte, len(board[i]))
+				copy(base[i], board[i])
+			}
+			if searchString(base, word[1:], x+1, y) {
+				return true
+			}
+		}
+	}
+
+	if y != 0 {
+		if board[y-1][x] == word[0] {
+			copy(base, board)
+			for i := range base {
+				base[i] = make([]byte, len(board[i]))
+				copy(base[i], board[i])
+			}
+			if searchString(base, word[1:], x, y-1) {
+				return true
+			}
+		}
+	}
+
+	if y != lengthY-1 {
+		if board[y+1][x] == word[0] {
+			copy(base, board)
+			for i := range base {
+				base[i] = make([]byte, len(board[i]))
+				copy(base[i], board[i])
+			}
+			if searchString(base, word[1:], x, y+1) {
+				return true
+			}
+		}
+	}
 
 	return false
 }
