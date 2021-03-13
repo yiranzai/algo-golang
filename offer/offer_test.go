@@ -131,3 +131,12 @@ func BenchmarkName(b *testing.B) {
 		exist(board, "ABCESEEEFS")
 	}
 }
+
+func Test_movingCount(t *testing.T) {
+	assert.Equal(t, movingCount(38, 15, 9), 135)
+	assert.Equal(t, movingCount(3, 3, 2), 6)
+	assert.Equal(t, movingCount(3, 3, 4), 9)
+	assert.Equal(t, movingCount(100, 100, 198), 10000)
+	assert.Equal(t, movingCount(3, 1, 0), 1)
+	assert.Equal(t, movingCount(2, 3, 1), 3)
+}

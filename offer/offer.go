@@ -246,6 +246,7 @@ func exist(board [][]byte, word string) bool {
 				if searchString(board, w[1:], x, y) {
 					return true
 				} else {
+					// 没找到还原这个字符
 					board[y][x] = w[0]
 				}
 			}
@@ -260,6 +261,7 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 		return true
 	}
 	board[y][x] = ' '
+	// 左
 	if x != 0 {
 		if board[y][x-1] == word[0] {
 			if searchString(board, word[1:], x-1, y) {
@@ -270,6 +272,7 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 		}
 	}
 
+	// 右
 	if x != lengthX-1 {
 		if board[y][x+1] == word[0] {
 			if searchString(board, word[1:], x+1, y) {
@@ -280,6 +283,7 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 		}
 	}
 
+	// 上
 	if y != 0 {
 		if board[y-1][x] == word[0] {
 			if searchString(board, word[1:], x, y-1) {
@@ -290,6 +294,7 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 		}
 	}
 
+	// 下
 	if y != lengthY-1 {
 		if board[y+1][x] == word[0] {
 			if searchString(board, word[1:], x, y+1) {
@@ -300,4 +305,46 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 		}
 	}
 	return false
+}
+
+// https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/
+func movingCount(m int, n int, k int) int {
+	var baseY, count int
+	var res [][]bool
+	res = make([][]bool, m)
+	count = 0
+	for y := 0; y < m; y++ {
+		baseY = sumByte(y)
+		if baseY > k {
+			break
+		}
+		res[y] = make([]bool, n)
+		for x := 0; x < n; x++ {
+			// 当上边或者左边已经遍历过且是可达的,或者处于起点
+			if (x > 0 && res[y][x-1] == true) || (y > 0 && res[y-1][x] == true) || (x == 0 && y == 0) {
+				if sumByte(x) <= k-baseY {
+					res[y][x] = true
+					count++
+				}
+			}
+		}
+	}
+	return count
+}
+
+//sumByte 统计数位
+func sumByte(num int) int {
+	if num == 100 {
+		return 1
+	}
+	if num < 10 {
+		return num
+	}
+	return num%10 + num/10
+}
+
+// https://leetcode-cn.com/problems/jian-sheng-zi-lcof/
+// https://leetcode-cn.com/problems/integer-break/
+func cuttingRope(n int) int {
+	return n
 }
