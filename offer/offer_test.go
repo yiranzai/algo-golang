@@ -99,9 +99,13 @@ func Test_exist(t *testing.T) {
 	// A D E E
 	board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 	assert.Equal(t, exist(board, "ABCCED"), true)
+	board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 	assert.Equal(t, exist(board, "ED"), true)
+	board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 	assert.Equal(t, exist(board, "ASADFBCCEESE"), true)
+	board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 	assert.Equal(t, exist(board, "ABFSADEESCCE"), true)
+	board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 	assert.Equal(t, exist(board, "ABCESCFSADEE"), true)
 
 	// A B C E
@@ -115,11 +119,14 @@ func BenchmarkName(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ABCCED")
+		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ED")
+		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ASADFBCCEESE")
+		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ABFSADEESCCE")
+		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ABCESCFSADEE")
-
 		board = [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'E', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ABCESEEEFS")
 	}

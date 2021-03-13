@@ -240,17 +240,13 @@ func exist(board [][]byte, word string) bool {
 		lengthX = len(board[0])
 	}
 	w := []byte(word)
-	var base = make([][]byte, len(board))
 	for y := 0; y < lengthY; y++ {
 		for x := 0; x < lengthX; x++ {
 			if w[0] == board[y][x] {
-				copy(base, board)
-				for i := range base {
-					base[i] = make([]byte, len(board[i]))
-					copy(base[i], board[i])
-				}
-				if searchString(base, w[1:], x, y) {
+				if searchString(board, w[1:], x, y) {
 					return true
+				} else {
+					board[y][x] = w[0]
 				}
 			}
 		}
@@ -263,59 +259,45 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 	if len(word) == 0 {
 		return true
 	}
-	var base = make([][]byte, len(board))
 	board[y][x] = ' '
 	if x != 0 {
 		if board[y][x-1] == word[0] {
-			copy(base, board)
-			for i := range base {
-				base[i] = make([]byte, len(board[i]))
-				copy(base[i], board[i])
-			}
-			if searchString(base, word[1:], x-1, y) {
+			if searchString(board, word[1:], x-1, y) {
 				return true
+			} else {
+				board[y][x-1] = word[0]
 			}
 		}
 	}
 
 	if x != lengthX-1 {
 		if board[y][x+1] == word[0] {
-			copy(base, board)
-			for i := range base {
-				base[i] = make([]byte, len(board[i]))
-				copy(base[i], board[i])
-			}
-			if searchString(base, word[1:], x+1, y) {
+			if searchString(board, word[1:], x+1, y) {
 				return true
+			} else {
+				board[y][x+1] = word[0]
 			}
 		}
 	}
 
 	if y != 0 {
 		if board[y-1][x] == word[0] {
-			copy(base, board)
-			for i := range base {
-				base[i] = make([]byte, len(board[i]))
-				copy(base[i], board[i])
-			}
-			if searchString(base, word[1:], x, y-1) {
+			if searchString(board, word[1:], x, y-1) {
 				return true
+			} else {
+				board[y-1][x] = word[0]
 			}
 		}
 	}
 
 	if y != lengthY-1 {
 		if board[y+1][x] == word[0] {
-			copy(base, board)
-			for i := range base {
-				base[i] = make([]byte, len(board[i]))
-				copy(base[i], board[i])
-			}
-			if searchString(base, word[1:], x, y+1) {
+			if searchString(board, word[1:], x, y+1) {
 				return true
+			} else {
+				board[y+1][x] = word[0]
 			}
 		}
 	}
-
 	return false
 }
