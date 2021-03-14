@@ -66,5 +66,24 @@ func sumWay(array [][]int, x, y int) int {
 // https://leetcode-cn.com/problems/longest-consecutive-sequence/
 //
 func longestConsecutive(nums []int) int {
-	return 0
+	numSet := map[int]bool{}
+	// 预存有值的数据
+	for _, num := range nums {
+		numSet[num] = true
+	}
+	count := 0
+	for num := range numSet {
+		if !numSet[num-1] {
+			currentNum := num
+			currentCount := 1
+			for numSet[currentNum+1] {
+				currentNum++
+				currentCount++
+			}
+			if count < currentCount {
+				count = currentCount
+			}
+		}
+	}
+	return count
 }
