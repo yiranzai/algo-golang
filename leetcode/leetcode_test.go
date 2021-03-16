@@ -906,3 +906,8 @@ func Test_longestConsecutive(t *testing.T) {
 	assert.Equal(t, longestConsecutive([]int{100, 4, 200, 1, 3, 2}), 4)
 	assert.Equal(t, longestConsecutive([]int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}), 9)
 }
+
+func Test_climbStairs(t *testing.T) {
+	assert.Equal(t, climbStairs(2), 2)
+	assert.Equal(t, climbStairs(3), 3)
+}

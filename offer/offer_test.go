@@ -76,6 +76,12 @@ func Test_fib(t *testing.T) {
 	assert.Equal(t, fib(4), 3)
 }
 
+func Test_numWays(t *testing.T) {
+	assert.Equal(t, numWays(7), 21)
+	assert.Equal(t, numWays(2), 2)
+	assert.Equal(t, numWays(100), 782204094)
+}
+
 func Test_minArray(t *testing.T) {
 	assert.Equal(t, minArray([]int{1, 2, 3, 4, 5, 6, 7}), 1)
 	assert.Equal(t, minArray([]int{2, 3, 4, 5, 6, 7, 1}), 1)
@@ -115,7 +121,7 @@ func Test_exist(t *testing.T) {
 	assert.Equal(t, exist(board, "ABCESEEEFS"), true)
 }
 
-func BenchmarkName(b *testing.B) {
+func Benchmark_exist(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
 		exist(board, "ABCCED")

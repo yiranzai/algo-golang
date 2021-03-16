@@ -87,3 +87,24 @@ func longestConsecutive(nums []int) int {
 	}
 	return count
 }
+
+//https://leetcode-cn.com/problems/climbing-stairs/
+func climbStairs(n int) int {
+	if n == 0 || n == 1 {
+		return n
+	}
+	a := 1
+	b := 2
+	c := 2
+	for i := 3; i <= n; i++ {
+		c = a + b
+		a, b = b, c
+	}
+
+	return c
+}
+
+// https://leetcode-cn.com/problems/jump-game/
+func canJump(nums []int) bool {
+	return false
+}

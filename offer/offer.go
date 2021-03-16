@@ -198,8 +198,18 @@ func fib(n int) int {
 // https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
 // https://leetcode-cn.com/problems/climbing-stairs/
 func numWays(n int) int {
-	var result int
-	return result
+	if n == 0 || n == 1 {
+		return 1
+	}
+	a := 1
+	b := 2
+	c := 2
+	for i := 3; i <= n; i++ {
+		c = (a + b) % 1000000007
+		a, b = b, c
+	}
+
+	return c % 1000000007
 }
 
 // https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
