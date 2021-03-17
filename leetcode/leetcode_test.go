@@ -911,3 +911,9 @@ func Test_climbStairs(t *testing.T) {
 	assert.Equal(t, climbStairs(2), 2)
 	assert.Equal(t, climbStairs(3), 3)
 }
+
+func Test_canJump(t *testing.T) {
+	assert.Equal(t, canJump([]int{0}), true)
+	assert.Equal(t, canJump([]int{3, 2, 1, 0, 4}), false)
+	assert.Equal(t, canJump([]int{2, 3, 1, 1, 4}), true)
+}

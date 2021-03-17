@@ -105,6 +105,31 @@ func climbStairs(n int) int {
 }
 
 // https://leetcode-cn.com/problems/jump-game/
+var (
+	dps    []bool
+	length int
+)
+
 func canJump(nums []int) bool {
-	return false
+	length = len(nums) - 1
+	if length == 0 {
+		return true
+	}
+	dps = make([]bool, length)
+dd:
+	for i := length - 1; i >= 0; i-- {
+		if length-i <= nums[i] {
+			dps[i] = true
+			continue
+		}
+		for j := nums[i]; j > 0; j-- {
+			if dps[i+j] {
+				dps[i] = true
+				continue dd
+			}
+		}
+		dps[i] = false
+	}
+
+	return dps[0]
 }
