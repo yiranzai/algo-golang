@@ -917,3 +917,9 @@ func Test_canJump(t *testing.T) {
 	assert.Equal(t, canJump([]int{3, 2, 1, 0, 4}), false)
 	assert.Equal(t, canJump([]int{2, 3, 1, 1, 4}), true)
 }
+
+func Test_jump(t *testing.T) {
+	assert.Equal(t, jump([]int{0}), 0)
+	assert.Equal(t, jump([]int{2, 3, 1, 1, 4}), 2)
+	assert.Equal(t, jump([]int{2, 3, 2, 0, 1, 1, 1, 9, 0, 0, 0, 0, 0, 0, 1}), 6)
+}

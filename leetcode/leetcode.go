@@ -105,17 +105,13 @@ func climbStairs(n int) int {
 }
 
 // https://leetcode-cn.com/problems/jump-game/
-var (
-	dps    []bool
-	length int
-)
 
 func canJump(nums []int) bool {
-	length = len(nums) - 1
+	length := len(nums) - 1
 	if length == 0 {
 		return true
 	}
-	dps = make([]bool, length)
+	dps := make([]bool, length)
 dd:
 	for i := length - 1; i >= 0; i-- {
 		if length-i <= nums[i] {
@@ -132,4 +128,43 @@ dd:
 	}
 
 	return dps[0]
+}
+
+// https://leetcode-cn.com/problems/jump-game-ii/
+func jump(nums []int) int {
+	length := len(nums) - 1
+	if length == 0 {
+		return 0
+	}
+	dps := make([]int, length+1)
+
+	for i := 0; i <= length; i++ {
+		for j := 1; j <= nums[i]; j++ {
+			if dps[i] == 0 || dps[i+j] == 0 || dps[i+j] > dps[i] {
+				dps[i+j] = dps[i] + 1
+			}
+
+			if i+j >= length {
+				return dps[length]
+			}
+		}
+	}
+
+	return dps[length]
+}
+
+// https://leetcode-cn.com/problems/palindrome-partitioning-ii/
+func minCut(s string) int {
+	return 0
+}
+
+// https://leetcode-cn.com/problems/longest-increasing-subsequence/
+
+func lengthOfLIS(nums []int) int {
+	return 0
+}
+
+// https://leetcode-cn.com/problems/word-break/
+func wordBreak(s string, wordDict []string) bool {
+	return false
 }
