@@ -165,6 +165,41 @@ func lengthOfLIS(nums []int) int {
 }
 
 // https://leetcode-cn.com/problems/word-break/
+var (
+	dict map[string]bool
+	dp   map[int]int
+)
+
 func wordBreak(s string, wordDict []string) bool {
+	dp = make(map[int]int)
+	dict = make(map[string]bool)
+	for _, s2 := range wordDict {
+		dict[s2] = true
+	}
+
+	return deepWordBreak(s, -1)
+}
+
+func deepWordBreak(s string, last int) bool {
+	length := len(s)
+	if len(s) == 0 {
+		return true
+	}
+	start := last + 1
+	for i := 0; i < length; i++ {
+		if dp[start+i] == 1 {
+			return true
+		}
+		if dp[start+i] == 2 {
+			return false
+		}
+		if dict[s[0:i+1]] {
+			if deepWordBreak(s[i+1:], i) {
+				dp[start+i] = 1
+				return true
+			}
+		}
+	}
+	dp[start+length] = 2
 	return false
 }

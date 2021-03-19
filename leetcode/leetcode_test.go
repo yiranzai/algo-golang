@@ -923,3 +923,19 @@ func Test_jump(t *testing.T) {
 	assert.Equal(t, jump([]int{2, 3, 1, 1, 4}), 2)
 	assert.Equal(t, jump([]int{2, 3, 2, 0, 1, 1, 1, 9, 0, 0, 0, 0, 0, 0, 1}), 6)
 }
+
+func Test_wordBreak(t *testing.T) {
+	assert.Equal(t, wordBreak("aaaaaaa", []string{"aaaa", "aaa"}), true)
+	assert.Equal(t, wordBreak("leetcode", []string{"leet", "code"}), true)
+	assert.Equal(t, wordBreak("applepenapple", []string{"apple", "pen"}), true)
+	assert.Equal(t, wordBreak("catsandog", []string{"cats", "cat", "dog", "sand", "and"}), false)
+
+	assert.Equal(
+		t,
+		wordBreak(
+			"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+			[]string{"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"},
+		),
+		false,
+	)
+}
