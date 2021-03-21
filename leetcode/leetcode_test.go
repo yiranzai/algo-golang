@@ -1675,3 +1675,32 @@ func Test_wordBreak2(t *testing.T) {
 		false,
 	)
 }
+
+func Test_longestCommonSubsequence(t *testing.T) {
+	assert.Equal(t, longestCommonSubsequence("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq"), 6)
+	assert.Equal(
+		t,
+		longestCommonSubsequence(
+			"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+			"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+		),
+		0,
+	)
+	assert.Equal(t, longestCommonSubsequence("abcdefg", "bcdefgabc"), 6)
+	assert.Equal(t, longestCommonSubsequence("abcdefg", "bcdefga"), 6)
+	assert.Equal(t, longestCommonSubsequence("abcde", "ace"), 3)
+	assert.Equal(t, longestCommonSubsequence("abc", "abc"), 3)
+	assert.Equal(t, longestCommonSubsequence("abc", "def"), 0)
+}
+
+func Test_minDistance(t *testing.T) {
+	assert.Equal(t, minDistance("distance", "springbok"), 9)
+	assert.Equal(t, minDistance("horse", "ros"), 3)
+	assert.Equal(t, minDistance("", ""), 0)
+	assert.Equal(t, minDistance("", "b"), 1)
+	assert.Equal(t, minDistance("a", "b"), 1)
+	assert.Equal(t, minDistance("a", ""), 1)
+	assert.Equal(t, minDistance("intention", "execution"), 5)
+	assert.Equal(t, minDistance("abcdefg", "bcdefgabc"), 4)
+	assert.Equal(t, minDistance("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq"), 15)
+}

@@ -166,14 +166,16 @@ func lengthOfLIS(nums []int) int {
 
 // https://leetcode-cn.com/problems/word-break/
 var (
-	dict map[string]bool
-	dp   map[int]int
+	dict      map[string]bool
+	dp        map[int]int
+	maxLength int
 )
 
 func wordBreak(s string, wordDict []string) bool {
 	dp = make(map[int]int)
 	dict = make(map[string]bool)
 	for _, s2 := range wordDict {
+		maxLength = math.MaxInt(len(s2), maxLength)
 		dict[s2] = true
 	}
 
@@ -187,20 +189,23 @@ func deepWordBreak(s string, last int) bool {
 	}
 	start := last + 1
 	for i := 0; i < length; i++ {
-		if dp[start+i] == 1 {
-			return true
-		}
-		if dp[start+i] == 2 {
-			return false
+		if i > maxLength {
+			break
 		}
 		if dict[s[0:i+1]] {
-			if deepWordBreak(s[i+1:], i) {
+			if dp[start+i] == 1 {
+				return true
+			}
+			if dp[start+i] == 2 {
+				continue
+			}
+			if deepWordBreak(s[i+1:], start+i) {
 				dp[start+i] = 1
 				return true
 			}
 		}
 	}
-	dp[start+length] = 2
+	dp[last] = 2
 	return false
 }
 
@@ -246,4 +251,62 @@ func maxLen(wordDict []string) (int, map[string]bool) {
 func inDict(s string, dict map[string]bool) bool {
 	_, ok := dict[s]
 	return ok
+}
+
+// https://leetcode-cn.com/problems/longest-common-subsequence/
+func longestCommonSubsequence(text1 string, text2 string) int {
+	var t1Len, t2Len int
+	t1Len = len(text1)
+	t2Len = len(text2)
+	dp := make([][]int, t1Len+1)
+	for i := 0; i <= 1; i++ {
+		dp[i] = make([]int, t2Len+1)
+	}
+	k, l := 0, 1
+	for i := 1; i <= t1Len; i++ {
+		for j := 1; j <= t2Len; j++ {
+			if text1[i-1] == text2[j-1] {
+				dp[k][j] = dp[l][j-1] + 1
+			} else {
+				dp[k][j] = math.MaxInt(dp[l][j], dp[k][j-1])
+			}
+		}
+		l, k = k, l
+	}
+
+	return dp[l][t2Len]
+}
+
+// https://leetcode-cn.com/problems/edit-distance/
+func minDistance(word1 string, word2 string) int {
+	var t1Len, t2Len int
+	t1Len = len(word1)
+	t2Len = len(word2)
+	if t1Len == 0 {
+		return t2Len
+	}
+	if t2Len == 0 {
+		return t1Len
+	}
+	dp := make([][]int, t1Len+1)
+	for i := 0; i <= 1; i++ {
+		dp[i] = make([]int, t2Len+1)
+		for j := 1; j <= t2Len; j++ {
+			dp[i][j] = j
+		}
+	}
+	k, l := 0, 1
+	for i := 1; i <= t1Len; i++ {
+		dp[k][0] = i
+		for j := 1; j <= t2Len; j++ {
+			if word1[i-1] == word2[j-1] {
+				dp[k][j] = dp[l][j-1]
+			} else {
+				dp[k][j] = math.MinInt(dp[l][j], dp[k][j-1], dp[l][j-1]) + 1
+			}
+		}
+		l, k = k, l
+	}
+
+	return dp[l][t2Len]
 }
