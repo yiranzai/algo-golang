@@ -1704,3 +1704,14 @@ func Test_minDistance(t *testing.T) {
 	assert.Equal(t, minDistance("abcdefg", "bcdefgabc"), 4)
 	assert.Equal(t, minDistance("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq"), 15)
 }
+
+func Test_coinChange(t *testing.T) {
+	assert.Equal(t, coinChange([]int{2}, 3), -1)
+	assert.Equal(t, coinChange([]int{1}, 2), 2)
+
+	assert.Equal(t, coinChange([]int{1, 2, 5}, 11), 3)
+
+	assert.Equal(t, coinChange([]int{1}, 0), 0)
+	assert.Equal(t, coinChange([]int{1}, 1), 1)
+	assert.Equal(t, coinChange([]int{1, 2, 5, 6, 7, 8, 56, 21, 45, 13, 19}, 899), 18)
+}

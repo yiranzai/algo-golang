@@ -310,3 +310,35 @@ func minDistance(word1 string, word2 string) int {
 
 	return dp[l][t2Len]
 }
+
+// https://leetcode-cn.com/problems/coin-change/
+func coinChange(coins []int, amount int) int {
+	dps := make(map[int]int, amount)
+	return deepCoinChange(coins, amount, dps)
+}
+
+func deepCoinChange(coins []int, amount int, dps map[int]int) int {
+	if amount == 0 {
+		return 0
+	}
+	if amount < 0 {
+		return -1
+	}
+
+	if v, ok := dps[amount]; ok {
+		return v
+	}
+	res := make([]int, 0, len(coins))
+	for i := 0; i < len(coins); i++ {
+		a := deepCoinChange(coins, amount-coins[i], dps)
+		if a != -1 {
+			res = append(res, a+1)
+		}
+	}
+	if len(res) == 0 {
+		dps[amount] = -1
+		return -1
+	}
+	dps[amount] = math.MinInt(res...)
+	return dps[amount]
+}
