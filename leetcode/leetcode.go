@@ -328,17 +328,88 @@ func deepCoinChange(coins []int, amount int, dps map[int]int) int {
 	if v, ok := dps[amount]; ok {
 		return v
 	}
-	res := make([]int, 0, len(coins))
+	var min *int
 	for i := 0; i < len(coins); i++ {
 		a := deepCoinChange(coins, amount-coins[i], dps)
 		if a != -1 {
-			res = append(res, a+1)
+			if min == nil {
+				min = &a
+				*min += 1
+			} else {
+				if *min > a+1 {
+					*min = a + 1
+				}
+			}
 		}
 	}
-	if len(res) == 0 {
+	if min == nil {
 		dps[amount] = -1
 		return -1
 	}
-	dps[amount] = math.MinInt(res...)
+	dps[amount] = *min
 	return dps[amount]
+}
+
+// https://leetcode-cn.com/problems/minimum-path-sum/
+
+func minPathSum2(grid [][]int) int {
+	dps := make([][]int, len(grid))
+	for i, i2 := range grid {
+		dps[i] = make([]int, len(i2))
+		for i3 := range dps[i] {
+			dps[i][i3] = -1
+		}
+	}
+	return deepMinPathSum(grid, dps, 0, 0)
+}
+
+func deepMinPathSum(grid, dps [][]int, x, y int) int {
+	if dps[y][x] > -1 {
+		return dps[y][x]
+	}
+
+	min := grid[y][x]
+
+	if y == len(grid)-1 && x == len(grid[y])-1 {
+
+	} else if y == len(grid)-1 {
+		min += deepMinPathSum(grid, dps, x+1, y)
+	} else if x == len(grid[y])-1 {
+		min += deepMinPathSum(grid, dps, x, y+1)
+	} else if y < len(grid)-1 && x < len(grid[y])-1 {
+		min += math.MinInt(deepMinPathSum(grid, dps, x, y+1), deepMinPathSum(grid, dps, x+1, y))
+	}
+
+	dps[y][x] = min
+	return min
+}
+
+func minPathSum(grid [][]int) int {
+	lenY := len(grid) - 1
+	lenX := len(grid[0]) - 1
+	for y := 0; y <= lenY; y++ {
+		for x := 1; x <= lenX; x++ {
+			if y == 0 {
+				grid[y][x] += grid[y][x-1]
+				continue
+			}
+			grid[y][x] += math.MinInt(grid[y-1][x], grid[y][x-1])
+		}
+		if y == lenY {
+			continue
+		}
+		grid[y+1][0] += grid[y][0]
+	}
+
+	return grid[lenY][lenX]
+}
+
+//https://leetcode-cn.com/problems/unique-paths/
+func uniquePaths(m int, n int) int {
+	return 0
+}
+
+//https://leetcode-cn.com/problems/unique-paths-ii/
+func uniquePathsWithObstacles(obstacleGrid [][]int) int {
+	return 0
 }

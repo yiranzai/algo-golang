@@ -1715,3 +1715,13 @@ func Test_coinChange(t *testing.T) {
 	assert.Equal(t, coinChange([]int{1}, 1), 1)
 	assert.Equal(t, coinChange([]int{1, 2, 5, 6, 7, 8, 56, 21, 45, 13, 19}, 899), 18)
 }
+
+func Test_minPathSum(t *testing.T) {
+	assert.Equal(t, minPathSum([][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}), 7)
+	assert.Equal(t, minPathSum([][]int{{1, 2, 3}, {4, 5, 6}}), 12)
+}
+
+func Test_minPathSum2(t *testing.T) {
+	assert.Equal(t, minPathSum2([][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}), 7)
+	assert.Equal(t, minPathSum2([][]int{{1, 2, 3}, {4, 5, 6}}), 12)
+}
