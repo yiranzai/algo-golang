@@ -23,6 +23,6 @@ golang algo
 
 This project is licensed under the MIT License.
 See the [LICENSE](./LICENSE) file
-for the full license text.
+for the full license text..
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fyiranzai%2Falgo-golang.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fyiranzai%2Falgo-golang?ref=badge_large)
