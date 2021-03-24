@@ -9,15 +9,25 @@
 
 golang algo
 
-[TOC]
+<!--ts-->
+   * [golang](#golang)
+      * [Algo](#algo)
+         * [1. <a href="./offer/README.md">剑指Offer</a>](#1-剑指offer)
+         * [2. <a href="./leetcode/README.md">Leetcode</a>](#2-leetcode)
+         * [3. <a href="./sort/README.md">常用排序</a>](#3-常用排序)
+         * [4. <a href="./go-algorithm-pattern/README.md">模板</a>](#4-模板)
+      * [License](#license)
+
+<!-- Added by: yiranzai, at: Thu Mar 25 00:07:40 CST 2021 -->
+
+<!--te-->
 
 ## Algo
-算法合集
 
-- [剑指Offer](./offer/README.md)
-- [Leetcode](./leetcode/README.md)
-- [常用排序](./sort/README.md)
-- [模板](./go-algorithm-pattern/README.md)
+### 1. [剑指Offer](./offer/README.md)
+### 2. [Leetcode](./leetcode/README.md)
+### 3. [常用排序](./sort/README.md)
+### 4. [模板](./go-algorithm-pattern/README.md)
 
 ## License
 
