@@ -1725,3 +1725,21 @@ func Test_minPathSum2(t *testing.T) {
 	assert.Equal(t, minPathSum2([][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}), 7)
 	assert.Equal(t, minPathSum2([][]int{{1, 2, 3}, {4, 5, 6}}), 12)
 }
+
+func Test_uniquePaths(t *testing.T) {
+	assert.Equal(t, uniquePaths(3, 3), 6)
+	assert.Equal(t, uniquePaths(1, 1), 1)
+	assert.Equal(t, uniquePaths(1, 7), 1)
+	assert.Equal(t, uniquePaths(7, 3), 28)
+	assert.Equal(t, uniquePaths(3, 7), 28)
+}
+
+func Test_uniquePathsWithObstacles(t *testing.T) {
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {1, 0, 1}, {0, 0, 0}}), 1)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{1, 0}}), 0)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 1}, {0, 0}}), 1)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{1}}), 0)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}), 2)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {1, 1, 1}, {0, 0, 0}}), 0)
+	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 1}, {0, 0, 0}}), 1)
+}

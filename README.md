@@ -9,6 +9,16 @@
 
 golang algo
 
+[TOC]
+
+## Algo
+算法合集
+
+- [剑指Offer](./offer/README.md)
+- [Leetcode](./leetcode/README.md)
+- [常用排序](./sort/README.md)
+- [模板](./go-algorithm-pattern/README.md)
+
 ## License
 
 This project is licensed under the MIT License.

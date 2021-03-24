@@ -406,10 +406,63 @@ func minPathSum(grid [][]int) int {
 
 //https://leetcode-cn.com/problems/unique-paths/
 func uniquePaths(m int, n int) int {
-	return 0
+	if m == 1 && n == 1 {
+		return 1
+	}
+	lenY := m - 1
+	lenX := n - 1
+	dp := make([]int, n)
+	dp[0] = 1
+	for y := 0; y <= lenY; y++ {
+		for x := 1; x <= lenX; x++ {
+			if y == 0 {
+				dp[x] = 1
+				continue
+			}
+			dp[x] += dp[x-1]
+		}
+	}
+
+	return dp[lenX]
 }
 
 //https://leetcode-cn.com/problems/unique-paths-ii/
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
-	return 0
+	lenY := len(obstacleGrid) - 1
+	lenX := len(obstacleGrid[0]) - 1
+	dp := make([]int, lenX+1)
+	dp[0] = 1
+	boolY0 := false
+	for y := 0; y <= lenY; y++ {
+		boolY := 0
+		if obstacleGrid[y][0] == 1 {
+			boolY0 = true
+		}
+		if boolY0 {
+			dp[0] = 0
+			boolY = 1
+		}
+		for x := 1; x <= lenX; x++ {
+			b := obstacleGrid[y][x] == 1
+			if b {
+				boolY++
+				dp[x] = 0
+				continue
+			}
+			if y == 0 {
+				if boolY > 0 {
+					dp[x] = 0
+				} else {
+					dp[x] = 1
+				}
+				continue
+			}
+			dp[x] += dp[x-1]
+		}
+		if boolY == lenY+1 {
+			return 0
+		}
+	}
+
+	return dp[lenX]
 }
