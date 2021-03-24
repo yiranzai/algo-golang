@@ -1,7 +1,12 @@
 # Leetcode
 
+## 目录
+
+---
+
 <!--ts-->
    * [Leetcode](#leetcode)
+      * [目录](#目录)
          * [<a href="https://leetcode-cn.com/problems/minimum-path-sum/" rel="nofollow">64. 最小路径和</a>](#64-最小路径和)
             * [Solution](#solution)
          * [<a href="https://leetcode-cn.com/problems/unique-paths/" rel="nofollow">62. 不同路径</a>](#62-不同路径)
@@ -9,16 +14,17 @@
          * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
             * [Solution](#solution-2)
 
-<!-- Added by: runner, at: Wed Mar 24 16:15:05 UTC 2021 -->
+<!-- Added by: yiranzai, at: Thu Mar 25 00:37:01 CST 2021 -->
 
 <!--te-->
+
+---
 
 ### [64\. 最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
 
 Difficulty: **中等**
 
-
-给定一个包含非负整数的 `_m_ x _n_` 网格 `grid` ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+给定一个包含非负整数的 `_m_ x _n_`  网格  `grid` ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
 
 **说明：**每次只能向下或者向右移动一步。
 
@@ -41,11 +47,10 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `m == grid.length`
-*   `n == grid[i].length`
-*   `1 <= m, n <= 200`
-*   `0 <= grid[i][j] <= 100`
-
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 200`
+- `0 <= grid[i][j] <= 100`
 
 #### Solution
 
@@ -88,7 +93,6 @@ func MinInt(vars ...int) int {
 ### [62\. 不同路径](https://leetcode-cn.com/problems/unique-paths/)
 
 Difficulty: **中等**
-
 
 一个机器人位于一个 `m x n`网格的左上角 （起始点在下图中标记为 “Start” ）。
 
@@ -133,9 +137,8 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `1 <= m, n <= 100`
-*   题目数据保证答案小于等于 `2 * 10<sup>9</sup>`
-
+- `1 <= m, n <= 100`
+- 题目数据保证答案小于等于 `2 * 10<sup>9</sup>`
 
 #### Solution
 
@@ -167,7 +170,6 @@ func uniquePaths(m int, n int) int {
 ### [63\. 不同路径 II](https://leetcode-cn.com/problems/unique-paths-ii/)
 
 Difficulty: **中等**
-
 
 一个机器人位于一个 _m x n_ 网格的左上角 （起始点在下图中标记为“Start” ）。
 
@@ -204,11 +206,10 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `m == obstacleGrid.length`
-*   `n == obstacleGrid[i].length`
-*   `1 <= m, n <= 100`
-*   `obstacleGrid[i][j]` 为 `0` 或 `1`
-
+- `m == obstacleGrid.length`
+- `n == obstacleGrid[i].length`
+- `1 <= m, n <= 100`
+- `obstacleGrid[i][j]` 为 `0` 或 `1`
 
 #### Solution
 
