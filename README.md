@@ -7,7 +7,7 @@
 [![Release](https://img.shields.io/github/release/yiranzai/algo-golang.svg?style=flat-square)](https://github.com/yiranzai/algo-golang/releases)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fyiranzai%2Falgo-golang.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fyiranzai%2Falgo-golang?ref=badge_shield)
 
-golang algo
+golang algo.
 
 <!--ts-->
    * [golang](#golang)
@@ -18,7 +18,7 @@ golang algo
          * [4. <a href="./go-algorithm-pattern/README.md">模板</a>](#4-模板)
       * [License](#license)
 
-<!-- Added by: runner, at: Wed Mar 24 16:11:31 UTC 2021 -->
+<!-- Added by: yiranzai, at: Thu Mar 25 00:07:40 CST 2021 -->
 
 <!--te-->
 
