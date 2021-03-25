@@ -1743,3 +1743,20 @@ func Test_uniquePathsWithObstacles(t *testing.T) {
 	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {1, 1, 1}, {0, 0, 0}}), 0)
 	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 1}, {0, 0, 0}}), 1)
 }
+
+func Test_deleteDuplicates(t *testing.T) {
+	headList := []int{1, 1, 1, 2, 3}
+	head := &ListNode{Val: 1}
+	b := head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c := deleteDuplicates(b)
+	d := []int{2, 3}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, c.Next, nil)
+}

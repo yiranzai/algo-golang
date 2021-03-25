@@ -466,3 +466,41 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
 	return dp[lenX]
 }
+
+/**
+https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+*/
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+func deleteDuplicates(head *ListNode) *ListNode {
+	node := head
+	duplicateVar := ^0
+	for node != nil {
+		isDeleted := false
+		if node.Val == duplicateVar {
+			isDeleted = true
+		}
+		if node.Next != nil && node.Next.Val == node.Val {
+			isDeleted = true
+		}
+		if isDeleted {
+			duplicateVar = node.Val
+			if node == head {
+				head = node.Next
+			} else {
+				node.Next = node.Next.Next
+			}
+			continue
+		}
+		node = node.Next
+	}
+	return head
+}

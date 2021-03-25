@@ -1,4 +1,4 @@
-module github.com/yiranzai/go-algo
+module github.com/yiranzai/algo-golang
 
 go 1.14
 
