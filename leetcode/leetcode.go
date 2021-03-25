@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/yiranzai/go-utils/math"
+	"fmt"
 )
 
 // https://leetcode-cn.com/problems/valid-anagram/
@@ -481,26 +482,30 @@ type ListNode struct {
 }
 
 func deleteDuplicates(head *ListNode) *ListNode {
-	node := head
-	duplicateVar := ^0
-	for node != nil {
-		isDeleted := false
-		if node.Val == duplicateVar {
-			isDeleted = true
-		}
-		if node.Next != nil && node.Next.Val == node.Val {
-			isDeleted = true
-		}
-		if isDeleted {
-			duplicateVar = node.Val
-			if node == head {
-				head = node.Next
-			} else {
-				node.Next = node.Next.Next
-			}
-			continue
-		}
-		node = node.Next
+	if head == nil {
+		return head
 	}
-	return head
+	a := head
+	b := head.Next
+	for {
+		fmt.Println(a, b, 1)
+		for b != nil && b.Val == a.Val {
+			b = b.Next
+			fmt.Println(a, b, 2)
+		}
+
+		if a.Val == head.Val && a.Next != b {
+			fmt.Println(a, b, 3)
+			head = b
+		}
+
+		if b == nil {
+			return head
+		}
+
+		a = b
+		b = b.Next
+		fmt.Println(a, b, 4)
+		continue
+	}
 }

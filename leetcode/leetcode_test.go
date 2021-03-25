@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"reflect"
 	"testing"
 
 	"gotest.tools/v3/assert"
@@ -1745,7 +1746,7 @@ func Test_uniquePathsWithObstacles(t *testing.T) {
 }
 
 func Test_deleteDuplicates(t *testing.T) {
-	headList := []int{1, 1, 1, 2, 3}
+	headList := []int{2, 2, 3, 4, 4}
 	head := &ListNode{Val: 1}
 	b := head
 	for _, v := range headList {
@@ -1753,10 +1754,55 @@ func Test_deleteDuplicates(t *testing.T) {
 		head = head.Next
 	}
 	c := deleteDuplicates(b)
-	d := []int{2, 3}
+	d := []int{1, 3}
 	for _, v := range d {
 		assert.Equal(t, v, c.Val)
 		c = c.Next
 	}
-	assert.Equal(t, c.Next, nil)
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{1, 1, 1, 2, 2, 3}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	d = []int{3}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 3, 4, 5, 6, 7}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	d = []int{1, 2, 3, 4, 5, 6, 7}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 3, 4, 4, 5, 6, 6, 7, 7}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	d = []int{1, 2, 3, 5}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
 }
