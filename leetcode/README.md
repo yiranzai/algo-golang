@@ -257,3 +257,158 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 }
 
 ```
+
+### [82\. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+
+Difficulty: **中等**
+
+
+存在一个按升序排列的链表，给你这个链表的头节点 `head` ，请你删除链表中所有存在数字重复情况的节点，只保留原始链表中 **没有重复出现**的数字。
+
+返回同样按升序排列的结果链表。
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/linkedlist1.jpg)
+
+```
+输入：head = [1,2,3,3,4,4,5]
+输出：[1,2,5]
+```
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/linkedlist2.jpg)
+
+```
+输入：head = [1,1,1,2,3]
+输出：[2,3]
+```
+
+**提示：**
+
+*   链表中节点数目在范围 `[0, 300]` 内
+*   `-100 <= Node.val <= 100`
+*   题目数据保证链表已经按升序排列
+
+
+#### Solution
+
+Language: **GO**
+
+```
+​/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	slow := head
+	node := head
+	fast := head.Next
+	for {
+		// 一直遍历快指针直到下一个不同的值出现
+		for fast != nil && fast.Val == slow.Val {
+			fast = fast.Next
+		}
+
+		// 如果快慢指针不相同 且慢指针是head，且快指针动过了，移动head
+		if slow.Val == head.Val && slow.Next != fast {
+			head = fast
+			node = fast
+		}
+		// 快指针跑完了
+		if fast == nil {
+			if node != nil {
+				node.Next = nil
+			}
+			return head
+		}
+
+		// 移动快慢指针
+		slow = fast
+		fast = fast.Next
+
+		// 移动node指针
+		if (fast == nil || (fast != nil && slow.Val != fast.Val)) && slow != node {
+			node.Next = slow
+			node = slow
+		}
+
+		continue
+	}
+}
+```
+
+### [83\. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+
+Difficulty: **简单**
+
+
+存在一个按升序排列的链表，给你这个链表的头节点 `head` ，请你删除所有重复的元素，使每个元素 **只出现一次** 。
+
+返回同样按升序排列的结果链表。
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/list1.jpg)
+
+```
+输入：head = [1,1,2]
+输出：[1,2]
+```
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/list2.jpg)
+
+```
+输入：head = [1,1,2,3,3]
+输出：[1,2,3]
+```
+
+**提示：**
+
+*   链表中节点数目在范围 `[0, 300]` 内
+*   `-100 <= Node.val <= 100`
+*   题目数据保证链表已经按升序排列
+
+
+#### Solution
+
+Language: **GO**
+
+```
+​/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	slow := head
+	fast := head.Next
+	for {
+		// 一直遍历快指针直到下一个不同的值出现
+		for fast != nil && fast.Val == slow.Val {
+			fast = fast.Next
+			continue
+		}
+		slow.Next = fast
+		slow = fast
+		if slow == nil {
+			return head
+		}
+		continue
+	}
+}
+```

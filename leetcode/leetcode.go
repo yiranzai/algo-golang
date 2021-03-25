@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/yiranzai/go-utils/math"
-	"fmt"
 )
 
 // https://leetcode-cn.com/problems/valid-anagram/
@@ -481,31 +480,71 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func deleteDuplicates2(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	slow := head
+	node := head
+	fast := head.Next
+	for {
+		// 一直遍历快指针直到下一个不同的值出现
+		for fast != nil && fast.Val == slow.Val {
+			fast = fast.Next
+		}
+
+		// 如果快慢指针不相同 且慢指针是head，且快指针动过了，移动head
+		if slow.Val == head.Val && slow.Next != fast {
+			head = fast
+			node = fast
+		}
+		// 快指针跑完了
+		if fast == nil {
+			if node != nil {
+				node.Next = nil
+			}
+			return head
+		}
+
+		// 移动快慢指针
+		slow = fast
+		fast = fast.Next
+
+		// 移动node指针
+		if (fast == nil || (fast != nil && slow.Val != fast.Val)) && slow != node {
+			node.Next = slow
+			node = slow
+		}
+
+		continue
+	}
+}
+
+/**
+* https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+*/
 func deleteDuplicates(head *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
-	a := head
-	b := head.Next
+	slow := head
+	fast := head.Next
 	for {
-		fmt.Println(a, b, 1)
-		for b != nil && b.Val == a.Val {
-			b = b.Next
-			fmt.Println(a, b, 2)
+		// 一直遍历快指针直到下一个不同的值出现
+		for fast != nil && fast.Val == slow.Val {
+			fast = fast.Next
+			continue
 		}
-
-		if a.Val == head.Val && a.Next != b {
-			fmt.Println(a, b, 3)
-			head = b
-		}
-
-		if b == nil {
+		slow.Next = fast
+		slow = fast
+		if slow == nil {
 			return head
 		}
-
-		a = b
-		b = b.Next
-		fmt.Println(a, b, 4)
 		continue
 	}
 }

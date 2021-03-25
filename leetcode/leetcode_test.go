@@ -1745,16 +1745,114 @@ func Test_uniquePathsWithObstacles(t *testing.T) {
 	assert.Equal(t, uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 1}, {0, 0, 0}}), 1)
 }
 
-func Test_deleteDuplicates(t *testing.T) {
-	headList := []int{2, 2, 3, 4, 4}
+func Test_deleteDuplicates2(t *testing.T) {
+	headList := []int{}
+	d := []int{}
 	head := &ListNode{Val: 1}
-	b := head
+	b := &ListNode{Val: 1}
+	c := &ListNode{Val: 1}
+
+	headList = []int{1}
+	head = &ListNode{Val: 1}
+	b = head
 	for _, v := range headList {
 		head.Next = &ListNode{Val: v}
 		head = head.Next
 	}
-	c := deleteDuplicates(b)
-	d := []int{1, 3}
+	c = deleteDuplicates2(b)
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{1, 1, 1, 2, 2, 3}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates2(b)
+	d = []int{3}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	var tn *ListNode
+	c = deleteDuplicates2(tn)
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 3, 4, 5, 6, 7}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates2(b)
+	d = []int{1, 2, 3, 4, 5, 6, 7}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{1}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates2(b)
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 2, 3, 4, 4}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates2(b)
+	d = []int{1, 3}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 3, 4, 4, 5, 6, 6, 7, 7}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates2(b)
+	d = []int{1, 2, 3, 5}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+}
+
+func Test_deleteDuplicates(t *testing.T) {
+	headList := []int{}
+	d := []int{}
+	head := &ListNode{Val: 1}
+	b := &ListNode{Val: 1}
+	c := &ListNode{Val: 1}
+
+	headList = []int{1}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	d = []int{1}
 	for _, v := range d {
 		assert.Equal(t, v, c.Val)
 		c = c.Next
@@ -1769,11 +1867,15 @@ func Test_deleteDuplicates(t *testing.T) {
 		head = head.Next
 	}
 	c = deleteDuplicates(b)
-	d = []int{3}
+	d = []int{1, 2, 3}
 	for _, v := range d {
 		assert.Equal(t, v, c.Val)
 		c = c.Next
 	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	var tn *ListNode
+	c = deleteDuplicates(tn)
 	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
 
 	headList = []int{2, 3, 4, 5, 6, 7}
@@ -1791,6 +1893,31 @@ func Test_deleteDuplicates(t *testing.T) {
 	}
 	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
 
+	headList = []int{1}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
+	headList = []int{2, 2, 3, 4, 4}
+	head = &ListNode{Val: 1}
+	b = head
+	for _, v := range headList {
+		head.Next = &ListNode{Val: v}
+		head = head.Next
+	}
+	c = deleteDuplicates(b)
+	d = []int{1, 2, 3, 4}
+	for _, v := range d {
+		assert.Equal(t, v, c.Val)
+		c = c.Next
+	}
+	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+
 	headList = []int{2, 3, 4, 4, 5, 6, 6, 7, 7}
 	head = &ListNode{Val: 1}
 	b = head
@@ -1799,7 +1926,7 @@ func Test_deleteDuplicates(t *testing.T) {
 		head = head.Next
 	}
 	c = deleteDuplicates(b)
-	d = []int{1, 2, 3, 5}
+	d = []int{1, 2, 3, 4, 5, 6, 7}
 	for _, v := range d {
 		assert.Equal(t, v, c.Val)
 		c = c.Next
