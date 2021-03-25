@@ -13,8 +13,12 @@
             * [Solution](#solution-1)
          * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
             * [Solution](#solution-2)
+         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" rel="nofollow">82. 删除排序链表中的重复元素 II</a>](#82-删除排序链表中的重复元素-ii)
+            * [Solution](#solution-3)
+         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" rel="nofollow">83. 删除排序链表中的重复元素</a>](#83-删除排序链表中的重复元素)
+            * [Solution](#solution-4)
 
-<!-- Added by: runner, at: Wed Mar 24 16:37:49 UTC 2021 -->
+<!-- Added by: runner, at: Thu Mar 25 16:28:31 UTC 2021 -->
 
 <!--te-->
 
