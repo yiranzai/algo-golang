@@ -159,9 +159,27 @@ func minCut(s string) int {
 }
 
 // https://leetcode-cn.com/problems/longest-increasing-subsequence/
-
 func lengthOfLIS(nums []int) int {
-	return 0
+	dp := []int{^(1 << 32)}
+	j := 0
+	for _, num := range nums {
+		if dp[j] < num {
+			dp = append(dp, num)
+			j++
+		} else {
+			l, r := 0, j+1
+			for l < r {
+				m := l + (r-l)/2
+				if dp[m] < num {
+					l = m + 1
+				} else {
+					r = m
+				}
+			}
+			dp[l] = num
+		}
+	}
+	return j
 }
 
 // https://leetcode-cn.com/problems/word-break/
@@ -547,4 +565,70 @@ func deleteDuplicates(head *ListNode) *ListNode {
 		}
 		continue
 	}
+}
+
+/**
+* https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+*/
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	return math.MaxInt(maxDepth(root.Left), maxDepth(root.Right)) + 1
+}
+
+/**
+ * https://leetcode-cn.com/problems/balanced-binary-tree/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func isBalanced(root *TreeNode) bool {
+	b, _ := deepIsBalanced(root)
+	return b
+}
+
+func deepIsBalanced(root *TreeNode) (bool, int) {
+	if root == nil {
+		return true, 0
+	}
+	b, left := deepIsBalanced(root.Left)
+	if !b {
+		return false, 0
+	}
+	b, right := deepIsBalanced(root.Right)
+	if !b {
+		return false, 0
+	}
+	return left-right <= 1 && left-right >= -1, math.MaxInt(left, right) + 1
+}
+
+/**
+ * https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func maxPathSum(root *TreeNode) int {
+	return 0
 }

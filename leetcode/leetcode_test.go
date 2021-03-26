@@ -925,6 +925,11 @@ func Test_jump(t *testing.T) {
 	assert.Equal(t, jump([]int{2, 3, 2, 0, 1, 1, 1, 9, 0, 0, 0, 0, 0, 0, 1}), 6)
 }
 
+func Test_lengthOfLIS(t *testing.T) {
+	assert.Equal(t, lengthOfLIS([]int{-2, -1}), 2)
+	assert.Equal(t, lengthOfLIS([]int{10, 9, 2, 5, 3, 7, 101, 18, 4, 19}), 5)
+}
+
 func Test_wordBreak(t *testing.T) {
 
 	assert.Equal(
@@ -1932,4 +1937,50 @@ func Test_deleteDuplicates(t *testing.T) {
 		c = c.Next
 	}
 	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+}
+
+func Test_maxDepth(t *testing.T) {
+	var root *TreeNode
+	assert.Equal(t, maxDepth(root), 0)
+
+	root = buildTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	assert.Equal(t, maxDepth(root), 3)
+}
+
+func buildTree(treeList []interface{}) *TreeNode {
+	var root *TreeNode
+	if len(treeList) < 1 {
+		return root
+	}
+	treeNodeList := make([]*TreeNode, len(treeList))
+	for i := 1; i < len(treeList); i++ {
+		v := reflect.ValueOf(treeList[i])
+		if v.Kind() != reflect.Int {
+			continue
+		}
+		node := &TreeNode{Val: reflect.ValueOf(treeList[i]).Interface().(int)}
+		treeNodeList[i] = node
+		rootIndex := i >> 1
+		if rootIndex == 0 {
+			continue
+		}
+		if i%2 == 1 {
+			treeNodeList[rootIndex].Right = node
+		} else {
+			treeNodeList[rootIndex].Left = node
+		}
+	}
+	return treeNodeList[1]
+}
+
+func Test_isBalanced(t *testing.T) {
+	var root *TreeNode
+
+	assert.Equal(t, isBalanced(root), true)
+
+	root = buildTree([]interface{}{0, 1, 2, 2, 3, 3, nil, nil, 4, 4})
+	assert.Equal(t, isBalanced(root), false)
+
+	root = buildTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	assert.Equal(t, isBalanced(root), true)
 }
