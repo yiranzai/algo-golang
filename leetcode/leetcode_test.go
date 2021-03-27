@@ -1,9 +1,9 @@
 package leetcode
 
 import (
-	"reflect"
 	"testing"
 
+	"github.com/yiranzai/go-utils/leetcode"
 	"gotest.tools/v3/assert"
 )
 
@@ -1751,236 +1751,111 @@ func Test_uniquePathsWithObstacles(t *testing.T) {
 }
 
 func Test_deleteDuplicates2(t *testing.T) {
-	headList := []int{}
-	d := []int{}
-	head := &ListNode{Val: 1}
-	b := &ListNode{Val: 1}
-	c := &ListNode{Val: 1}
+	var head *leetcode.ListNode
 
-	headList = []int{1}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{})
 
-	headList = []int{1, 1, 1, 2, 2, 3}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	d = []int{3}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1, 1, 1, 2, 2, 3})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{3})
 
-	var tn *ListNode
-	c = deleteDuplicates2(tn)
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	var tn *leetcode.ListNode
+	head = deleteDuplicates2(tn)
+	leetcode.LoopEqualList(t, head, []int{})
 
-	headList = []int{2, 3, 4, 5, 6, 7}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	d = []int{1, 2, 3, 4, 5, 6, 7}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 6, 7})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3, 4, 5, 6, 7})
 
-	headList = []int{1}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{})
 
-	headList = []int{2, 2, 3, 4, 4}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	d = []int{1, 3}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 2, 3, 4, 4})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{1, 3})
 
-	headList = []int{2, 3, 4, 4, 5, 6, 6, 7, 7}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates2(b)
-	d = []int{1, 2, 3, 5}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 4, 5, 6, 6, 7, 7})
+	head = deleteDuplicates2(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3, 5})
 }
 
 func Test_deleteDuplicates(t *testing.T) {
-	headList := []int{}
-	d := []int{}
-	head := &ListNode{Val: 1}
-	b := &ListNode{Val: 1}
-	c := &ListNode{Val: 1}
+	var head *leetcode.ListNode
 
-	headList = []int{1}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	d = []int{1}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{1})
 
-	headList = []int{1, 1, 1, 2, 2, 3}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	d = []int{1, 2, 3}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1, 1, 1, 2, 2, 3})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3})
 
-	var tn *ListNode
-	c = deleteDuplicates(tn)
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	var tn *leetcode.ListNode
+	head = deleteDuplicates(tn)
+	leetcode.LoopEqualList(t, head, []int{})
 
-	headList = []int{2, 3, 4, 5, 6, 7}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	d = []int{1, 2, 3, 4, 5, 6, 7}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 6, 7})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3, 4, 5, 6, 7})
 
-	headList = []int{1}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 1})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{})
 
-	headList = []int{2, 2, 3, 4, 4}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	d = []int{1, 2, 3, 4}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 2, 3, 4, 4})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3, 4})
 
-	headList = []int{2, 3, 4, 4, 5, 6, 6, 7, 7}
-	head = &ListNode{Val: 1}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	c = deleteDuplicates(b)
-	d = []int{1, 2, 3, 4, 5, 6, 7}
-	for _, v := range d {
-		assert.Equal(t, v, c.Val)
-		c = c.Next
-	}
-	assert.Equal(t, true, reflect.ValueOf(c).IsValid())
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 4, 5, 6, 6, 7, 7})
+	head = deleteDuplicates(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2, 3, 4, 5, 6, 7})
 }
 
 func Test_maxDepth(t *testing.T) {
-	var root *TreeNode
+	var root *leetcode.TreeNode
 	assert.Equal(t, maxDepth(root), 0)
 
-	root = buildTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	root = leetcode.GenerateTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
 	assert.Equal(t, maxDepth(root), 3)
 }
 
-func buildTree(treeList []interface{}) *TreeNode {
-	var root *TreeNode
-	if len(treeList) < 1 {
-		return root
-	}
-	treeNodeList := make([]*TreeNode, len(treeList))
-	for i := 1; i < len(treeList); i++ {
-		v := reflect.ValueOf(treeList[i])
-		if v.Kind() != reflect.Int {
-			continue
-		}
-		node := &TreeNode{Val: reflect.ValueOf(treeList[i]).Interface().(int)}
-		treeNodeList[i] = node
-		rootIndex := i >> 1
-		if rootIndex == 0 {
-			continue
-		}
-		if i%2 == 1 {
-			treeNodeList[rootIndex].Right = node
-		} else {
-			treeNodeList[rootIndex].Left = node
-		}
-	}
-	return treeNodeList[1]
-}
-
 func Test_isBalanced(t *testing.T) {
-	var root *TreeNode
+	var root *leetcode.TreeNode
 
 	assert.Equal(t, isBalanced(root), true)
 
-	root = buildTree([]interface{}{0, 1, 2, 2, 3, 3, nil, nil, 4, 4})
+	root = leetcode.GenerateTree([]interface{}{0, 1, 2, 2, 3, 3, nil, nil, 4, 4})
 	assert.Equal(t, isBalanced(root), false)
 
-	root = buildTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	root = leetcode.GenerateTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
 	assert.Equal(t, isBalanced(root), true)
+}
+
+func Test_maxPathSum(t *testing.T) {
+	var root *leetcode.TreeNode
+
+	root = leetcode.GenerateTree([]interface{}{0, 1})
+	assert.Equal(t, maxPathSum(root), 1)
+
+	root = leetcode.GenerateTree([]interface{}{0, -1, 0, 3})
+	assert.Equal(t, maxPathSum(root), 3)
+
+	root = leetcode.GenerateTree([]interface{}{0, 1, 0, 3})
+	assert.Equal(t, maxPathSum(root), 4)
+
+	root = leetcode.GenerateTree([]interface{}{0, -10, 9, 20, nil, nil, 15, 7})
+	assert.Equal(t, maxPathSum(root), 42)
+}
+
+func Test_rotateRight(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	leetcode.LoopEqualList(t, rotateRight(head, 7), []int{4, 5, 1, 2, 3})
+
+	head = leetcode.GenerateList([]int{0, 1, 2})
+	leetcode.LoopEqualList(t, rotateRight(head, 7), []int{2, 0, 1})
 }

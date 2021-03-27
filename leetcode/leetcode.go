@@ -3,6 +3,7 @@ package leetcode
 import (
 	"strings"
 
+	"github.com/yiranzai/go-utils/leetcode"
 	"github.com/yiranzai/go-utils/math"
 )
 
@@ -160,7 +161,7 @@ func minCut(s string) int {
 
 // https://leetcode-cn.com/problems/longest-increasing-subsequence/
 func lengthOfLIS(nums []int) int {
-	dp := []int{^(1 << 32)}
+	dp := []int{INVALID}
 	j := 0
 	for _, num := range nums {
 		if dp[j] < num {
@@ -490,15 +491,15 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *leetcode.ListNode
  * }
 */
 type ListNode struct {
 	Val  int
-	Next *ListNode
+	Next *leetcode.ListNode
 }
 
-func deleteDuplicates2(head *ListNode) *ListNode {
+func deleteDuplicates2(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return head
 	}
@@ -543,10 +544,10 @@ func deleteDuplicates2(head *ListNode) *ListNode {
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *leetcode.ListNode
  * }
 */
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return head
 	}
@@ -572,18 +573,12 @@ func deleteDuplicates(head *ListNode) *ListNode {
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
 */
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func maxDepth(root *TreeNode) int {
+func maxDepth(root *leetcode.TreeNode) int {
 	if root == nil {
 		return 0
 	}
@@ -596,16 +591,16 @@ func maxDepth(root *TreeNode) int {
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
  */
-func isBalanced(root *TreeNode) bool {
+func isBalanced(root *leetcode.TreeNode) bool {
 	b, _ := deepIsBalanced(root)
 	return b
 }
 
-func deepIsBalanced(root *TreeNode) (bool, int) {
+func deepIsBalanced(root *leetcode.TreeNode) (bool, int) {
 	if root == nil {
 		return true, 0
 	}
@@ -625,10 +620,63 @@ func deepIsBalanced(root *TreeNode) (bool, int) {
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
  */
-func maxPathSum(root *TreeNode) int {
-	return 0
+func maxPathSum(root *leetcode.TreeNode) int {
+	var sum int
+	sum = INVALID
+	deepMaxPathSum(root, &sum)
+	return sum
+}
+
+const INVALID = ^(1 << 32)
+
+func deepMaxPathSum(root *leetcode.TreeNode, sum *int) int {
+	if root == nil {
+		return INVALID
+	}
+	rootVal := root.Val
+	left := deepMaxPathSum(root.Left, sum)
+	right := deepMaxPathSum(root.Right, sum)
+
+	// 找出左右及单独的自己中最大的
+	a := math.MaxInt(left+rootVal, rootVal, right+rootVal)
+	*sum = math.MaxInt(*sum, a, left+rootVal+right)
+	return a
+}
+
+/**
+* https://leetcode-cn.com/problems/rotate-list/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *leetcode.ListNode
+ * }
+*/
+func rotateRight(head *leetcode.ListNode, k int) *leetcode.ListNode {
+	if head == nil || k == 0 {
+		return head
+	}
+	node := head
+	length := 1
+	for node.Next != nil {
+		node = node.Next
+		length++
+	}
+	k = k % length
+	if k == 0 {
+
+		return head
+	}
+	last := node
+	node = head
+	for i := 0; i < length-k-1; i++ {
+		node = node.Next
+	}
+	last.Next = head
+	head = node.Next
+	node.Next = nil
+	return head
 }

@@ -3,6 +3,7 @@ package offer
 import (
 	"testing"
 
+	"github.com/yiranzai/go-utils/leetcode"
 	"gotest.tools/v3/assert"
 )
 
@@ -35,23 +36,13 @@ func TestFindRepeatNumber(t *testing.T) {
 // }
 
 func Test_reversePrint(t *testing.T) {
-	headList := []int{1, 3, 2}
-	head := &ListNode{Val: 4}
-	b := head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	assert.DeepEqual(t, reversePrint(b), []int{2, 3, 1, 4})
+	var head *leetcode.ListNode
 
-	headList = []int{1, 3, 2, 7}
-	head = &ListNode{Val: 4}
-	b = head
-	for _, v := range headList {
-		head.Next = &ListNode{Val: v}
-		head = head.Next
-	}
-	assert.DeepEqual(t, reversePrint(b), []int{7, 2, 3, 1, 4})
+	head = leetcode.GenerateList([]int{4, 1, 3, 2})
+	assert.DeepEqual(t, reversePrint(head), []int{2, 3, 1, 4})
+
+	head = leetcode.GenerateList([]int{4, 1, 3, 2, 7})
+	assert.DeepEqual(t, reversePrint(head), []int{7, 2, 3, 1, 4})
 }
 
 func Test_CQueue(t *testing.T) {

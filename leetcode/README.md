@@ -5,41 +5,42 @@
 ---
 
 <!--ts-->
-   * [Leetcode](#leetcode)
-      * [目录](#目录)
-         * [<a href="https://leetcode-cn.com/problems/minimum-path-sum/" rel="nofollow">64. 最小路径和</a>](#64-最小路径和)
+
+* [Leetcode](#leetcode)
+    * [目录](#目录)
+        * [<a href="https://leetcode-cn.com/problems/minimum-path-sum/" rel="nofollow">64. 最小路径和</a>](#64-最小路径和)
             * [Solution](#solution)
-         * [<a href="https://leetcode-cn.com/problems/unique-paths/" rel="nofollow">62. 不同路径</a>](#62-不同路径)
+        * [<a href="https://leetcode-cn.com/problems/unique-paths/" rel="nofollow">62. 不同路径</a>](#62-不同路径)
             * [Solution](#solution-1)
-         * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
+        * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
             * [Solution](#solution-2)
-         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" rel="nofollow">82. 删除排序链表中的重复元素 II</a>](#82-删除排序链表中的重复元素-ii)
+        * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" rel="nofollow">82. 删除排序链表中的重复元素 II</a>](#82-删除排序链表中的重复元素-ii)
             * [Solution](#solution-3)
-         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" rel="nofollow">83. 删除排序链表中的重复元素</a>](#83-删除排序链表中的重复元素)
+        * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" rel="nofollow">83. 删除排序链表中的重复元素</a>](#83-删除排序链表中的重复元素)
             * [Solution](#solution-4)
-         * [<a href="https://leetcode-cn.com/problems/climbing-stairs/" rel="nofollow">70. 爬楼梯</a>](#70-爬楼梯)
+        * [<a href="https://leetcode-cn.com/problems/climbing-stairs/" rel="nofollow">70. 爬楼梯</a>](#70-爬楼梯)
             * [Solution](#solution-5)
-         * [<a href="https://leetcode-cn.com/problems/jump-game/" rel="nofollow">55. 跳跃游戏</a>](#55-跳跃游戏)
+        * [<a href="https://leetcode-cn.com/problems/jump-game/" rel="nofollow">55. 跳跃游戏</a>](#55-跳跃游戏)
             * [Solution](#solution-6)
-         * [<a href="https://leetcode-cn.com/problems/jump-game-ii/" rel="nofollow">45. 跳跃游戏 II</a>](#45-跳跃游戏-ii)
+        * [<a href="https://leetcode-cn.com/problems/jump-game-ii/" rel="nofollow">45. 跳跃游戏 II</a>](#45-跳跃游戏-ii)
             * [Solution](#solution-7)
-         * [<a href="https://leetcode-cn.com/problems/word-break/" rel="nofollow">139. 单词拆分</a>](#139-单词拆分)
+        * [<a href="https://leetcode-cn.com/problems/word-break/" rel="nofollow">139. 单词拆分</a>](#139-单词拆分)
             * [Solution](#solution-8)
-         * [<a href="https://leetcode-cn.com/problems/longest-common-subsequence/" rel="nofollow">1143. 最长公共子序列</a>](#1143-最长公共子序列)
+        * [<a href="https://leetcode-cn.com/problems/longest-common-subsequence/" rel="nofollow">1143. 最长公共子序列</a>](#1143-最长公共子序列)
             * [Solution](#solution-9)
-         * [<a href="https://leetcode-cn.com/problems/edit-distance/" rel="nofollow">72. 编辑距离</a>](#72-编辑距离)
+        * [<a href="https://leetcode-cn.com/problems/edit-distance/" rel="nofollow">72. 编辑距离</a>](#72-编辑距离)
             * [Solution](#solution-10)
-         * [<a href="https://leetcode-cn.com/problems/coin-change/" rel="nofollow">322. 零钱兑换</a>](#322-零钱兑换)
+        * [<a href="https://leetcode-cn.com/problems/coin-change/" rel="nofollow">322. 零钱兑换</a>](#322-零钱兑换)
             * [Solution](#solution-11)
-         * [<a href="https://leetcode-cn.com/problems/triangle/" rel="nofollow">120. 三角形最小路径和</a>](#120-三角形最小路径和)
+        * [<a href="https://leetcode-cn.com/problems/triangle/" rel="nofollow">120. 三角形最小路径和</a>](#120-三角形最小路径和)
             * [Solution](#solution-12)
-         * [<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" rel="nofollow">104. 二叉树的最大深度</a>](#104-二叉树的最大深度)
+        * [<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" rel="nofollow">104. 二叉树的最大深度</a>](#104-二叉树的最大深度)
             * [Solution](#solution-13)
-         * [<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" rel="nofollow">300. 最长递增子序列</a>](#300-最长递增子序列)
+        * [<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" rel="nofollow">300. 最长递增子序列</a>](#300-最长递增子序列)
             * [Solution](#solution-14)
-         * [<a href="https://leetcode-cn.com/problems/balanced-binary-tree/" rel="nofollow">110. 平衡二叉树</a>](#110-平衡二叉树)
+        * [<a href="https://leetcode-cn.com/problems/balanced-binary-tree/" rel="nofollow">110. 平衡二叉树</a>](#110-平衡二叉树)
             * [Solution](#solution-15)
-         * [<a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" rel="nofollow">124. 二叉树中的最大路径和</a>](#124-二叉树中的最大路径和)
+        * [<a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" rel="nofollow">124. 二叉树中的最大路径和</a>](#124-二叉树中的最大路径和)
             * [Solution](#solution-16)
 
 <!-- Added by: runner, at: Fri Mar 26 15:03:24 UTC 2021 -->
@@ -84,37 +85,37 @@ Difficulty: **中等**
 
 Language: **GO**
 
-```go
-​func minPathSum(grid [][]int) int {
-lengY := len(grid)-1
-lengX := len(grid[0])-1
-for y := 0; y <= lengY; y++ {
-for x := 1; x <= lengX; x++ {
-if y == 0 {
-grid[y][x] += grid[y][x-1]
-continue
-}
-grid[y][x] += MinInt(grid[y-1][x], grid[y][x-1])
-}
-if y == lengY {
-continue
-}
-grid[y+1][0] += grid[y][0]
-}
+```
+func minPathSum(grid [][]int) int {
+	lengY := len(grid)-1
+	lengX := len(grid[0])-1
+	for y := 0; y <= lengY; y++ {
+		for x := 1; x <= lengX; x++ {
+			if y == 0 {
+				grid[y][x] += grid[y][x-1]
+				continue
+			}
+			grid[y][x] += MinInt(grid[y-1][x], grid[y][x-1])
+		}
+		if y == lengY {
+			continue
+		}
+		grid[y+1][0] += grid[y][0]
+	}
 
-return grid[lengY][lengX]
+	return grid[lengY][lengX]
 }
 
 func MinInt(vars ...int) int {
-min := vars[0]
+	min := vars[0]
 
-for _, i := range vars {
-if min > i {
-min = i
-}
-}
+	for _, i := range vars {
+		if min > i {
+			min = i
+		}
+	}
 
-return min
+	return min
 }
 ```
 
@@ -172,26 +173,26 @@ Difficulty: **中等**
 
 Language: **GO**
 
-```go
+```
 func uniquePaths(m int, n int) int {
-if m == 1 && n == 1 {
-return 1
-}
-lenY := m - 1
-lenX := n - 1
-dp := make([]int, n)
-dp[0] = 1
-for y := 0; y <= lenY; y++ {
-for x := 1; x <= lenX; x++ {
-if y == 0 {
-dp[x] = 1
-continue
-}
-dp[x] += dp[x-1]
-}
-}
+	if m == 1 && n == 1 {
+		return 1
+	}
+	lenY := m - 1
+	lenX := n - 1
+	dp := make([]int, n)
+	dp[0] = 1
+	for y := 0; y <= lenY; y++ {
+		for x := 1; x <= lenX; x++ {
+			if y == 0 {
+				dp[x] = 1
+				continue
+			}
+			dp[x] += dp[x-1]
+		}
+	}
 
-return dp[lenX]
+	return dp[lenX]
 }
 ```
 
@@ -243,47 +244,46 @@ Difficulty: **中等**
 
 Language: **GO**
 
-```golang
+```
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
-lenY := len(obstacleGrid) - 1
-lenX := len(obstacleGrid[0]) - 1
-dp := make([]int, lenX+1)
-dp[0] = 1
-boolY0 := false
-for y := 0; y <= lenY; y++ {
-boolY := 0
-if obstacleGrid[y][0] == 1 {
-boolY0 = true
-}
-if boolY0 {
-dp[0] = 0
-boolY = 1
-}
-for x := 1; x <= lenX; x++ {
-b := obstacleGrid[y][x] == 1
-if b {
-boolY++
-dp[x] = 0
-continue
-}
-if y == 0 {
-if boolY > 0 {
-dp[x] = 0
-}else {
-dp[x] = 1
-}
-continue
-}
-dp[x] += dp[x-1]
-}
-if boolY == lenY + 1 {
-return 0
-}
-}
+	lenY := len(obstacleGrid) - 1
+	lenX := len(obstacleGrid[0]) - 1
+	dp := make([]int, lenX+1)
+	dp[0] = 1
+	boolY0 := false
+	for y := 0; y <= lenY; y++ {
+		boolY := 0
+		if obstacleGrid[y][0] == 1 {
+			boolY0 = true
+		}
+		if boolY0 {
+			dp[0] = 0
+			boolY = 1
+		}
+		for x := 1; x <= lenX; x++ {
+			b := obstacleGrid[y][x] == 1
+			if b {
+				boolY++
+				dp[x] = 0
+				continue
+			}
+			if y == 0 {
+				if boolY > 0 {
+					dp[x] = 0
+				}else {
+					dp[x] = 1
+				}
+				continue
+			}
+			dp[x] += dp[x-1]
+		}
+		if boolY == lenY + 1 {
+			return 0
+		}
+	}
 
-return dp[lenX]
+	return dp[lenX]
 }
-
 ```
 
 ### [82\. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
@@ -327,10 +327,10 @@ Language: **GO**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *leetcode.ListNode
  * }
  */
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return head
 	}
@@ -412,10 +412,10 @@ Language: **GO**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *leetcode.ListNode
  * }
  */
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return head
 	}
@@ -985,10 +985,10 @@ func MinInt(vars ...int) int {
 
 Difficulty: **中等**
 
-
 给定一个三角形 `triangle` ，找出自顶向下的最小路径和。
 
-每一步只能移动到下一行中相邻的结点上。**相邻的结点** 在这里指的是 **下标** 与 **上一层结点下标** 相同或者等于 **上一层结点下标 + 1** 的两个结点。也就是说，如果正位于当前行的下标 `i` ，那么下一步可以移动到下一行的下标 `i` 或 `i + 1` 。
+每一步只能移动到下一行中相邻的结点上。**相邻的结点** 在这里指的是 **下标** 与 **上一层结点下标** 相同或者等于 **上一层结点下标 + 1** 的两个结点。也就是说，如果正位于当前行的下标 `i`
+，那么下一步可以移动到下一行的下标 `i` 或 `i + 1` 。
 
 **示例 1：**
 
@@ -1012,15 +1012,14 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `1 <= triangle.length <= 200`
-*   `triangle[0].length == 1`
-*   `triangle[i].length == triangle[i - 1].length + 1`
-*   `-10<sup>4</sup> <= triangle[i][j] <= 10<sup>4</sup>`
+* `1 <= triangle.length <= 200`
+* `triangle[0].length == 1`
+* `triangle[i].length == triangle[i - 1].length + 1`
+* `-10<sup>4</sup> <= triangle[i][j] <= 10<sup>4</sup>`
 
 **进阶：**
 
-*   你可以只使用 `O(n)` 的额外空间（`n` 为三角形的总行数）来解决这个问题吗？
-
+* 你可以只使用 `O(n)` 的额外空间（`n` 为三角形的总行数）来解决这个问题吗？
 
 #### Solution
 
@@ -1058,12 +1057,11 @@ func min(x, y int) int {
 
 Difficulty: **简单**
 
-
 给定一个二叉树，找出其最大深度。
 
 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
 
-**说明:** 叶子节点是指没有子节点的节点。
+**说明:** 叶子节点是指没有子节点的节点。
 
 **示例：**  
 给定二叉树 `[3,9,20,null,null,15,7]`，
@@ -1076,8 +1074,7 @@ Difficulty: **简单**
    15   7
 ```
 
-返回它的最大深度 3 。
-
+返回它的最大深度 3 。
 
 #### Solution
 
@@ -1088,11 +1085,11 @@ Language: ****
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
  */
-func maxDepth(root *TreeNode) int {
+func maxDepth(root *leetcode.TreeNode) int {
 	if root == nil {
 		return 0
 	}
@@ -1116,7 +1113,6 @@ func MaxInt(vars ...int) int {
 ### [300\. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 
 Difficulty: **中等**
-
 
 给你一个整数数组 `nums` ，找到其中最长严格递增子序列的长度。
 
@@ -1146,14 +1142,13 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `1 <= nums.length <= 2500`
-*   `-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup>`
+* `1 <= nums.length <= 2500`
+* `-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup>`
 
 **进阶：**
 
-*   你可以设计时间复杂度为 `O(n<sup>2</sup>)` 的解决方案吗？
-*   你能将算法的时间复杂度降低到 `O(n log(n))` 吗?
-
+* 你可以设计时间复杂度为 `O(n<sup>2</sup>)` 的解决方案吗？
+* 你能将算法的时间复杂度降低到 `O(n log(n))` 吗?
 
 #### Solution
 
@@ -1188,7 +1183,6 @@ Language: ****
 
 Difficulty: **简单**
 
-
 给定一个二叉树，判断它是否是高度平衡的二叉树。
 
 本题中，一棵高度平衡二叉树定义为：
@@ -1222,9 +1216,8 @@ Difficulty: **简单**
 
 **提示：**
 
-*   树中的节点数在范围 `[0, 5000]` 内
-*   `-10<sup>4</sup> <= Node.val <= 10<sup>4</sup>`
-
+* 树中的节点数在范围 `[0, 5000]` 内
+* `-10<sup>4</sup> <= Node.val <= 10<sup>4</sup>`
 
 #### Solution
 
@@ -1235,16 +1228,16 @@ Language: ****
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
  */
-func isBalanced(root *TreeNode) bool {
+func isBalanced(root *leetcode.TreeNode) bool {
 	b, _ := deepIsBalanced(root)
 	return b
 }
 
-func deepIsBalanced(root *TreeNode) (bool, int) {
+func deepIsBalanced(root *leetcode.TreeNode) (bool, int) {
 	if root == nil {
 		return true, 0
 	}
@@ -1276,7 +1269,6 @@ func MaxInt(vars ...int) int {
 
 Difficulty: **困难**
 
-
 **路径** 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 **至多出现一次** 。该路径 **至少包含一个** 节点，且不一定经过根节点。
 
 **路径和** 是路径中各节点值的总和。
@@ -1305,14 +1297,125 @@ Difficulty: **困难**
 
 **提示：**
 
-*   树中节点数目范围是 `[1, 3 * 10<sup>4</sup>]`
-*   `-1000 <= Node.val <= 1000`
-
+* 树中节点数目范围是 `[1, 3 * 10<sup>4</sup>]`
+* `-1000 <= Node.val <= 1000`
 
 #### Solution
 
 Language: ****
 
 ```
-​
+​/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
+ * }
+ */
+
+const INVALID = ^(1 << 32)
+
+func maxPathSum(root *leetcode.TreeNode) int {
+	var sum int
+	sum = INVALID
+	deepMaxPathSum(root, &sum)
+	return sum
+}
+
+func deepMaxPathSum(root *leetcode.TreeNode, sum *int) int {
+	if root == nil {
+		return INVALID
+	}
+	rootVal := root.Val
+	left := deepMaxPathSum(root.Left, sum)
+	right := deepMaxPathSum(root.Right, sum)
+
+	// 找出左右及单独的自己中最大的
+	a := MaxInt(left+rootVal, rootVal, right+rootVal)
+    // 比较最大值
+	*sum = MaxInt(*sum, a, left+rootVal+right)
+	return a
+}
+
+func MaxInt(vars ...int) int {
+	max := vars[0]
+
+	for _, i := range vars {
+		if max < i {
+			max = i
+		}
+	}
+
+	return max
+}
+```
+
+### [61\. 旋转链表](https://leetcode-cn.com/problems/rotate-list/)
+
+Difficulty: **中等**
+
+给你一个链表的头节点 `head` ，旋转链表，将链表每个节点向右移动 `k`个位置。
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2020/11/13/rotate1.jpg)
+
+```
+输入：head = [1,2,3,4,5], k = 2
+输出：[4,5,1,2,3]
+```
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2020/11/13/roate2.jpg)
+
+```
+输入：head = [0,1,2], k = 4
+输出：[2,0,1]
+```
+
+**提示：**
+
+* 链表中节点的数目在范围 `[0, 500]` 内
+* `-100 <= Node.val <= 100`
+* `0 <= k <= 2 * 10<sup>9</sup>`
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *leetcode.ListNode
+ * }
+ */
+func rotateRight(head *leetcode.ListNode, k int) *leetcode.ListNode {
+	if head == nil || k == 0 {
+		return head
+	}
+	node := head
+	length := 1
+	for node.Next != nil {
+		node = node.Next
+		length++
+	}
+	k = k % length
+	if k == 0 {
+
+		return head
+	}
+	last := node
+	node = head
+	for i := 0; i < length-k-1; i++ {
+		node = node.Next
+	}
+	last.Next = head
+	head = node.Next
+	node.Next = nil
+	return head
+}
 ```

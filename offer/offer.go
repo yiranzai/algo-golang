@@ -1,6 +1,7 @@
 package offer
 
 import (
+	"github.com/yiranzai/go-utils/leetcode"
 	"github.com/yiranzai/go-utils/math"
 )
 
@@ -58,11 +59,6 @@ func findNumberIn2DArray(matrix [][]int, target int) bool {
 	return false
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 type Node struct {
 	Val  int
 	Prev *Node
@@ -74,10 +70,10 @@ type Node struct {
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *leetcode.ListNode
  * }
  */
-func reversePrint(head *ListNode) []int {
+func reversePrint(head *leetcode.ListNode) []int {
 	var stack []int
 	if head == nil {
 		return stack
@@ -96,25 +92,19 @@ func reversePrint(head *ListNode) []int {
 	return stack
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 /**
  * https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/
  * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *leetcode.TreeNode
+ *     Right *leetcode.TreeNode
  * }
  *
  */
-func buildTree(preorder []int, inorder []int) *TreeNode {
-	var root *TreeNode
+func buildTree(preorder []int, inorder []int) *leetcode.TreeNode {
+	var root *leetcode.TreeNode
 
 	return root
 }
