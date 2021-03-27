@@ -1859,3 +1859,75 @@ func Test_rotateRight(t *testing.T) {
 	head = leetcode.GenerateList([]int{0, 1, 2})
 	leetcode.LoopEqualList(t, rotateRight(head, 7), []int{2, 0, 1})
 }
+
+func Test_lowestCommonAncestor(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 3, 5, 1, 6, 2, 0, 8, nil, nil, 7, 4})
+	assert.Equal(t, lowestCommonAncestor(head, &leetcode.TreeNode{Val: 5}, &leetcode.TreeNode{Val: 1}).Val, 3)
+	assert.Equal(t, lowestCommonAncestor(head, &leetcode.TreeNode{Val: 5}, &leetcode.TreeNode{Val: 4}).Val, 5)
+
+	head = leetcode.GenerateTree([]interface{}{0, 1, 2})
+	assert.Equal(t, lowestCommonAncestor(head, &leetcode.TreeNode{Val: 1}, &leetcode.TreeNode{Val: 2}).Val, 1)
+}
+
+func Test_levelOrder(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	assert.DeepEqual(t, levelOrder(head), [][]int{{3},
+		{9, 20},
+		{15, 7},
+	})
+}
+
+func Test_levelOrderBottom(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	assert.DeepEqual(t, levelOrderBottom(head), [][]int{
+		{15, 7},
+		{9, 20},
+		{3},
+	})
+}
+
+func Test_zigzagLevelOrder(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 3, 9, 20, nil, nil, 15, 7})
+	assert.DeepEqual(t, zigzagLevelOrder(head), [][]int{{3},
+		{20, 9},
+		{15, 7},
+	})
+}
+
+func Test_isValidBST(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 5, 14, nil, 1})
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree(
+		[]interface{}{0, 120, nil, 140, nil, nil, 130, 160, nil, nil, nil, nil, 119, 135, 150, 200},
+	)
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree([]interface{}{0, 120, 70, 140, 50, 100, 130, 160, 20, 55, 75, 110, 119, 135, 150, 200})
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree([]interface{}{0, 32, 26, 47, 19, nil, nil, 56, nil, 27})
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree([]interface{}{0, 2, 1, 3})
+	assert.Equal(t, isValidBST(head), true)
+
+	head = leetcode.GenerateTree([]interface{}{0, 5, 1, 4, nil, nil, 3, 6})
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree([]interface{}{0, 5, 1, 6, nil, nil, 3, 7})
+	assert.Equal(t, isValidBST(head), false)
+
+	head = leetcode.GenerateTree([]interface{}{0, 5, 4, 6, 1, 3, 3, 7})
+	assert.Equal(t, isValidBST(head), false)
+}

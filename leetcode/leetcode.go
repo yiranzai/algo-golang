@@ -680,3 +680,216 @@ func rotateRight(head *leetcode.ListNode, k int) *leetcode.ListNode {
 	node.Next = nil
 	return head
 }
+
+/**
+
+https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+*/
+func lowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
+	node, _, _ := deepLowestCommonAncestor(root, p, q)
+	return node
+}
+
+func deepLowestCommonAncestor(root, p, q *leetcode.TreeNode) (*leetcode.TreeNode, bool, bool) {
+	if root == nil {
+		return nil, false, false
+	}
+	// 左边俩都搜到了
+	left, blp, blq := deepLowestCommonAncestor(root.Left, p, q)
+	if blp && blq {
+		return left, blp, blq
+	}
+
+	// 右边俩都搜到了
+	right, brp, brq := deepLowestCommonAncestor(root.Right, p, q)
+	if brp && brq {
+		return right, brp, brq
+	}
+
+	rp, rq := root.Val == p.Val, root.Val == q.Val
+
+	// 左右及根都没有
+	if !rp && !rq && !brp && !brq && !blp && !blq {
+		return nil, false, false
+	}
+
+	// 左边或者右边搜索到其中一个
+	if (rp && (blq || brq)) || (rq && (blp || brp)) || (blq && brp) || (blp && brq) {
+		return root, true, true
+	}
+
+	return root, rp || blp || brp, rq || blq || brq
+}
+
+/**
+ * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrder(root *leetcode.TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*leetcode.TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			b[i] = list[i].Val
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+		list = list[length:]
+		length = len(list)
+		res = append(res, b)
+	}
+	return res
+}
+
+/**
+ * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrderBottom(root *leetcode.TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*leetcode.TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			b[i] = list[i].Val
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+		list = list[length:]
+		length = len(list)
+		res = append([][]int{b}, res...)
+	}
+	return res
+}
+
+/**
+ * https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func zigzagLevelOrder(root *leetcode.TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*leetcode.TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	mark := true
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			if mark {
+				b[i] = list[i].Val
+			} else {
+				b[i] = list[length-1-i].Val
+			}
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+
+		mark = !mark
+		list = list[length:]
+		length = len(list)
+		res = append(res, b)
+	}
+	return res
+}
+
+/**
+ * https://leetcode-cn.com/problems/validate-binary-search-tree/submissions/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func isValidBST(root *leetcode.TreeNode) bool {
+	bb, _, _ := deepIsValidBST(root)
+	return bb == 1
+}
+
+func deepIsValidBST(root *leetcode.TreeNode) (a int, max int, min int) {
+	if root == nil {
+		return 2, 0, 0
+	}
+
+	if root.Left == nil && root.Right == nil {
+		return 1, root.Val, root.Val
+	}
+
+	bl, lMax, lMin := deepIsValidBST(root.Left)
+	if bl == 0 {
+		return bl, 0, 0
+	}
+
+	br, rMax, rMin := deepIsValidBST(root.Right)
+	if br == 0 {
+		return br, 0, 0
+	}
+
+	if bl != 2 && root.Val <= lMax {
+		return 0, 0, 0
+	}
+
+	if br != 2 && root.Val >= rMin {
+		return 0, 0, 0
+	}
+
+	if bl == 2 {
+		return 1, math.MaxInt(rMax, root.Val), math.MinInt(rMin, root.Val)
+	}
+
+	if br == 2 {
+		return 1, math.MaxInt(lMax, root.Val), math.MinInt(lMin, root.Val)
+	}
+
+	return 1, math.MaxInt(lMax, rMax, root.Val), math.MinInt(root.Val, lMin, rMin)
+}

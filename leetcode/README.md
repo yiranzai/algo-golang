@@ -1420,3 +1420,432 @@ func rotateRight(head *leetcode.ListNode, k int) *leetcode.ListNode {
 	return head
 }
 ```
+
+### [236\. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+Difficulty: **中等**
+
+
+给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+
+中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（**一个节点也可以是它自己的祖先**）。”
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2018/12/14/binarytree.png)
+
+```
+输入：root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+输出：3
+解释：节点 5 和节点 1 的最近公共祖先是节点 3 。
+```
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2018/12/14/binarytree.png)
+
+```
+输入：root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+输出：5
+解释：节点 5 和节点 4 的最近公共祖先是节点 5 。因为根据定义最近公共祖先节点可以为节点本身。
+```
+
+**示例 3：**
+
+```
+输入：root = [1,2], p = 1, q = 2
+输出：1
+```
+
+**提示：**
+
+*   树中节点数目在范围 `[2, 10<sup>5</sup>]` 内。
+*   `-10<sup>9</sup> <= Node.val <= 10<sup>9</sup>`
+*   所有 `Node.val` `互不相同` 。
+*   `p != q`
+*   `p` 和 `q` 均存在于给定的二叉树中。
+
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+    node, _, _ := deepLowestCommonAncestor(root, p, q)
+	return node
+}
+
+func deepLowestCommonAncestor(root, p, q *TreeNode) (*TreeNode, bool, bool) {
+	if root == nil {
+		return nil, false, false
+	}
+	// 左边俩都搜到了
+	left, blp, blq := deepLowestCommonAncestor(root.Left, p, q)
+	if blp && blq {
+		return left, blp, blq
+	}
+
+	// 右边俩都搜到了
+	right, brp, brq := deepLowestCommonAncestor(root.Right, p, q)
+	if brp && brq {
+		return right, brp, brq
+	}
+
+	rp, rq := root.Val == p.Val, root.Val == q.Val
+
+	// 左右及根都没有
+	if !rp && !rq && !brp && !brq && !blp && !blq {
+		return nil, false, false
+	}
+
+	// 左边或者右边搜索到其中一个
+	if (rp && (blq || brq)) || (rq && (blp || brp)) || (blq && brp) || (blp && brq) {
+		return root, true, true
+	}
+
+	return root, rp || blp || brp, rq || blq || brq
+}
+```
+
+
+### [102\. 二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
+
+Difficulty: **中等**
+
+
+给你一个二叉树，请你返回其按 **层序遍历** 得到的节点值。 （即逐层地，从左到右访问所有节点）。
+
+**示例：**  
+二叉树：`[3,9,20,null,null,15,7]`,
+
+```
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
+
+返回其层序遍历结果：
+
+```
+[
+  [3],
+  [9,20],
+  [15,7]
+]
+```
+
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrder(root *TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			b[i] = list[i].Val
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+		list = list[length:]
+		length = len(list)
+		res = append(res, b)
+	}
+	return res
+}
+```
+
+### [107\. 二叉树的层序遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)
+
+Difficulty: **中等**
+
+
+给定一个二叉树，返回其节点值自底向上的层序遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
+
+例如：  
+给定二叉树 `[3,9,20,null,null,15,7]`,
+
+```
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
+
+返回其自底向上的层序遍历为：
+
+```
+[
+  [15,7],
+  [9,20],
+  [3]
+]
+```
+
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrderBottom(root *TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			b[i] = list[i].Val
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+		list = list[length:]
+		length = len(list)
+		res = append([][]int{b}, res...)
+	}
+	return res
+}
+```
+
+
+### [103\. 二叉树的锯齿形层序遍历](https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/)
+
+Difficulty: **中等**
+
+
+给定一个二叉树，返回其节点值的锯齿形层序遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
+
+例如：  
+给定二叉树 `[3,9,20,null,null,15,7]`,
+
+```
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
+
+返回锯齿形层序遍历如下：
+
+```
+[
+  [3],
+  [20,9],
+  [15,7]
+]
+```
+
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func zigzagLevelOrder(root *TreeNode) [][]int {
+	var res [][]int
+	if root == nil {
+		return res
+	}
+	var list []*TreeNode
+	list = append(list, root)
+	res = make([][]int, 0, 0)
+	length := len(list)
+	mark := true
+	for length > 0 {
+		b := make([]int, length)
+		for i := 0; i < length; i++ {
+			if mark {
+				b[i] = list[i].Val
+			} else {
+				b[i] = list[length-1-i].Val
+			}
+			if list[i].Left != nil {
+				list = append(list, list[i].Left)
+			}
+			if list[i].Right != nil {
+				list = append(list, list[i].Right)
+			}
+		}
+
+		mark = !mark
+		list = list[length:]
+		length = len(list)
+		res = append(res, b)
+	}
+	return res
+}
+
+```
+
+### [98\. 验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+
+Difficulty: **中等**
+
+
+给定一个二叉树，判断其是否是一个有效的二叉搜索树。
+
+假设一个二叉搜索树具有如下特征：
+
+*   节点的左子树只包含**小于**当前节点的数。
+*   节点的右子树只包含**大于**当前节点的数。
+*   所有左子树和右子树自身必须也是二叉搜索树。
+
+**示例 1:**
+
+```
+输入:
+    2
+   / \
+  1   3
+输出: true
+```
+
+**示例 2:**
+
+```
+输入:
+    5
+   / \
+  1   4
+     / \
+    3   6
+输出: false
+解释: 输入为: [5,1,4,null,null,3,6]。
+     根节点的值为 5 ，但是其右子节点值为 4 。
+```
+
+
+#### Solution
+
+Language: ****
+
+```
+​func isValidBST(root *TreeNode) bool {
+	bb, _, _ := deepIsValidBST(root)
+	return bb == 1
+}
+
+func deepIsValidBST(root *TreeNode) (a int, max int, min int) {
+	if root == nil {
+		return 2, 0, 0
+	}
+
+	if root.Left == nil && root.Right == nil {
+		return 1, root.Val, root.Val
+	}
+
+	bl, lMax, lMin := deepIsValidBST(root.Left)
+	if bl == 0 {
+		return bl, 0, 0
+	}
+
+	br, rMax, rMin := deepIsValidBST(root.Right)
+	if br == 0 {
+		return br, 0, 0
+	}
+
+	if bl != 2 && root.Val <= lMax {
+		return 0, 0, 0
+	}
+
+	if br != 2 && root.Val >= rMin {
+		return 0, 0, 0
+	}
+
+	if bl == 2 {
+		return 1, MaxInt(rMax, root.Val), MinInt(rMin, root.Val)
+	}
+
+	if br == 2 {
+		return 1, MaxInt(lMax, root.Val), MinInt(lMin, root.Val)
+	}
+
+	return 1, MaxInt(lMax, rMax, root.Val), MinInt(root.Val, lMin, rMin)
+}
+
+//MinInt get the min int vars
+func MinInt(vars ...int) int {
+	min := vars[0]
+
+	for _, i := range vars {
+		if min > i {
+			min = i
+		}
+	}
+
+	return min
+}
+
+
+//MaxInt get the max int vars
+func MaxInt(vars ...int) int {
+	max := vars[0]
+
+	for _, i := range vars {
+		if max < i {
+			max = i
+		}
+	}
+
+	return max
+}
+```
