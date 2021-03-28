@@ -1092,3 +1092,15 @@ func mergeTwoLists(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
 
 	return head
 }
+
+// https://leetcode-cn.com/problems/partition-list/
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func partition(head *leetcode.ListNode, x int) *leetcode.ListNode {
+	return head
+}
