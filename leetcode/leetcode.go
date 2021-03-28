@@ -893,3 +893,50 @@ func deepIsValidBST(root *leetcode.TreeNode) (a int, max int, min int) {
 
 	return 1, math.MaxInt(lMax, rMax, root.Val), math.MinInt(root.Val, lMin, rMin)
 }
+
+/**
+ * https://leetcode-cn.com/problems/binary-search-tree-iterator/
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+type BSTIterator struct {
+	root *leetcode.TreeNode
+	list []*leetcode.TreeNode
+}
+
+func Constructor(root *leetcode.TreeNode) BSTIterator {
+	res := BSTIterator{root: root}
+	res.DeepLeft(root)
+	return res
+}
+
+func (this *BSTIterator) DeepLeft(root *leetcode.TreeNode) {
+	for root != nil {
+		this.list = append(this.list, root)
+		root = root.Left
+	}
+}
+
+func (this *BSTIterator) Next() int {
+	t := this.list[len(this.list)-1]
+	this.list = this.list[0 : len(this.list)-1]
+	if t.Right != nil || !this.HasNext() {
+		this.DeepLeft(t.Right)
+	}
+	return t.Val
+}
+
+func (this *BSTIterator) HasNext() bool {
+	return len(this.list) > 0
+}
+
+/**
+ * Your BSTIterator object will be instantiated and called as such:
+ * obj := Constructor(root);
+ * param_1 := obj.Next();
+ * param_2 := obj.HasNext();
+ */

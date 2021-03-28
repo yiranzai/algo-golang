@@ -1931,3 +1931,21 @@ func Test_isValidBST(t *testing.T) {
 	head = leetcode.GenerateTree([]interface{}{0, 5, 4, 6, 1, 3, 3, 7})
 	assert.Equal(t, isValidBST(head), false)
 }
+
+func Test_Constructor(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 7, 3, 15, 1, 4, 9, 20})
+	obj := Constructor(head)
+	assert.Equal(t, obj.Next(), 1)
+	assert.Equal(t, obj.Next(), 3)
+	assert.Equal(t, obj.Next(), 4)
+	assert.Equal(t, obj.Next(), 7)
+	assert.Equal(t, obj.HasNext(), true)
+	assert.Equal(t, obj.Next(), 9)
+	assert.Equal(t, obj.HasNext(), true)
+	assert.Equal(t, obj.Next(), 15)
+	assert.Equal(t, obj.HasNext(), true)
+	assert.Equal(t, obj.Next(), 20)
+	assert.Equal(t, obj.HasNext(), false)
+}

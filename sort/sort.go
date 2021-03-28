@@ -20,15 +20,15 @@ func QuickSortDeep(nums *[]int) {
 
 //QuickSortLoop 原地快排非递归
 func QuickSortLoop(nums *[]int) {
-	num := len(*nums) - 1
-	if num == 0 {
+	length := len(*nums) - 1
+	if length == 0 {
 		return
 	}
-	temp := make([][]int, 0, num)
-	temp = append(temp, []int{0, num})
+	temp := make([][]int, 0, length)
+	temp = append(temp, []int{0, length})
 	for len(temp) > 0 {
 		pool := temp
-		temp = make([][]int, 0, num)
+		temp = make([][]int, 0, length)
 		for _, ints := range pool {
 			start, end := ints[0], ints[1]
 			if start >= end {
@@ -73,4 +73,40 @@ func quickSortDeep(nums *[]int, start, end int) {
 	(*nums)[j], (*nums)[end] = (*nums)[end], (*nums)[j]
 	quickSortDeep(nums, start, j-1)
 	quickSortDeep(nums, j+1, end)
+}
+
+// https://www.jianshu.com/p/d70aeccaee19
+//QuickSortDeep 三向切分快速排序
+func QuickSortDeep3(nums *[]int) {
+	quickSortDeep3(nums, 0, len(*nums)-1)
+}
+
+func quickSortDeep3(nums *[]int, start, end int) {
+
+	num := len(*nums)
+	if num <= 1 {
+		return
+	}
+
+	if start >= end {
+		return
+	}
+
+	value := (*nums)[end]
+
+	var j = start
+	var m = start
+	for i := start; i < end; i++ {
+		if (*nums)[i] > value {
+			continue
+		}
+		if (*nums)[i] < value {
+			(*nums)[i], (*nums)[j] = (*nums)[j], (*nums)[i]
+			j++
+		}
+		m++
+	}
+	(*nums)[j], (*nums)[end] = (*nums)[end], (*nums)[j]
+	quickSortDeep(nums, start, j-1)
+	quickSortDeep(nums, m+1, end)
 }
