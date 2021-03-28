@@ -65,8 +65,10 @@
             * [Solution](#solution-27)
          * [<a href="https://leetcode-cn.com/problems/partition-list/" rel="nofollow">86. 分隔链表</a>](#86-分隔链表)
             * [Solution](#solution-28)
+         * [<a href="https://leetcode-cn.com/problems/sort-list/" rel="nofollow">148. 排序链表</a>](#148-排序链表)
+            * [Solution](#solution-29)
 
-<!-- Added by: runner, at: Sun Mar 28 10:57:24 UTC 2021 -->
+<!-- Added by: runner, at: Sun Mar 28 14:55:02 UTC 2021 -->
 
 <!--te-->
 
