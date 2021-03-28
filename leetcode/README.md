@@ -63,8 +63,10 @@
             * [Solution](#solution-26)
          * [<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" rel="nofollow">21. 合并两个有序链表</a>](#21-合并两个有序链表)
             * [Solution](#solution-27)
+         * [<a href="https://leetcode-cn.com/problems/partition-list/" rel="nofollow">86. 分隔链表</a>](#86-分隔链表)
+            * [Solution](#solution-28)
 
-<!-- Added by: runner, at: Sun Mar 28 10:55:38 UTC 2021 -->
+<!-- Added by: runner, at: Sun Mar 28 10:57:24 UTC 2021 -->
 
 <!--te-->
 
