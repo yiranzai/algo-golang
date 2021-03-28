@@ -1965,3 +1965,24 @@ func Test_insertIntoBST(t *testing.T) {
 	head = insertIntoBST(head, 5)
 	assert.Equal(t, isValidBST(head), true)
 }
+
+func Test_reverseList(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	leetcode.LoopEqualList(t, reverseList(head), []int{5, 4, 3, 2, 1})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
+	leetcode.LoopEqualList(t, reverseList(head), []int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
+}
+
+func Test_deepReverseList(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	leetcode.LoopEqualList(t, deepReverseList(head), []int{5, 4, 3, 2, 1})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
+	leetcode.LoopEqualList(t, deepReverseList(head), []int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
+
+}

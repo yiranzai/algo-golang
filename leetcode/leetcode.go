@@ -494,10 +494,6 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
  *     Next *leetcode.ListNode
  * }
 */
-type ListNode struct {
-	Val  int
-	Next *leetcode.ListNode
-}
 
 func deleteDuplicates2(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
@@ -961,4 +957,40 @@ func insertIntoBST(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
 		root.Right = insertIntoBST(root.Right, val)
 	}
 	return root
+}
+
+/**
+ * https://leetcode-cn.com/problems/reverse-linked-list/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *leetcode.ListNode) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	node := head.Next
+	head.Next = nil
+	for node != nil {
+		head, node.Next = node.Next, head
+		head, node = node, head
+	}
+	return head
+}
+
+func deepReverseList(head *leetcode.ListNode) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	res := deepReverseList(head.Next)
+	head.Next = nil
+	node := res
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head
+	return res
 }
