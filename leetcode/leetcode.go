@@ -994,3 +994,53 @@ func deepReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 	node.Next = head
 	return res
 }
+
+/**
+* https://leetcode-cn.com/problems/reverse-linked-list-ii/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+*/
+func reverseBetween(head *leetcode.ListNode, left int, right int) *leetcode.ListNode {
+	if head == nil || head.Next == nil || right < 2 || left == right {
+		return head
+	}
+	var end *leetcode.ListNode
+	var tEnd *leetcode.ListNode
+	var tNode *leetcode.ListNode
+	var tHead *leetcode.ListNode
+	current := head
+	for i := 1; i <= right-1; i++ {
+		// 记录left前的节点
+		if i == left-1 {
+			end = current
+		}
+		if i < left-1 {
+			current = current.Next
+		}
+		// 在left时做初始化操作
+		if i == left {
+			if end == nil {
+				tHead = head
+			} else {
+				tHead = end.Next
+			}
+			tNode = tHead.Next
+			tHead.Next = nil
+			tEnd = tHead
+		}
+		// 开始搞事
+		if i >= left {
+			tHead, tNode.Next = tNode.Next, tHead
+			tHead, tNode = tNode, tHead
+		}
+	}
+	tEnd.Next = tNode
+	if end == nil {
+		return tHead
+	}
+	end.Next = tHead
+	return head
+}

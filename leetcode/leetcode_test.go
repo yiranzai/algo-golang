@@ -1986,3 +1986,19 @@ func Test_deepReverseList(t *testing.T) {
 	leetcode.LoopEqualList(t, deepReverseList(head), []int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
 
 }
+
+func Test_reverseBetween(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{3, 5})
+	leetcode.LoopEqualList(t, reverseBetween(head, 1, 1), []int{3, 5})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 5, 4, 3, 2, 1})
+	leetcode.LoopEqualList(t, reverseBetween(head, 1, 5), []int{5, 4, 3, 2, 1, 5, 4, 3, 2, 1})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	leetcode.LoopEqualList(t, reverseBetween(head, 1, 5), []int{5, 4, 3, 2, 1})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	leetcode.LoopEqualList(t, reverseBetween(head, 2, 4), []int{1, 4, 3, 2, 5})
+}
