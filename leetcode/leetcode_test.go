@@ -2034,3 +2034,67 @@ func Test_mergeTwoLists(t *testing.T) {
 			leetcode.GenerateList([]int{0, 2, 4})),
 		[]int{0, 1, 2, 3, 4, 5})
 }
+
+func Test_partition(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{2, 1})
+	leetcode.LoopEqualList(t, partition(head, 2), []int{1, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition(head, 3), []int{1, 2, 2, 4, 3, 5})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition(head, 2), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition(head, 9), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition(head, 0), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition(head, 1), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2, 6})
+	leetcode.LoopEqualList(t, partition(head, 6), []int{1, 4, 3, 2, 5, 2, 6})
+}
+
+func Test_partition2(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{2, 1})
+	leetcode.LoopEqualList(t, partition2(head, 2), []int{1, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition2(head, 3), []int{1, 2, 2, 4, 3, 5})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition2(head, 2), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition2(head, 9), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition2(head, 0), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+	leetcode.LoopEqualList(t, partition2(head, 1), []int{1, 4, 3, 2, 5, 2})
+
+	head = leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2, 6})
+	leetcode.LoopEqualList(t, partition2(head, 6), []int{1, 4, 3, 2, 5, 2, 6})
+}
+
+func Benchmark_partition(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+		partition(head, 3)
+	}
+}
+
+func Benchmark_partition2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+		partition2(head, 3)
+	}
+}

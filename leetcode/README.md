@@ -2311,5 +2311,90 @@ Difficulty: **中等**
 Language: ****
 
 ```
+​func partition(head *leetcode.ListNode, x int) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	left := head
+	right := head.Next
+	var newHead *leetcode.ListNode
+
+	if head.Val < x {
+		newHead, head = head, head.Next
+	}
+	bHead := newHead
+	for right != nil {
+		if right.Val < x {
+			if bHead == nil {
+				newHead = right
+				bHead = newHead
+			} else {
+				bHead.Next = right
+				bHead = bHead.Next
+			}
+			if right == head {
+				head = right.Next
+			} else {
+				left.Next = right.Next
+			}
+		}
+		left, right = left.Next, right.Next
+	}
+	if bHead == nil {
+		return head
+	}
+	bHead.Next = head
+	return newHead
+}
+```
+
+### [148\. 排序链表](https://leetcode-cn.com/problems/sort-list/)
+
+Difficulty: **中等**
+
+
+给你链表的头结点 `head` ，请将其按 **升序** 排列并返回 **排序后的链表** 。
+
+**进阶：**
+
+*   你可以在 `O(n log n)` 时间复杂度和常数级空间复杂度下，对链表进行排序吗？
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2020/09/14/sort_list_1.jpg)
+
+```
+输入：head = [4,2,1,3]
+输出：[1,2,3,4]
+```
+
+**示例 2：**
+
+![](https://assets.leetcode.com/uploads/2020/09/14/sort_list_2.jpg)
+
+```
+输入：head = [-1,5,3,4,0]
+输出：[-1,0,3,4,5]
+```
+
+**示例 3：**
+
+```
+输入：head = []
+输出：[]
+```
+
+**提示：**
+
+*   链表中节点的数目在范围 `[0, 5 * 10<sup>4</sup>]` 内
+*   `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
+
+
+#### Solution
+
+Language: ****
+
+```
 ​
 ```

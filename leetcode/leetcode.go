@@ -1102,5 +1102,71 @@ func mergeTwoLists(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
  * }
  */
 func partition(head *leetcode.ListNode, x int) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	left := head
+	right := head.Next
+	var newHead *leetcode.ListNode
+
+	if head.Val < x {
+		newHead, head = head, head.Next
+	}
+	bNode := newHead
+	for right != nil {
+		if right.Val < x {
+			if bNode == nil {
+				newHead = right
+				bNode = newHead
+			} else {
+				bNode.Next = right
+				bNode = bNode.Next
+			}
+			// 当前是head,head也移动
+			if right == head {
+				head = right.Next
+			} else {
+				left.Next = right.Next
+			}
+		}
+		left, right = left.Next, right.Next
+	}
+	if bNode == nil {
+		return head
+	}
+	bNode.Next = head
+	return newHead
+}
+
+func partition2(head *leetcode.ListNode, x int) *leetcode.ListNode {
+	small := &leetcode.ListNode{}
+	smallHead := small
+	large := &leetcode.ListNode{}
+	largeHead := large
+	for head != nil {
+		if head.Val < x {
+			small.Next = head
+			small = small.Next
+		} else {
+			large.Next = head
+			large = large.Next
+		}
+		head = head.Next
+	}
+	large.Next = nil
+	small.Next = largeHead.Next
+	return smallHead.Next
+}
+
+/**
+ * https://leetcode-cn.com/problems/sort-list/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 	return head
 }
