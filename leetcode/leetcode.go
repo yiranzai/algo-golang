@@ -1044,3 +1044,51 @@ func reverseBetween(head *leetcode.ListNode, left int, right int) *leetcode.List
 	end.Next = tHead
 	return head
 }
+
+// https://leetcode-cn.com/problems/merge-two-sorted-lists/
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func mergeTwoLists(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
+	if l1 == nil {
+		return l2
+	}
+	if l2 == nil {
+		return l1
+	}
+	var head *leetcode.ListNode
+	var node *leetcode.ListNode
+	if l1.Val <= l2.Val {
+		head = l1
+		l1 = l1.Next
+	} else {
+		head = l2
+		l2 = l2.Next
+	}
+	node = head
+	for l1 != nil && l2 != nil {
+		for l1 != nil && l1.Val <= l2.Val {
+			node.Next = l1
+			node = node.Next
+			l1 = l1.Next
+		}
+		for l1 != nil && l2 != nil && l1.Val > l2.Val {
+			node.Next = l2
+			node = node.Next
+			l2 = l2.Next
+		}
+	}
+
+	if l1 == nil {
+		node.Next = l2
+	}
+	if l2 == nil {
+		node.Next = l1
+	}
+
+	return head
+}

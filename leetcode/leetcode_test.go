@@ -2002,3 +2002,35 @@ func Test_reverseBetween(t *testing.T) {
 	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
 	leetcode.LoopEqualList(t, reverseBetween(head, 2, 4), []int{1, 4, 3, 2, 5})
 }
+
+func Test_mergeTwoLists(t *testing.T) {
+	leetcode.LoopEqualList(t,
+		mergeTwoLists(
+			leetcode.GenerateList([]int{1, 2, 4}),
+			leetcode.GenerateList([]int{1, 3, 4})),
+		[]int{1, 1, 2, 3, 4, 4})
+
+	leetcode.LoopEqualList(t,
+		mergeTwoLists(
+			leetcode.GenerateList([]int{}),
+			leetcode.GenerateList([]int{})),
+		[]int{})
+
+	leetcode.LoopEqualList(t,
+		mergeTwoLists(
+			leetcode.GenerateList([]int{1, 2, 4}),
+			leetcode.GenerateList([]int{})),
+		[]int{1, 2, 4})
+
+	leetcode.LoopEqualList(t,
+		mergeTwoLists(
+			leetcode.GenerateList([]int{1, 2, 4}),
+			leetcode.GenerateList([]int{0})),
+		[]int{0, 1, 2, 4})
+
+	leetcode.LoopEqualList(t,
+		mergeTwoLists(
+			leetcode.GenerateList([]int{1, 3, 5}),
+			leetcode.GenerateList([]int{0, 2, 4})),
+		[]int{0, 1, 2, 3, 4, 5})
+}
