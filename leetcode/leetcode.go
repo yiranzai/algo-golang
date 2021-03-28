@@ -940,3 +940,25 @@ func (this *BSTIterator) HasNext() bool {
  * param_1 := obj.Next();
  * param_2 := obj.HasNext();
  */
+
+// https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func insertIntoBST(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
+	if root == nil {
+		return &leetcode.TreeNode{Val: val}
+	}
+	if root.Val > val {
+		root.Left = insertIntoBST(root.Left, val)
+	}
+	if root.Val < val {
+		root.Right = insertIntoBST(root.Right, val)
+	}
+	return root
+}

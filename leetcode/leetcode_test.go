@@ -1949,3 +1949,19 @@ func Test_Constructor(t *testing.T) {
 	assert.Equal(t, obj.Next(), 20)
 	assert.Equal(t, obj.HasNext(), false)
 }
+
+func Test_insertIntoBST(t *testing.T) {
+	var head *leetcode.TreeNode
+
+	head = leetcode.GenerateTree([]interface{}{0, 4, 2, 7, 1, 3})
+	head = insertIntoBST(head, 5)
+	assert.Equal(t, isValidBST(head), true)
+
+	head = leetcode.GenerateTree([]interface{}{0, 40, 20, 60, 10, 30, 50, 70})
+	head = insertIntoBST(head, 25)
+	assert.Equal(t, isValidBST(head), true)
+
+	head = leetcode.GenerateTree([]interface{}{0, 4, 2, 7, 1, 3, nil, nil, nil, nil, nil, nil})
+	head = insertIntoBST(head, 5)
+	assert.Equal(t, isValidBST(head), true)
+}
