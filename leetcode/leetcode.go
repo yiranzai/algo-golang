@@ -1175,14 +1175,17 @@ func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 	var l *leetcode.ListNode
 	var m *leetcode.ListNode
 	var r *leetcode.ListNode
+	var last *leetcode.ListNode
 	for head != end {
 		l = nil
 		m, r = head, head.Next
 		max := m.Val
+		mark := true
 		for r != end {
 			if max < r.Val {
 				max = r.Val
 			} else if max > r.Val {
+				mark = false
 				m.Next, r.Next = r.Next, m
 				if l == nil {
 					head = r
@@ -1190,6 +1193,7 @@ func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 					l.Next = r
 				}
 				r, m = m, r
+				last = m.Next
 			}
 			if l == nil {
 				l = head
@@ -1198,7 +1202,10 @@ func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 			}
 			m, r = m.Next, r.Next
 		}
-		end = m
+		if mark == true {
+			break
+		}
+		end = last
 	}
 	return head
 }
