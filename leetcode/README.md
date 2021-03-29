@@ -67,8 +67,10 @@
             * [Solution](#solution-28)
          * [<a href="https://leetcode-cn.com/problems/sort-list/" rel="nofollow">148. 排序链表</a>](#148-排序链表)
             * [Solution](#solution-29)
+         * [<a href="https://leetcode-cn.com/problems/reverse-bits/" rel="nofollow">190. 颠倒二进制位</a>](#190-颠倒二进制位)
+            * [Solution](#solution-30)
 
-<!-- Added by: runner, at: Sun Mar 28 14:55:02 UTC 2021 -->
+<!-- Added by: runner, at: Mon Mar 29 09:44:18 UTC 2021 -->
 
 <!--te-->
 
