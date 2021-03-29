@@ -1260,3 +1260,30 @@ func reorderList(head *leetcode.ListNode) {
 	}
 	list[i-1].Next = nil
 }
+
+/**
+ * https://leetcode-cn.com/problems/linked-list-cycle/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func hasCycle(head *leetcode.ListNode) bool {
+	if head == nil || head.Next == nil {
+		return false
+	}
+	if head.Next.Next == head {
+		return true
+	}
+	fast := head.Next.Next
+	slow := head
+
+	for slow != nil && fast != nil && fast.Next != nil {
+		if slow == fast {
+			return true
+		}
+		slow, fast = slow.Next, fast.Next.Next
+	}
+	return false
+}
