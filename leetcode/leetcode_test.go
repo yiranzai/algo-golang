@@ -32458,3 +32458,27 @@ func strToUint(s string) uint32 {
 	}
 	return sum
 }
+
+func Test_reorderList(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	reorderList(head)
+	leetcode.LoopEqualList(t, head, []int{1, 5, 2, 4, 3})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5, 6})
+	reorderList(head)
+	leetcode.LoopEqualList(t, head, []int{1, 6, 2, 5, 3, 4})
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4})
+	reorderList(head)
+	leetcode.LoopEqualList(t, head, []int{1, 4, 2, 3})
+
+	head = leetcode.GenerateList([]int{1})
+	reorderList(head)
+	leetcode.LoopEqualList(t, head, []int{1})
+
+	head = leetcode.GenerateList([]int{1, 2})
+	reorderList(head)
+	leetcode.LoopEqualList(t, head, []int{1, 2})
+}

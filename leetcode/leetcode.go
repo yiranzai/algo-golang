@@ -1234,3 +1234,29 @@ func reverseBits2(n uint32) uint32 {
 	n = n>>8&m8 | n&m8<<8
 	return n>>16 | n<<16
 }
+
+/**
+ * https://leetcode-cn.com/problems/reorder-list/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reorderList(head *leetcode.ListNode) {
+	if head == nil || head.Next == nil || head.Next.Next == nil {
+		return
+	}
+	list := make([]*leetcode.ListNode, 0)
+	node := head
+	for node != nil {
+		list = append(list, node)
+		node = node.Next
+	}
+	var i int
+	for i = 1; i <= len(list)>>1; i++ {
+		end := list[len(list)-i:][0]
+		list[i-1].Next, end.Next = end, list[i]
+	}
+	list[i-1].Next = nil
+}

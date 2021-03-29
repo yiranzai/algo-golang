@@ -2542,3 +2542,57 @@ Language: ****
 	return sum
 }
 ```
+
+### [143\. 重排链表](https://leetcode-cn.com/problems/reorder-list/)
+
+Difficulty: **中等**
+
+
+给定一个单链表 _L_：_L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">1</sub>→…→_L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">n ，</sub>  
+将其重新排列后变为： _L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">_n_</sub>→_L_<sub style="display: inline;">1</sub>→_L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">2</sub>→_L_<sub style="display: inline;">_n_-2</sub>→…
+
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+
+**示例 1:**
+
+```
+给定链表 1->2->3->4, 重新排列为 1->4->2->3.
+```
+
+**示例 2:**
+
+```
+给定链表 1->2->3->4->5, 重新排列为 1->5->2->4->3.
+```
+
+
+#### Solution
+
+Language: ****
+
+```
+​/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reorderList(head *ListNode)  {
+    if head == nil || head.Next == nil || head.Next.Next == nil {
+		return
+	}
+	list := make([]*ListNode, 0)
+	node := head
+	for node != nil {
+		list = append(list, node)
+		node = node.Next
+	}
+	var i int
+	for i = 1; i <= len(list)>>1; i++ {
+		end := list[len(list)-i:][0]
+		list[i-1].Next, end.Next = end, list[i]
+	}
+	list[i-1].Next = nil
+}
+```
