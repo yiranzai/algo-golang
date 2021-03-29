@@ -1170,3 +1170,8 @@ func partition2(head *leetcode.ListNode, x int) *leetcode.ListNode {
 func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 	return head
 }
+
+//https://leetcode-cn.com/problems/reverse-bits/
+func reverseBits(num uint32) uint32 {
+	return 0
+}
