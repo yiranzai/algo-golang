@@ -2098,3 +2098,61 @@ func Benchmark_partition2(b *testing.B) {
 		partition2(head, 3)
 	}
 }
+
+func Test_sortList(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{4, 2, 1, 3})
+	leetcode.LoopEqualList(t, sortList(head), []int{1, 2, 3, 4})
+
+	head = leetcode.GenerateList([]int{-1, 5, 3, 4, 0})
+	leetcode.LoopEqualList(t, sortList(head), []int{-1, 0, 3, 4, 5})
+
+	head = leetcode.GenerateList([]int{2, 1})
+	leetcode.LoopEqualList(t, sortList(head), []int{1, 2})
+
+	head = leetcode.GenerateList([]int{1, 2})
+	leetcode.LoopEqualList(t, sortList(head), []int{1, 2})
+
+	head = leetcode.GenerateList([]int{2})
+	leetcode.LoopEqualList(t, sortList(head), []int{2})
+
+	head = leetcode.GenerateList([]int{})
+	leetcode.LoopEqualList(t, sortList(head), []int{})
+}
+
+func Test_reverseBits(t *testing.T) {
+	assert.Equal(
+		t,
+		reverseBits(strToUint("00000010100101000001111010011100")),
+		strToUint("00111001011110000010100101000000"),
+	)
+	assert.Equal(
+		t,
+		reverseBits(strToUint("11111111111111111111111111111101")),
+		strToUint("10111111111111111111111111111111"),
+	)
+
+	assert.Equal(
+		t,
+		reverseBits2(strToUint("00000010100101000001111010011100")),
+		strToUint("00111001011110000010100101000000"),
+	)
+	assert.Equal(
+		t,
+		reverseBits2(strToUint("11111111111111111111111111111101")),
+		strToUint("10111111111111111111111111111111"),
+	)
+}
+
+func strToUint(s string) uint32 {
+	var sum uint32
+	for i, r := range s {
+		if r == '0' {
+			continue
+		}
+		b := uint32(1) << (len(s) - 1 - i)
+		sum += b
+	}
+	return sum
+}

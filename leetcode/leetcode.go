@@ -1168,10 +1168,62 @@ func partition2(head *leetcode.ListNode, x int) *leetcode.ListNode {
  * }
  */
 func sortList(head *leetcode.ListNode) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var end *leetcode.ListNode
+	var l *leetcode.ListNode
+	var m *leetcode.ListNode
+	var r *leetcode.ListNode
+	for head != end {
+		l = nil
+		m, r = head, head.Next
+		max := m.Val
+		for r != end {
+			if max < r.Val {
+				max = r.Val
+			} else if max > r.Val {
+				m.Next, r.Next = r.Next, m
+				if l == nil {
+					head = r
+				} else {
+					l.Next = r
+				}
+				r, m = m, r
+			}
+			if l == nil {
+				l = head
+			} else {
+				l = l.Next
+			}
+			m, r = m.Next, r.Next
+		}
+		end = m
+	}
 	return head
 }
 
 //https://leetcode-cn.com/problems/reverse-bits/
 func reverseBits(num uint32) uint32 {
-	return 0
+	var sum uint32
+	for i := 0; i < 32 && num > 0; i++ {
+		sum += (num & 1) << (31 - i)
+		num >>= 1
+	}
+	return sum
+}
+
+const (
+	m1 = 0x55555555 // 01010101010101010101010101010101
+	m2 = 0x33333333 // 00110011001100110011001100110011
+	m4 = 0x0f0f0f0f // 00001111000011110000111100001111
+	m8 = 0x00ff00ff // 00000000111111110000000011111111
+)
+
+func reverseBits2(n uint32) uint32 {
+	n = n>>1&m1 | n&m1<<1
+	n = n>>2&m2 | n&m2<<2
+	n = n>>4&m4 | n&m4<<4
+	n = n>>8&m8 | n&m8<<8
+	return n>>16 | n<<16
 }
