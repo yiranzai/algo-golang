@@ -1287,3 +1287,76 @@ func hasCycle(head *leetcode.ListNode) bool {
 	}
 	return false
 }
+
+/**
+ * https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func detectCycle(head *leetcode.ListNode) *leetcode.ListNode {
+	if head == nil || head.Next == nil {
+		return nil
+	}
+	if head.Next.Next == head {
+		return head
+	}
+	fast := head.Next
+	slow := head
+	first := true
+	for slow != nil && fast != nil && fast.Next != nil {
+		if slow == fast {
+			if first {
+				first = false
+				slow = head
+				fast = fast.Next
+				if fast == slow {
+					return slow
+				}
+			} else {
+				return slow
+			}
+		}
+		if first {
+			slow, fast = slow.Next, fast.Next.Next
+		} else {
+			slow, fast = slow.Next, fast.Next
+		}
+	}
+	return nil
+}
+
+func detectCycle2(head *leetcode.ListNode) *leetcode.ListNode {
+	// 思路：快慢指针，快慢相遇之后，慢指针回到头，快慢指针步调一致一起移动，相遇点即为入环点
+	if head == nil {
+		return head
+	}
+	fast := head.Next
+	slow := head
+	first := true
+	for fast != nil && fast.Next != nil {
+		if fast == slow {
+			// 慢指针重新从头开始移动，快指针从第一次相交点下一个节点开始移动
+			if first {
+				slow = head
+				fast = fast.Next // 注意
+				if fast == slow {
+					return slow
+				}
+				first = false
+			} else {
+				return slow
+			}
+		}
+		if first {
+			fast = fast.Next.Next
+			slow = slow.Next
+		} else {
+			fast = fast.Next
+			slow = slow.Next
+		}
+	}
+	return nil
+}

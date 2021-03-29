@@ -32502,3 +32502,91 @@ func Test_hasCycle(t *testing.T) {
 	head.Next.Next = head
 	assert.Equal(t, hasCycle(head), true)
 }
+
+func Test_detectCycle(t *testing.T) {
+	var head *leetcode.ListNode
+	var tail *leetcode.ListNode
+	var node *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{3, 2, 0, -4})
+	assert.Equal(t, detectCycle(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head
+
+	assert.Equal(t, detectCycle(head).Val, 3)
+
+	head = leetcode.GenerateList([]int{3, 2, 0, -4})
+	assert.Equal(t, detectCycle(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head.Next
+
+	assert.Equal(t, detectCycle(head).Val, 2)
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	assert.Equal(t, detectCycle(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head.Next
+
+	assert.Equal(t, detectCycle(head).Val, 2)
+
+	head = leetcode.GenerateList([]int{1, 2})
+	assert.Equal(t, detectCycle(head), tail)
+	head.Next.Next = head
+	assert.Equal(t, detectCycle(head).Val, 1)
+}
+
+func Test_detectCycle2(t *testing.T) {
+	var head *leetcode.ListNode
+	var tail *leetcode.ListNode
+	var node *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{3, 2, 0, -4})
+	assert.Equal(t, detectCycle2(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head
+
+	assert.Equal(t, detectCycle2(head).Val, 3)
+
+	head = leetcode.GenerateList([]int{3, 2, 0, -4})
+	assert.Equal(t, detectCycle2(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head.Next
+
+	assert.Equal(t, detectCycle2(head).Val, 2)
+
+	head = leetcode.GenerateList([]int{1, 2, 3, 4, 5})
+	assert.Equal(t, detectCycle2(head), tail)
+
+	node = head
+	for node.Next != nil {
+		node = node.Next
+	}
+	node.Next = head.Next
+
+	assert.Equal(t, detectCycle2(head).Val, 2)
+
+	head = leetcode.GenerateList([]int{1, 2})
+	assert.Equal(t, detectCycle2(head), tail)
+	head.Next.Next = head
+	assert.Equal(t, detectCycle2(head).Val, 1)
+}
