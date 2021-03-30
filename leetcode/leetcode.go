@@ -1360,3 +1360,40 @@ func detectCycle2(head *leetcode.ListNode) *leetcode.ListNode {
 	}
 	return nil
 }
+
+// https://leetcode-cn.com/problems/search-a-2d-matrix/
+func searchMatrix(matrix [][]int, target int) bool {
+	length := len(matrix)
+	left := 0
+	right := length
+	for left < right {
+		// 避免数据超范围
+		mid := left + ((right - left) >> 1)
+		if matrix[mid][0] < target {
+			left = mid + 1
+		} else if matrix[mid][0] > target {
+			right = mid
+		} else {
+			return true
+		}
+	}
+	index := left - 1
+	if index < 0 {
+		return false
+	}
+	length = len(matrix[index])
+	left = 0
+	right = length
+	for left < right {
+		// 避免数据超范围
+		mid := left + ((right - left) >> 1)
+		if matrix[index][mid] < target {
+			left = mid + 1
+		} else if matrix[index][mid] > target {
+			right = mid
+		} else {
+			return true
+		}
+	}
+	return false
+}

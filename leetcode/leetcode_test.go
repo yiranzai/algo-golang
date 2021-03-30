@@ -32590,3 +32590,12 @@ func Test_detectCycle2(t *testing.T) {
 	head.Next.Next = head
 	assert.Equal(t, detectCycle2(head).Val, 1)
 }
+
+func Test_searchMatrix(t *testing.T) {
+	assert.Equal(t, searchMatrix([][]int{{1}}, 1), true)
+	assert.Equal(t, searchMatrix([][]int{{1}}, 0), false)
+	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 3), true)
+	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 60), true)
+	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 16), true)
+	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 10), true)
+}

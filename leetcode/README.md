@@ -2783,3 +2783,82 @@ func detectCycle(head *ListNode) *ListNode {
 	return nil
 }
 ```
+
+### [74\. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)
+
+Difficulty: **中等**
+
+
+编写一个高效的算法来判断 `m x n` 矩阵中，是否存在一个目标值。该矩阵具有如下特性：
+
+*   每行中的整数从左到右按升序排列。
+*   每行的第一个整数大于前一行的最后一个整数。
+
+**示例 1：**
+
+![](https://assets.leetcode.com/uploads/2020/10/05/mat.jpg)
+
+```
+输入：matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+输出：true
+```
+
+**示例 2：**
+
+![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/mat2.jpg)
+
+```
+输入：matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
+输出：false
+```
+
+**提示：**
+
+*   `m == matrix.length`
+*   `n == matrix[i].length`
+*   `1 <= m, n <= 100`
+*   `-10<sup>4</sup> <= matrix[i][j], target <= 10<sup>4</sup>`
+
+
+#### Solution
+
+Language: ****
+
+```
+​func searchMatrix(matrix [][]int, target int) bool {
+	length := len(matrix)
+	left := 0
+	right := length
+	for left < right {
+		// 避免数据超范围
+		mid := left + ((right - left) >> 1)
+		if matrix[mid][0] < target {
+			left = mid + 1
+		} else if matrix[mid][0] > target {
+			right = mid
+		} else {
+			return true
+		}
+	}
+	index := left - 1
+	if index < 0 {
+		return false
+	}
+	length = len(matrix[index])
+	left = 0
+	right = length
+	for left < right {
+		// 避免数据超范围
+		mid := left + ((right - left) >> 1)
+		if matrix[index][mid] < target {
+			left = mid + 1
+		} else if matrix[index][mid] > target {
+			right = mid
+		} else {
+			return true
+		}
+	}
+	return false
+}
+
+```
