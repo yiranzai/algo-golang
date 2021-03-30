@@ -1500,3 +1500,32 @@ func copyRandomList(head *RandomNode) *RandomNode {
 	head.Next = nil
 	return b
 }
+
+// https://leetcode-cn.com/problems/single-number/
+func singleNumber1(nums []int) int {
+	for i := 1; i < len(nums); i++ {
+		nums[0] ^= nums[i]
+	}
+	return nums[0]
+}
+
+// https://leetcode-cn.com/problems/single-number-ii/
+func singleNumber(nums []int) int {
+	a, b := 0, 0
+	for _, num := range nums {
+		b = (^a) & (b ^ num)
+		a = (^b) & (a ^ num)
+	}
+	return b
+}
+
+// https://leetcode-cn.com/problems/single-number-iii/
+func singleNumber3(nums []int) []int {
+	a, b := 0, 0
+	for _, num := range nums {
+		b += num
+		a ^= num
+	}
+	c := b / 2
+	return []int{c, a}
+}

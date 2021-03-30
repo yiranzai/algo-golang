@@ -32679,3 +32679,21 @@ func Test_copyRandomList(t *testing.T) {
 		c, head = c.Next, head.Next
 	}
 }
+
+func Test_singleNumber(t *testing.T) {
+	assert.Equal(t, singleNumber1([]int{1, 2, 2, 3, 3}), 1)
+	assert.Equal(t, singleNumber1([]int{1, 1, 2, 2, 5, 3, 3}), 5)
+	assert.Equal(t, singleNumber1([]int{1}), 1)
+}
+
+func Test_singleNumber2(t *testing.T) {
+	assert.Equal(t, singleNumber([]int{2, 1, 2, 2, 3, 3, 3}), 1)
+	assert.Equal(t, singleNumber([]int{2, 1, 1, 3, 2, 1, 2, 5, 3, 3}), 5)
+	assert.Equal(t, singleNumber([]int{1}), 1)
+}
+
+func Test_singleNumbe3r(t *testing.T) {
+	assert.DeepEqual(t, singleNumber3([]int{3, 2, 2, 4, 4, 5}), []int{3, 5})
+	assert.DeepEqual(t, singleNumber3([]int{1, 1, 2, 2, 5, 3, 6, 3}), []int{5, 6})
+	assert.DeepEqual(t, singleNumber3([]int{1, 6}), []int{1, 6})
+}
