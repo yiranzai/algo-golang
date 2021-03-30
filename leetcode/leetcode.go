@@ -1261,6 +1261,21 @@ func reorderList(head *leetcode.ListNode) {
 	list[i-1].Next = nil
 }
 
+func reverseList2(head *leetcode.ListNode) *leetcode.ListNode {
+	// 1->2->3
+	if head == nil {
+		return head
+	}
+	var prev *leetcode.ListNode
+	for head != nil {
+		t := head.Next
+		head.Next = prev
+		prev = head
+		head = t
+	}
+	return prev
+}
+
 /**
  * https://leetcode-cn.com/problems/linked-list-cycle/
  * Definition for singly-linked list.
@@ -1369,12 +1384,12 @@ func searchMatrix(matrix [][]int, target int) bool {
 	for left < right {
 		// 避免数据超范围
 		mid := left + ((right - left) >> 1)
-		if matrix[mid][0] < target {
-			left = mid + 1
+		if matrix[mid][0] == target {
+			return true
 		} else if matrix[mid][0] > target {
 			right = mid
 		} else {
-			return true
+			left = mid + 1
 		}
 	}
 	index := left - 1
@@ -1387,13 +1402,101 @@ func searchMatrix(matrix [][]int, target int) bool {
 	for left < right {
 		// 避免数据超范围
 		mid := left + ((right - left) >> 1)
-		if matrix[index][mid] < target {
-			left = mid + 1
+		if matrix[index][mid] == target {
+			return true
 		} else if matrix[index][mid] > target {
 			right = mid
 		} else {
-			return true
+			left = mid + 1
 		}
 	}
 	return false
+}
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func isPalindrome(head *leetcode.ListNode) bool {
+	if head == nil || head.Next == nil {
+		return true
+	}
+	slow := head
+	fast := head.Next
+	for fast != nil && fast.Next != nil {
+		slow, fast = slow.Next, fast.Next.Next
+	}
+	tail := reverseList2(slow.Next)
+	slow.Next = nil
+	for head != nil && tail != nil {
+		if head.Val != tail.Val {
+			return false
+		}
+		head, tail = head.Next, tail.Next
+	}
+
+	return true
+}
+
+func isPalindrome2(head *leetcode.ListNode) bool {
+	var recursivelyCheck func(*leetcode.ListNode) bool
+	recursivelyCheck = func(curNode *leetcode.ListNode) bool {
+		if curNode != nil {
+			if !recursivelyCheck(curNode.Next) {
+				return false
+			}
+			if curNode.Val != head.Val {
+				return false
+			}
+			head = head.Next
+		}
+		return true
+	}
+	return recursivelyCheck(head)
+}
+
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Next *Node
+ *     Random *Node
+ * }
+ */
+
+type RandomNode struct {
+	Val    int
+	Next   *RandomNode
+	Random *RandomNode
+}
+
+func copyRandomList(head *RandomNode) *RandomNode {
+	if head == nil {
+		return head
+	}
+	node := head
+	for node != nil {
+		node.Next, node = &RandomNode{Next: node.Next, Val: node.Val, Random: node.Random}, node.Next
+	}
+	node = head.Next
+	for node != nil {
+		if node.Random != nil {
+			node.Random = node.Random.Next
+		}
+		if node.Next == nil {
+			break
+		}
+		node = node.Next.Next
+	}
+	node = head.Next
+	b := head.Next
+	for head != nil && node.Next != nil {
+		head, head.Next = head.Next.Next, head.Next.Next
+		node, node.Next = node.Next.Next, node.Next.Next
+	}
+	head.Next = nil
+	return b
 }

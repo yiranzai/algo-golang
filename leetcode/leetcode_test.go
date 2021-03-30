@@ -32599,3 +32599,83 @@ func Test_searchMatrix(t *testing.T) {
 	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 16), true)
 	assert.Equal(t, searchMatrix([][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 10), true)
 }
+
+func Test_isPalindrome(t *testing.T) {
+	var head *leetcode.ListNode
+
+	head = leetcode.GenerateList([]int{1, 2, 2, 1})
+	assert.Equal(t, isPalindrome(head), true)
+
+	head = leetcode.GenerateList([]int{1, 2, 5, 2, 1})
+	assert.Equal(t, isPalindrome(head), true)
+
+	head = leetcode.GenerateList([]int{1, 2, 1, 2})
+	assert.Equal(t, isPalindrome(head), false)
+
+	head = leetcode.GenerateList([]int{1, 2, 5, 1, 2})
+	assert.Equal(t, isPalindrome(head), false)
+
+	head = leetcode.GenerateList([]int{1, 2})
+	assert.Equal(t, isPalindrome(head), false)
+
+	head = leetcode.GenerateList([]int{1, 1})
+	assert.Equal(t, isPalindrome(head), true)
+
+	head = leetcode.GenerateList([]int{1})
+	assert.Equal(t, isPalindrome(head), true)
+
+	head = leetcode.GenerateList([]int{})
+	assert.Equal(t, isPalindrome(head), true)
+
+	head = leetcode.GenerateList([]int{1, 2, 2, 1})
+	assert.Equal(t, isPalindrome2(head), true)
+
+	head = leetcode.GenerateList([]int{1, 2, 5, 2, 1})
+	assert.Equal(t, isPalindrome2(head), true)
+
+	head = leetcode.GenerateList([]int{1, 2, 1, 2})
+	assert.Equal(t, isPalindrome2(head), false)
+
+	head = leetcode.GenerateList([]int{1, 2, 5, 1, 2})
+	assert.Equal(t, isPalindrome2(head), false)
+
+	head = leetcode.GenerateList([]int{1, 2})
+	assert.Equal(t, isPalindrome2(head), false)
+
+	head = leetcode.GenerateList([]int{1, 1})
+	assert.Equal(t, isPalindrome2(head), true)
+
+	head = leetcode.GenerateList([]int{1})
+	assert.Equal(t, isPalindrome2(head), true)
+
+	head = leetcode.GenerateList([]int{})
+	assert.Equal(t, isPalindrome2(head), true)
+}
+
+func Test_copyRandomList(t *testing.T) {
+	var head *RandomNode
+	head = &RandomNode{Val: 7}
+	node := head
+	node.Next = &RandomNode{Val: 13, Random: head}
+	node = node.Next
+	node.Next = &RandomNode{Val: 11}
+	a := node
+	node = node.Next
+	node.Next = &RandomNode{Val: 10}
+	node = node.Next
+	node.Next = &RandomNode{Val: 1, Random: head}
+	b := node
+	node = head
+	node = node.Next.Next
+	node.Random = b
+	node = node.Next
+	node.Random = a
+
+	c := copyRandomList(head)
+
+	for c != nil {
+		assert.Equal(t, head == c, false)
+		assert.Equal(t, head.Val, c.Val)
+		c, head = c.Next, head.Next
+	}
+}
