@@ -87,8 +87,14 @@
             * [Solution](#solution-38)
          * [<a href="https://leetcode-cn.com/problems/single-number-iii/" rel="nofollow">260. 只出现一次的数字 III</a>](#260-只出现一次的数字-iii)
             * [Solution](#solution-39)
+         * [<a href="https://leetcode-cn.com/problems/subsets-ii/" rel="nofollow">90. 子集 II</a>](#90-子集-ii)
+            * [Solution](#solution-40)
+         * [<a href="https://leetcode-cn.com/problems/number-of-1-bits/" rel="nofollow">191. 位1的个数</a>](#191-位1的个数)
+            * [Solution](#solution-41)
+         * [<a href="https://leetcode-cn.com/problems/counting-bits/" rel="nofollow">338. 比特位计数</a>](#338-比特位计数)
+            * [Solution](#solution-42)
 
-<!-- Added by: runner, at: Tue Mar 30 15:35:42 UTC 2021 -->
+<!-- Added by: runner, at: Wed Mar 31 15:24:40 UTC 2021 -->
 
 <!--te-->
 
