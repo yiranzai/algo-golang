@@ -3143,5 +3143,194 @@ Difficulty: **中等**
 Language: ****
 
 ```
-​
+​func singleNumber(nums []int) []int {
+	diff := 0
+	for i := 0; i < len(nums); i++ {
+		diff ^= nums[i]
+	}
+	result := []int{diff, diff}
+	// 去掉末尾的1后异或diff就得到最后一个1的位置
+	diff = (diff & (diff - 1)) ^ diff
+	for i := 0; i < len(nums); i++ {
+		if diff&nums[i] == 0 {
+			result[0] ^= nums[i]
+		} else {
+			result[1] ^= nums[i]
+		}
+	}
+	return result
+}
+
+```
+
+### [90\. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)
+
+Difficulty: **   示例 1： 输入：nums = [1,2,2] 输出：[[],[1],[1,2],[1,2,2],[2],[2,2]] 示例 2： 输入：nums = [0] 输出：[[],[0]]   提示： 1 <= nums.length <= 10 -10 <= nums[i] <= 10 **
+
+
+给你一个整数数组 `nums` ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。
+
+解集 **不能** 包含重复的子集。返回的解集中，子集可以按 **任意顺序** 排列。
+
+
+**示例 1：**
+
+```
+输入：nums = [1,2,2]
+输出：[[],[1],[1,2],[1,2,2],[2],[2,2]]
+```
+
+**示例 2：**
+
+```
+输入：nums = [0]
+输出：[[],[0]]
+```
+
+**提示：**
+
+*   `1 <= nums.length <= 10`
+*   `-10 <= nums[i] <= 10`
+
+
+#### Solution
+
+Language: ****
+
+```
+​var res [][]int
+func subsetsWithDup(nums []int) [][]int {
+	res = make([][]int, 0)
+	sort.Ints(nums)
+	dfs([]int{}, nums, 0)
+	return res
+}
+
+func dfs(temp, nums []int, start int){
+	tmp := make([]int, len(temp))
+	copy(tmp, temp)
+	res = append(res, tmp)
+	for i := start; i < len(nums); i++{
+		if i > start && nums[i] == nums[i-1]{ // skip
+			continue
+		}
+		temp = append(temp, nums[i])
+		dfs(temp, nums, i+1)
+		temp = temp[:len(temp)-1]
+	}
+}
+```
+
+### [191\. 位1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)
+
+Difficulty: **简单**
+
+
+编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为）。
+
+**提示：**
+
+*   请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
+*   在 Java 中，编译器使用记法来表示有符号整数。因此，在上面的 **示例 3** 中，输入表示有符号整数 `-3`。
+
+**示例 1：**
+
+```
+输入：00000000000000000000000000001011
+输出：3
+解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'。
+```
+
+**示例 2：**
+
+```
+输入：00000000000000000000000010000000
+输出：1
+解释：输入的二进制串 00000000000000000000000010000000 中，共有一位为 '1'。
+```
+
+**示例 3：**
+
+```
+输入：11111111111111111111111111111101
+输出：31
+解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 '1'。
+```
+
+**提示：**
+
+*   输入必须是长度为 `32` 的 **二进制串** 。
+
+**进阶**：
+
+*   如果多次调用这个函数，你将如何优化你的算法？
+
+
+#### Solution
+
+Language: ****
+
+```
+​func hammingWeight(num uint32) int {
+	sum := 0
+	for i := 0; i < 32; i++ {
+		if num&1 == 1 {
+			sum++
+		}
+		num = num >> 1
+	}
+	return sum
+}
+```
+
+### [338\. 比特位计数](https://leetcode-cn.com/problems/counting-bits/)
+
+Difficulty: **中等**
+
+
+给定一个非负整数 **num**。对于 **0 ≤ i ≤ num** 范围中的每个数字 **i **，计算其二进制数中的 1 的数目并将它们作为数组返回。
+
+**示例 1:**
+
+```
+输入: 2
+输出: [0,1,1]
+```
+
+**示例 2:**
+
+```
+输入: 5
+输出: [0,1,1,2,1,2]
+```
+
+**进阶:**
+
+*   给出时间复杂度为**O(n*sizeof(integer))**的解答非常容易。但你可以在线性时间**O(n)**内用一趟扫描做到吗？
+*   要求算法的空间复杂度为**O(n)**。
+*   你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如 C++ 中的 **__builtin_popcount**）来执行此操作。
+
+
+#### Solution
+
+Language: ****
+
+```
+​func countBits(num int) []int {
+	res := make([]int, 0)
+	thisOne := 1
+	nextOne := 2
+	for i := 0; i <= num; i++ {
+		if i == 0 {
+			res = append(res, 0)
+		} else if i == nextOne {
+			res = append(res, 1)
+			nextOne = nextOne << 1
+			thisOne = thisOne << 1
+		} else {
+			res = append(res, res[i-thisOne]+1)
+		}
+	}
+	return res
+}
 ```

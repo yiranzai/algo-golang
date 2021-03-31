@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"sort"
 	"strings"
 
 	"github.com/yiranzai/go-utils/leetcode"
@@ -1521,11 +1522,74 @@ func singleNumber(nums []int) int {
 
 // https://leetcode-cn.com/problems/single-number-iii/
 func singleNumber3(nums []int) []int {
-	a, b := 0, 0
-	for _, num := range nums {
-		b += num
-		a ^= num
+	diff := 0
+	for i := 0; i < len(nums); i++ {
+		diff ^= nums[i]
 	}
-	c := b / 2
-	return []int{c, a}
+	result := []int{diff, diff}
+	// 去掉末尾的1后异或diff就得到最后一个1的位置
+	diff = (diff & (diff - 1)) ^ diff
+	for i := 0; i < len(nums); i++ {
+		if diff&nums[i] == 0 {
+			result[0] ^= nums[i]
+		} else {
+			result[1] ^= nums[i]
+		}
+	}
+	return result
+}
+
+// https://leetcode-cn.com/problems/subsets-ii/submissions/
+var res [][]int
+
+func subsetsWithDup(nums []int) [][]int {
+	res = make([][]int, 0)
+	sort.Ints(nums)
+	dfs([]int{}, nums, 0)
+	return res
+}
+
+func dfs(temp, nums []int, start int) {
+	tmp := make([]int, len(temp))
+	copy(tmp, temp)
+	res = append(res, tmp)
+	for i := start; i < len(nums); i++ {
+		if i > start && nums[i] == nums[i-1] { // skip
+			continue
+		}
+		temp = append(temp, nums[i])
+		dfs(temp, nums, i+1)
+		temp = temp[:len(temp)-1]
+	}
+}
+
+//https://leetcode-cn.com/problems/number-of-1-bits/
+func hammingWeight(num uint32) int {
+	sum := 0
+	for i := 0; i < 32; i++ {
+		if num&1 == 1 {
+			sum++
+		}
+		num = num >> 1
+	}
+	return sum
+}
+
+// https://leetcode-cn.com/problems/counting-bits/
+func countBits(num int) []int {
+	res := make([]int, 0)
+	thisOne := 1
+	nextOne := 2
+	for i := 0; i <= num; i++ {
+		if i == 0 {
+			res = append(res, 0)
+		} else if i == nextOne {
+			res = append(res, 1)
+			nextOne = nextOne << 1
+			thisOne = thisOne << 1
+		} else {
+			res = append(res, res[i-thisOne]+1)
+		}
+	}
+	return res
 }

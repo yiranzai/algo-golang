@@ -3157,8 +3157,19 @@ func Test_singleNumber2(t *testing.T) {
 	assert.Equal(t, singleNumber([]int{1}), 1)
 }
 
-func Test_singleNumbe3r(t *testing.T) {
+func Test_singleNumber3(t *testing.T) {
 	assert.DeepEqual(t, singleNumber3([]int{3, 2, 2, 4, 4, 5}), []int{3, 5})
 	assert.DeepEqual(t, singleNumber3([]int{1, 1, 2, 2, 5, 3, 6, 3}), []int{5, 6})
 	assert.DeepEqual(t, singleNumber3([]int{1, 6}), []int{1, 6})
+}
+
+func Test_hammingWeight(t *testing.T) {
+	assert.Equal(t, hammingWeight(1), 1)
+	assert.Equal(t, hammingWeight(2), 1)
+	assert.Equal(t, hammingWeight(3), 2)
+}
+
+func Test_countBits(t *testing.T) {
+	assert.DeepEqual(t, countBits(2), []int{0, 1, 1})
+	assert.DeepEqual(t, countBits(5), []int{0, 1, 1, 2, 1, 2})
 }
