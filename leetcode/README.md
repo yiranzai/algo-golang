@@ -5,93 +5,94 @@
 ---
 
 <!--ts-->
-   * [Leetcode](#leetcode)
-      * [目录](#目录)
-         * [<a href="https://leetcode-cn.com/problems/minimum-path-sum/" rel="nofollow">64. 最小路径和</a>](#64-最小路径和)
+
+* [Leetcode](#leetcode)
+    * [目录](#目录)
+        * [<a href="https://leetcode-cn.com/problems/minimum-path-sum/" rel="nofollow">64. 最小路径和</a>](#64-最小路径和)
             * [Solution](#solution)
-         * [<a href="https://leetcode-cn.com/problems/unique-paths/" rel="nofollow">62. 不同路径</a>](#62-不同路径)
+        * [<a href="https://leetcode-cn.com/problems/unique-paths/" rel="nofollow">62. 不同路径</a>](#62-不同路径)
             * [Solution](#solution-1)
-         * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
+        * [<a href="https://leetcode-cn.com/problems/unique-paths-ii/" rel="nofollow">63. 不同路径 II</a>](#63-不同路径-ii)
             * [Solution](#solution-2)
-         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" rel="nofollow">82. 删除排序链表中的重复元素 II</a>](#82-删除排序链表中的重复元素-ii)
+        * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" rel="nofollow">82. 删除排序链表中的重复元素 II</a>](#82-删除排序链表中的重复元素-ii)
             * [Solution](#solution-3)
-         * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" rel="nofollow">83. 删除排序链表中的重复元素</a>](#83-删除排序链表中的重复元素)
+        * [<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" rel="nofollow">83. 删除排序链表中的重复元素</a>](#83-删除排序链表中的重复元素)
             * [Solution](#solution-4)
-         * [<a href="https://leetcode-cn.com/problems/climbing-stairs/" rel="nofollow">70. 爬楼梯</a>](#70-爬楼梯)
+        * [<a href="https://leetcode-cn.com/problems/climbing-stairs/" rel="nofollow">70. 爬楼梯</a>](#70-爬楼梯)
             * [Solution](#solution-5)
-         * [<a href="https://leetcode-cn.com/problems/jump-game/" rel="nofollow">55. 跳跃游戏</a>](#55-跳跃游戏)
+        * [<a href="https://leetcode-cn.com/problems/jump-game/" rel="nofollow">55. 跳跃游戏</a>](#55-跳跃游戏)
             * [Solution](#solution-6)
-         * [<a href="https://leetcode-cn.com/problems/jump-game-ii/" rel="nofollow">45. 跳跃游戏 II</a>](#45-跳跃游戏-ii)
+        * [<a href="https://leetcode-cn.com/problems/jump-game-ii/" rel="nofollow">45. 跳跃游戏 II</a>](#45-跳跃游戏-ii)
             * [Solution](#solution-7)
-         * [<a href="https://leetcode-cn.com/problems/word-break/" rel="nofollow">139. 单词拆分</a>](#139-单词拆分)
+        * [<a href="https://leetcode-cn.com/problems/word-break/" rel="nofollow">139. 单词拆分</a>](#139-单词拆分)
             * [Solution](#solution-8)
-         * [<a href="https://leetcode-cn.com/problems/longest-common-subsequence/" rel="nofollow">1143. 最长公共子序列</a>](#1143-最长公共子序列)
+        * [<a href="https://leetcode-cn.com/problems/longest-common-subsequence/" rel="nofollow">1143. 最长公共子序列</a>](#1143-最长公共子序列)
             * [Solution](#solution-9)
-         * [<a href="https://leetcode-cn.com/problems/edit-distance/" rel="nofollow">72. 编辑距离</a>](#72-编辑距离)
+        * [<a href="https://leetcode-cn.com/problems/edit-distance/" rel="nofollow">72. 编辑距离</a>](#72-编辑距离)
             * [Solution](#solution-10)
-         * [<a href="https://leetcode-cn.com/problems/coin-change/" rel="nofollow">322. 零钱兑换</a>](#322-零钱兑换)
+        * [<a href="https://leetcode-cn.com/problems/coin-change/" rel="nofollow">322. 零钱兑换</a>](#322-零钱兑换)
             * [Solution](#solution-11)
-         * [<a href="https://leetcode-cn.com/problems/triangle/" rel="nofollow">120. 三角形最小路径和</a>](#120-三角形最小路径和)
+        * [<a href="https://leetcode-cn.com/problems/triangle/" rel="nofollow">120. 三角形最小路径和</a>](#120-三角形最小路径和)
             * [Solution](#solution-12)
-         * [<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" rel="nofollow">104. 二叉树的最大深度</a>](#104-二叉树的最大深度)
+        * [<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" rel="nofollow">104. 二叉树的最大深度</a>](#104-二叉树的最大深度)
             * [Solution](#solution-13)
-         * [<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" rel="nofollow">300. 最长递增子序列</a>](#300-最长递增子序列)
+        * [<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" rel="nofollow">300. 最长递增子序列</a>](#300-最长递增子序列)
             * [Solution](#solution-14)
-         * [<a href="https://leetcode-cn.com/problems/balanced-binary-tree/" rel="nofollow">110. 平衡二叉树</a>](#110-平衡二叉树)
+        * [<a href="https://leetcode-cn.com/problems/balanced-binary-tree/" rel="nofollow">110. 平衡二叉树</a>](#110-平衡二叉树)
             * [Solution](#solution-15)
-         * [<a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" rel="nofollow">124. 二叉树中的最大路径和</a>](#124-二叉树中的最大路径和)
+        * [<a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" rel="nofollow">124. 二叉树中的最大路径和</a>](#124-二叉树中的最大路径和)
             * [Solution](#solution-16)
-         * [<a href="https://leetcode-cn.com/problems/rotate-list/" rel="nofollow">61. 旋转链表</a>](#61-旋转链表)
+        * [<a href="https://leetcode-cn.com/problems/rotate-list/" rel="nofollow">61. 旋转链表</a>](#61-旋转链表)
             * [Solution](#solution-17)
-         * [<a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" rel="nofollow">236. 二叉树的最近公共祖先</a>](#236-二叉树的最近公共祖先)
+        * [<a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" rel="nofollow">236. 二叉树的最近公共祖先</a>](#236-二叉树的最近公共祖先)
             * [Solution](#solution-18)
-         * [<a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" rel="nofollow">102. 二叉树的层序遍历</a>](#102-二叉树的层序遍历)
+        * [<a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" rel="nofollow">102. 二叉树的层序遍历</a>](#102-二叉树的层序遍历)
             * [Solution](#solution-19)
-         * [<a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/" rel="nofollow">107. 二叉树的层序遍历 II</a>](#107-二叉树的层序遍历-ii)
+        * [<a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/" rel="nofollow">107. 二叉树的层序遍历 II</a>](#107-二叉树的层序遍历-ii)
             * [Solution](#solution-20)
-         * [<a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/" rel="nofollow">103. 二叉树的锯齿形层序遍历</a>](#103-二叉树的锯齿形层序遍历)
+        * [<a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/" rel="nofollow">103. 二叉树的锯齿形层序遍历</a>](#103-二叉树的锯齿形层序遍历)
             * [Solution](#solution-21)
-         * [<a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" rel="nofollow">98. 验证二叉搜索树</a>](#98-验证二叉搜索树)
+        * [<a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" rel="nofollow">98. 验证二叉搜索树</a>](#98-验证二叉搜索树)
             * [Solution](#solution-22)
-         * [<a href="https://leetcode-cn.com/problems/binary-search-tree-iterator/" rel="nofollow">173. 二叉搜索树迭代器</a>](#173-二叉搜索树迭代器)
+        * [<a href="https://leetcode-cn.com/problems/binary-search-tree-iterator/" rel="nofollow">173. 二叉搜索树迭代器</a>](#173-二叉搜索树迭代器)
             * [Solution](#solution-23)
-         * [<a href="https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/" rel="nofollow">701. 二叉搜索树中的插入操作</a>](#701-二叉搜索树中的插入操作)
+        * [<a href="https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/" rel="nofollow">701. 二叉搜索树中的插入操作</a>](#701-二叉搜索树中的插入操作)
             * [Solution](#solution-24)
-         * [<a href="https://leetcode-cn.com/problems/reverse-linked-list/" rel="nofollow">206. 反转链表</a>](#206-反转链表)
+        * [<a href="https://leetcode-cn.com/problems/reverse-linked-list/" rel="nofollow">206. 反转链表</a>](#206-反转链表)
             * [Solution](#solution-25)
-         * [<a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" rel="nofollow">92. 反转链表 II</a>](#92-反转链表-ii)
+        * [<a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" rel="nofollow">92. 反转链表 II</a>](#92-反转链表-ii)
             * [Solution](#solution-26)
-         * [<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" rel="nofollow">21. 合并两个有序链表</a>](#21-合并两个有序链表)
+        * [<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" rel="nofollow">21. 合并两个有序链表</a>](#21-合并两个有序链表)
             * [Solution](#solution-27)
-         * [<a href="https://leetcode-cn.com/problems/partition-list/" rel="nofollow">86. 分隔链表</a>](#86-分隔链表)
+        * [<a href="https://leetcode-cn.com/problems/partition-list/" rel="nofollow">86. 分隔链表</a>](#86-分隔链表)
             * [Solution](#solution-28)
-         * [<a href="https://leetcode-cn.com/problems/sort-list/" rel="nofollow">148. 排序链表</a>](#148-排序链表)
+        * [<a href="https://leetcode-cn.com/problems/sort-list/" rel="nofollow">148. 排序链表</a>](#148-排序链表)
             * [Solution](#solution-29)
-         * [<a href="https://leetcode-cn.com/problems/reverse-bits/" rel="nofollow">190. 颠倒二进制位</a>](#190-颠倒二进制位)
+        * [<a href="https://leetcode-cn.com/problems/reverse-bits/" rel="nofollow">190. 颠倒二进制位</a>](#190-颠倒二进制位)
             * [Solution](#solution-30)
-         * [<a href="https://leetcode-cn.com/problems/reorder-list/" rel="nofollow">143. 重排链表</a>](#143-重排链表)
+        * [<a href="https://leetcode-cn.com/problems/reorder-list/" rel="nofollow">143. 重排链表</a>](#143-重排链表)
             * [Solution](#solution-31)
-         * [<a href="https://leetcode-cn.com/problems/linked-list-cycle/" rel="nofollow">141. 环形链表</a>](#141-环形链表)
+        * [<a href="https://leetcode-cn.com/problems/linked-list-cycle/" rel="nofollow">141. 环形链表</a>](#141-环形链表)
             * [Solution](#solution-32)
-         * [<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" rel="nofollow">142. 环形链表 II</a>](#142-环形链表-ii)
+        * [<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" rel="nofollow">142. 环形链表 II</a>](#142-环形链表-ii)
             * [Solution](#solution-33)
-         * [<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" rel="nofollow">74. 搜索二维矩阵</a>](#74-搜索二维矩阵)
+        * [<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" rel="nofollow">74. 搜索二维矩阵</a>](#74-搜索二维矩阵)
             * [Solution](#solution-34)
-         * [<a href="https://leetcode-cn.com/problems/palindrome-linked-list/" rel="nofollow">234. 回文链表</a>](#234-回文链表)
+        * [<a href="https://leetcode-cn.com/problems/palindrome-linked-list/" rel="nofollow">234. 回文链表</a>](#234-回文链表)
             * [Solution](#solution-35)
-         * [<a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/" rel="nofollow">138. 复制带随机指针的链表</a>](#138-复制带随机指针的链表)
+        * [<a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/" rel="nofollow">138. 复制带随机指针的链表</a>](#138-复制带随机指针的链表)
             * [Solution](#solution-36)
-         * [<a href="https://leetcode-cn.com/problems/single-number/" rel="nofollow">136. 只出现一次的数字</a>](#136-只出现一次的数字)
+        * [<a href="https://leetcode-cn.com/problems/single-number/" rel="nofollow">136. 只出现一次的数字</a>](#136-只出现一次的数字)
             * [Solution](#solution-37)
-         * [<a href="https://leetcode-cn.com/problems/single-number-ii/" rel="nofollow">137. 只出现一次的数字 II</a>](#137-只出现一次的数字-ii)
+        * [<a href="https://leetcode-cn.com/problems/single-number-ii/" rel="nofollow">137. 只出现一次的数字 II</a>](#137-只出现一次的数字-ii)
             * [Solution](#solution-38)
-         * [<a href="https://leetcode-cn.com/problems/single-number-iii/" rel="nofollow">260. 只出现一次的数字 III</a>](#260-只出现一次的数字-iii)
+        * [<a href="https://leetcode-cn.com/problems/single-number-iii/" rel="nofollow">260. 只出现一次的数字 III</a>](#260-只出现一次的数字-iii)
             * [Solution](#solution-39)
-         * [<a href="https://leetcode-cn.com/problems/subsets-ii/" rel="nofollow">90. 子集 II</a>](#90-子集-ii)
+        * [<a href="https://leetcode-cn.com/problems/subsets-ii/" rel="nofollow">90. 子集 II</a>](#90-子集-ii)
             * [Solution](#solution-40)
-         * [<a href="https://leetcode-cn.com/problems/number-of-1-bits/" rel="nofollow">191. 位1的个数</a>](#191-位1的个数)
+        * [<a href="https://leetcode-cn.com/problems/number-of-1-bits/" rel="nofollow">191. 位1的个数</a>](#191-位1的个数)
             * [Solution](#solution-41)
-         * [<a href="https://leetcode-cn.com/problems/counting-bits/" rel="nofollow">338. 比特位计数</a>](#338-比特位计数)
+        * [<a href="https://leetcode-cn.com/problems/counting-bits/" rel="nofollow">338. 比特位计数</a>](#338-比特位计数)
             * [Solution](#solution-42)
 
 <!-- Added by: runner, at: Wed Mar 31 15:24:40 UTC 2021 -->
@@ -523,8 +524,10 @@ Difficulty: **简单**
 
 Language: ****
 
-```
-​func climbStairs(n int) int {
+```go
+package main
+
+func climbStairs(n int) int {
 	if n == 0 || n == 1 {
 		return n
 	}
@@ -576,8 +579,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func canJump(nums []int) bool {
+```go
+package main
+
+func canJump(nums []int) bool {
 	length := len(nums) - 1
 	if length == 0 {
 		return true
@@ -630,8 +635,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func jump(nums []int) int {
+```go
+package main
+
+func jump(nums []int) int {
 	length := len(nums) - 1
 	if length == 0 {
 		return 0
@@ -639,8 +646,8 @@ Language: ****
 	dps := make([]int, length+1)
 
 	for i := 0; i <= length; i++ {
-		for j := 1; j <= nums[i] ; j++ {
-			if dps[i] == 0 || dps[i+j] == 0 || dps[i+j] > dps[i]{
+		for j := 1; j <= nums[i]; j++ {
+			if dps[i] == 0 || dps[i+j] == 0 || dps[i+j] > dps[i] {
 				dps[i+j] = dps[i] + 1
 			}
 
@@ -693,10 +700,12 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​var (
-	dict map[string]bool
-	dp   map[int]int
+```go
+package main
+
+var (
+	dict      map[string]bool
+	dp        map[int]int
 	maxLength int
 )
 
@@ -796,8 +805,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func longestCommonSubsequence(text1 string, text2 string) int {
+```go
+package main
+
+func longestCommonSubsequence(text1 string, text2 string) int {
 	var t1Len, t2Len int
 	t1Len = len(text1)
 	t2Len = len(text2)
@@ -805,7 +816,7 @@ Language: ****
 	for i := 0; i <= 1; i++ {
 		dp[i] = make([]int, t2Len+1)
 	}
-	k,l := 0,1
+	k, l := 0, 1
 	for i := 1; i <= t1Len; i++ {
 		for j := 1; j <= t2Len; j++ {
 			if text1[i-1] == text2[j-1] {
@@ -814,7 +825,7 @@ Language: ****
 				dp[k][j] = MaxInt(dp[l][j], dp[k][j-1])
 			}
 		}
-		l,k = k,l
+		l, k = k, l
 	}
 
 	return dp[l][t2Len]
@@ -878,12 +889,14 @@ exection -> execution (插入 'u')
 
 Language: ****
 
-```
-​func minDistance(word1 string, word2 string) int {
+```go
+package main
+
+func minDistance(word1 string, word2 string) int {
 	var t1Len, t2Len int
 	t1Len = len(word1)
 	t2Len = len(word2)
-    if t1Len == 0 {
+	if t1Len == 0 {
 		return t2Len
 	}
 	if t2Len == 0 {
@@ -896,7 +909,7 @@ Language: ****
 			dp[i][j] = j
 		}
 	}
-	k,l := 0,1
+	k, l := 0, 1
 	for i := 1; i <= t1Len; i++ {
 		dp[k][0] = i
 		for j := 1; j <= t2Len; j++ {
@@ -906,7 +919,7 @@ Language: ****
 				dp[k][j] = MinInt(dp[l][j], dp[k][j-1], dp[l][j-1]) + 1
 			}
 		}
-		l,k = k,l
+		l, k = k, l
 	}
 
 	return dp[l][t2Len]
@@ -980,8 +993,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func coinChange(coins []int, amount int) int {
+```go
+package main
+
+func coinChange(coins []int, amount int) int {
 	dps := make(map[int]int, amount)
 	return deepCoinChange(coins, amount, dps)
 }
@@ -1004,9 +1019,9 @@ func deepCoinChange(coins []int, amount int, dps map[int]int) int {
 			if min == nil {
 				min = &a
 				*min += 1
-			}else {
+			} else {
 				if *min > a+1 {
-					*min = a+1
+					*min = a + 1
 				}
 			}
 		}
@@ -1076,30 +1091,32 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func minimumTotal(triangle [][]int) int {
-    n := len(triangle)
-    f := make([]int, n)
-    f[0] = triangle[0][0]
-    for i := 1; i < n; i++ {
-        f[i] = f[i - 1] + triangle[i][i]
-        for j := i - 1; j > 0; j-- {
-            f[j] = min(f[j - 1], f[j]) + triangle[i][j]
-        }
-        f[0] += triangle[i][0]
-    }
-    ans := math.MaxInt32
-    for i := 0; i < n; i++ {
-        ans = min(ans, f[i])
-    }
-    return ans
+```go
+package main
+
+func minimumTotal(triangle [][]int) int {
+	n := len(triangle)
+	f := make([]int, n)
+	f[0] = triangle[0][0]
+	for i := 1; i < n; i++ {
+		f[i] = f[i-1] + triangle[i][i]
+		for j := i - 1; j > 0; j-- {
+			f[j] = min(f[j-1], f[j]) + triangle[i][j]
+		}
+		f[0] += triangle[i][0]
+	}
+	ans := math.MaxInt32
+	for i := 0; i < n; i++ {
+		ans = min(ans, f[i])
+	}
+	return ans
 }
 
 func min(x, y int) int {
-    if x < y {
-        return x
-    }
-    return y
+	if x < y {
+		return x
+	}
+	return y
 }
 
 ```
@@ -1131,8 +1148,10 @@ Difficulty: **简单**
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1205,8 +1224,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​func lengthOfLIS(nums []int) int {
+```go
+package main
+
+func lengthOfLIS(nums []int) int {
 	dp := []int{^(1 << 32)}
 	j := 0
 	for _, num := range nums {
@@ -1274,8 +1295,10 @@ Difficulty: **简单**
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1355,8 +1378,10 @@ Difficulty: **困难**
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1384,7 +1409,7 @@ func deepMaxPathSum(root *leetcode.TreeNode, sum *int) int {
 
 	// 找出左右及单独的自己中最大的
 	a := MaxInt(left+rootVal, rootVal, right+rootVal)
-    // 比较最大值
+	// 比较最大值
 	*sum = MaxInt(*sum, a, left+rootVal+right)
 	return a
 }
@@ -1436,8 +1461,10 @@ Difficulty: **中等**
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -1475,7 +1502,6 @@ func rotateRight(head *leetcode.ListNode, k int) *leetcode.ListNode {
 
 Difficulty: **中等**
 
-
 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
 
 中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（**一个节点也可以是它自己的祖先**）。”
@@ -1509,19 +1535,20 @@ Difficulty: **中等**
 
 **提示：**
 
-*   树中节点数目在范围 `[2, 10<sup>5</sup>]` 内。
-*   `-10<sup>9</sup> <= Node.val <= 10<sup>9</sup>`
-*   所有 `Node.val` `互不相同` 。
-*   `p != q`
-*   `p` 和 `q` 均存在于给定的二叉树中。
-
+* 树中节点数目在范围 `[2, 10<sup>5</sup>]` 内。
+* `-10<sup>9</sup> <= Node.val <= 10<sup>9</sup>`
+* 所有 `Node.val` `互不相同` 。
+* `p != q`
+* `p` 和 `q` 均存在于给定的二叉树中。
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1530,7 +1557,7 @@ Language: ****
  * }
  */
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-    node, _, _ := deepLowestCommonAncestor(root, p, q)
+	node, _, _ := deepLowestCommonAncestor(root, p, q)
 	return node
 }
 
@@ -1566,11 +1593,9 @@ func deepLowestCommonAncestor(root, p, q *TreeNode) (*TreeNode, bool, bool) {
 }
 ```
 
-
 ### [102\. 二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
 
 Difficulty: **中等**
-
 
 给你一个二叉树，请你返回其按 **层序遍历** 得到的节点值。 （即逐层地，从左到右访问所有节点）。
 
@@ -1595,13 +1620,14 @@ Difficulty: **中等**
 ]
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1641,7 +1667,6 @@ func levelOrder(root *TreeNode) [][]int {
 
 Difficulty: **中等**
 
-
 给定一个二叉树，返回其节点值自底向上的层序遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
 
 例如：  
@@ -1665,13 +1690,14 @@ Difficulty: **中等**
 ]
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1707,16 +1733,14 @@ func levelOrderBottom(root *TreeNode) [][]int {
 }
 ```
 
-
 ### [103\. 二叉树的锯齿形层序遍历](https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/)
 
 Difficulty: **中等**
 
-
 给定一个二叉树，返回其节点值的锯齿形层序遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
 
 例如：  
-给定二叉树 `[3,9,20,null,null,15,7]`,
+给定二叉树 `[3,9,20,null,null,15,7]`,
 
 ```
     3
@@ -1736,13 +1760,14 @@ Difficulty: **中等**
 ]
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1790,16 +1815,15 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 
 Difficulty: **中等**
 
-
 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
 
 假设一个二叉搜索树具有如下特征：
 
-*   节点的左子树只包含**小于**当前节点的数。
-*   节点的右子树只包含**大于**当前节点的数。
-*   所有左子树和右子树自身必须也是二叉搜索树。
+* 节点的左子树只包含**小于**当前节点的数。
+* 节点的右子树只包含**大于**当前节点的数。
+* 所有左子树和右子树自身必须也是二叉搜索树。
 
-**示例 1:**
+**示例 1:**
 
 ```
 输入:
@@ -1809,7 +1833,7 @@ Difficulty: **中等**
 输出: true
 ```
 
-**示例 2:**
+**示例 2:**
 
 ```
 输入:
@@ -1823,13 +1847,14 @@ Difficulty: **中等**
      根节点的值为 5 ，但是其右子节点值为 4 。
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​func isValidBST(root *TreeNode) bool {
+```go
+package main
+
+func isValidBST(root *TreeNode) bool {
 	bb, _, _ := deepIsValidBST(root)
 	return bb == 1
 }
@@ -1885,7 +1910,6 @@ func MinInt(vars ...int) int {
 	return min
 }
 
-
 //MaxInt get the max int vars
 func MaxInt(vars ...int) int {
 	max := vars[0]
@@ -1902,19 +1926,20 @@ func MaxInt(vars ...int) int {
 
 ### [173\. 二叉搜索树迭代器](https://leetcode-cn.com/problems/binary-search-tree-iterator/)
 
-Difficulty: ** BSTIterator(TreeNode root) 初始化 BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 中的任何元素。 boolean hasNext() 如果向指针右侧遍历存在数字，则返回 true ；否则返回 false 。 int next()将指针向右移动，然后返回指针处的数字。 注意，指针初始化为一个不存在于 BST 中的数字，所以对 next() 的首次调用将返回 BST 中的最小元素。 **
+Difficulty: ** BSTIterator(TreeNode root) 初始化 BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST
+中的数字，且该数字小于 BST 中的任何元素。 boolean hasNext() 如果向指针右侧遍历存在数字，则返回 true ；否则返回 false 。 int next()将指针向右移动，然后返回指针处的数字。
+注意，指针初始化为一个不存在于 BST 中的数字，所以对 next() 的首次调用将返回 BST 中的最小元素。 **
 
 实现一个二叉搜索树迭代器类`BSTIterator` ，表示一个按中序遍历二叉搜索树（BST）的迭代器：
 
-
-*   `BSTIterator(TreeNode root)` 初始化 `BSTIterator` 类的一个对象。BST 的根节点 `root` 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 中的任何元素。
-*   `boolean hasNext()` 如果向指针右侧遍历存在数字，则返回 `true` ；否则返回 `false` 。
-*   `int next()`将指针向右移动，然后返回指针处的数字。
+* `BSTIterator(TreeNode root)` 初始化 `BSTIterator` 类的一个对象。BST 的根节点 `root` 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST
+  中的任何元素。
+* `boolean hasNext()` 如果向指针右侧遍历存在数字，则返回 `true` ；否则返回 `false` 。
+* `int next()`将指针向右移动，然后返回指针处的数字。
 
 注意，指针初始化为一个不存在于 BST 中的数字，所以对 `next()` 的首次调用将返回 BST 中的最小元素。
 
-
-你可以假设 `next()` 调用总是有效的，也就是说，当调用 `next()` 时，BST 的中序遍历中至少存在一个下一个数字。
+你可以假设 `next()` 调用总是有效的，也就是说，当调用 `next()` 时，BST 的中序遍历中至少存在一个下一个数字。
 
 **示例：**
 
@@ -1942,21 +1967,22 @@ bSTIterator.hasNext(); // 返回 False
 
 **提示：**
 
-*   树中节点的数目在范围 [1, 10<sup>5</sup>] 内
-*   0 <= Node.val <= 10<sup>6</sup>
-*   最多调用 10<sup>5</sup> 次 `hasNext` 和 `next` 操作
+* 树中节点的数目在范围 [1, 10<sup>5</sup>] 内
+* 0 <= Node.val <= 10<sup>6</sup>
+* 最多调用 10<sup>5</sup> 次 `hasNext` 和 `next` 操作
 
 **进阶：**
 
-*   你可以设计一个满足下述条件的解决方案吗？`next()` 和 `hasNext()` 操作均摊时间复杂度为 `O(1)` ，并使用 `O(h)` 内存。其中 `h` 是树的高度。
-
+* 你可以设计一个满足下述条件的解决方案吗？`next()` 和 `hasNext()` 操作均摊时间复杂度为 `O(1)` ，并使用 `O(h)` 内存。其中 `h` 是树的高度。
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -1995,7 +2021,6 @@ func (this *BSTIterator) HasNext() bool {
 	return len(this.list) > 0
 }
 
-
 /**
  * Your BSTIterator object will be instantiated and called as such:
  * obj := Constructor(root);
@@ -2007,7 +2032,6 @@ func (this *BSTIterator) HasNext() bool {
 ### [701\. 二叉搜索树中的插入操作](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
 
 Difficulty: **中等**
-
 
 给定二叉搜索树（BST）的根节点和要插入树中的值，将值插入二叉搜索树。 返回插入后二叉搜索树的根节点。 输入数据 **保证** ，新值和原始二叉搜索树中的任意节点值都不同。
 
@@ -2040,18 +2064,19 @@ Difficulty: **中等**
 
 **提示：**
 
-*   给定的树上的节点数介于 `0` 和 `10^4` 之间
-*   每个节点都有一个唯一整数值，取值范围从 `0` 到 `10^8`
-*   `-10^8 <= val <= 10^8`
-*   新值和原始二叉搜索树中的任意节点值都不同
-
+* 给定的树上的节点数介于 `0` 和 `10^4` 之间
+* 每个节点都有一个唯一整数值，取值范围从 `0` 到 `10^8`
+* `-10^8 <= val <= 10^8`
+* 新值和原始二叉搜索树中的任意节点值都不同
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -2077,7 +2102,6 @@ func insertIntoBST(root *TreeNode, val int) *TreeNode {
 
 Difficulty: **简单**
 
-
 反转一个单链表。
 
 **示例:**
@@ -2090,38 +2114,39 @@ Difficulty: **简单**
 **进阶:**  
 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
 
-
 #### Solution
 
 Language: ****
 
-```
-​func reverseList(head *.ListNode) *.ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
-	node := head.Next
-	head.Next = nil
-	for node != nil {
-		head, node.Next = node.Next, head
-		head, node = node, head
-	}
-	return head
+```go
+package main
+
+func reverseList(head *.ListNode) *.ListNode {
+if head == nil || head.Next == nil {
+return head
+}
+node := head.Next
+head.Next = nil
+for node != nil {
+head, node.Next = node.Next, head
+head, node = node, head
+}
+return head
 }
 
 func deepReverseList(head *.ListNode) *.ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
+if head == nil || head.Next == nil {
+return head
+}
 
-	res := deepReverseList(head.Next)
-	head.Next = nil
-	node := res
-	for node.Next != nil {
-		node = node.Next
-	}
-	node.Next = head
-	return res
+res := deepReverseList(head.Next)
+head.Next = nil
+node := res
+for node.Next != nil {
+node = node.Next
+}
+node.Next = head
+return res
 }
 ```
 
@@ -2129,7 +2154,7 @@ func deepReverseList(head *.ListNode) *.ListNode {
 
 Difficulty: **中等**
 
-给你单链表的头指针 `head` 和两个整数 `left` 和 `right` ，其中 `left <= right` 。请你反转从位置 `left` 到位置 `right` 的链表节点，返回 **反转后的链表** 。
+给你单链表的头指针 `head` 和两个整数 `left` 和 `right` ，其中 `left <= right` 。请你反转从位置 `left` 到位置 `right` 的链表节点，返回 **反转后的链表** 。
 
 **示例 1：**
 
@@ -2149,20 +2174,21 @@ Difficulty: **中等**
 
 **提示：**
 
-*   链表中节点数目为 `n`
-*   `1 <= n <= 500`
-*   `-500 <= Node.val <= 500`
-*   `1 <= left <= right <= n`
+* 链表中节点数目为 `n`
+* `1 <= n <= 500`
+* `-500 <= Node.val <= 500`
+* `1 <= left <= right <= n`
 
 **进阶：** 你可以使用一趟扫描完成反转吗？
-
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -2170,7 +2196,7 @@ Language: ****
  * }
  */
 func reverseBetween(head *ListNode, left int, right int) *ListNode {
-    if head == nil || head.Next == nil || right < 2 || left == right{
+	if head == nil || head.Next == nil || right < 2 || left == right {
 		return head
 	}
 	var end *ListNode
@@ -2178,12 +2204,12 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 	var tNode *ListNode
 	var tHead *ListNode
 	current := head
-	for i := 1; i <= right- 1; i++ {
+	for i := 1; i <= right-1; i++ {
 		// 记录left前的节点
 		if i == left-1 {
 			end = current
 		}
-		if i < left -1 {
+		if i < left-1 {
 			current = current.Next
 		}
 		// 在left时做初始化操作
@@ -2216,7 +2242,6 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 
 Difficulty: **简单**
 
-
 将两个升序链表合并为一个新的 **升序** 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 
 **示例 1：**
@@ -2244,17 +2269,18 @@ Difficulty: **简单**
 
 **提示：**
 
-*   两个链表的节点数目范围是 `[0, 50]`
-*   `-100 <= Node.val <= 100`
-*   `l1` 和 `l2` 均按 **非递减顺序** 排列
-
+* 两个链表的节点数目范围是 `[0, 50]`
+* `-100 <= Node.val <= 100`
+* `l1` 和 `l2` 均按 **非递减顺序** 排列
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -2262,7 +2288,7 @@ Language: ****
  * }
  */
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-    if l1 == nil {
+	if l1 == nil {
 		return l2
 	}
 	if l2 == nil {
@@ -2306,7 +2332,6 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 
 Difficulty: **中等**
 
-
 给你一个链表的头节点 `head` 和一个特定值`x` ，请你对链表进行分隔，使得所有 **小于** `x` 的节点都出现在 **大于或等于** `x` 的节点之前。
 
 你应当 **保留** 两个分区中每个节点的初始相对位置。
@@ -2329,17 +2354,18 @@ Difficulty: **中等**
 
 **提示：**
 
-*   链表中节点的数目在范围 `[0, 200]` 内
-*   `-100 <= Node.val <= 100`
-*   `-200 <= x <= 200`
-
+* 链表中节点的数目在范围 `[0, 200]` 内
+* `-100 <= Node.val <= 100`
+* `-200 <= x <= 200`
 
 #### Solution
 
 Language: ****
 
-```
-​func partition(head *leetcode.ListNode, x int) *leetcode.ListNode {
+```go
+package main
+
+func partition(head *leetcode.ListNode, x int) *leetcode.ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
@@ -2381,12 +2407,11 @@ Language: ****
 
 Difficulty: **中等**
 
-
-给你链表的头结点 `head` ，请将其按 **升序** 排列并返回 **排序后的链表** 。
+给你链表的头结点 `head` ，请将其按 **升序** 排列并返回 **排序后的链表** 。
 
 **进阶：**
 
-*   你可以在 `O(n log n)` 时间复杂度和常数级空间复杂度下，对链表进行排序吗？
+* 你可以在 `O(n log n)` 时间复杂度和常数级空间复杂度下，对链表进行排序吗？
 
 **示例 1：**
 
@@ -2415,16 +2440,17 @@ Difficulty: **中等**
 
 **提示：**
 
-*   链表中节点的数目在范围 `[0, 5 * 10<sup>4</sup>]` 内
-*   `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
-
+* 链表中节点的数目在范围 `[0, 5 * 10<sup>4</sup>]` 内
+* `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -2432,67 +2458,67 @@ Language: ****
  * }
  */
 func merge(head1, head2 *ListNode) *ListNode {
-    dummyHead := &ListNode{}
-    temp, temp1, temp2 := dummyHead, head1, head2
-    for temp1 != nil && temp2 != nil {
-        if temp1.Val <= temp2.Val {
-            temp.Next = temp1
-            temp1 = temp1.Next
-        } else {
-            temp.Next = temp2
-            temp2 = temp2.Next
-        }
-        temp = temp.Next
-    }
-    if temp1 != nil {
-        temp.Next = temp1
-    } else if temp2 != nil {
-        temp.Next = temp2
-    }
-    return dummyHead.Next
+	dummyHead := &ListNode{}
+	temp, temp1, temp2 := dummyHead, head1, head2
+	for temp1 != nil && temp2 != nil {
+		if temp1.Val <= temp2.Val {
+			temp.Next = temp1
+			temp1 = temp1.Next
+		} else {
+			temp.Next = temp2
+			temp2 = temp2.Next
+		}
+		temp = temp.Next
+	}
+	if temp1 != nil {
+		temp.Next = temp1
+	} else if temp2 != nil {
+		temp.Next = temp2
+	}
+	return dummyHead.Next
 }
 
 func sortList(head *ListNode) *ListNode {
-    if head == nil {
-        return head
-    }
+	if head == nil {
+		return head
+	}
 
-    length := 0
-    for node := head; node != nil; node = node.Next {
-        length++
-    }
+	length := 0
+	for node := head; node != nil; node = node.Next {
+		length++
+	}
 
-    dummyHead := &ListNode{Next: head}
-    for subLength := 1; subLength < length; subLength <<= 1 {
-        prev, cur := dummyHead, dummyHead.Next
-        for cur != nil {
-            head1 := cur
-            for i := 1; i < subLength && cur.Next != nil; i++ {
-                cur = cur.Next
-            }
+	dummyHead := &ListNode{Next: head}
+	for subLength := 1; subLength < length; subLength <<= 1 {
+		prev, cur := dummyHead, dummyHead.Next
+		for cur != nil {
+			head1 := cur
+			for i := 1; i < subLength && cur.Next != nil; i++ {
+				cur = cur.Next
+			}
 
-            head2 := cur.Next
-            cur.Next = nil
-            cur = head2
-            for i := 1; i < subLength && cur != nil && cur.Next != nil; i++ {
-                cur = cur.Next
-            }
+			head2 := cur.Next
+			cur.Next = nil
+			cur = head2
+			for i := 1; i < subLength && cur != nil && cur.Next != nil; i++ {
+				cur = cur.Next
+			}
 
-            var next *ListNode
-            if cur != nil {
-                next = cur.Next
-                cur.Next = nil
-            }
+			var next *ListNode
+			if cur != nil {
+				next = cur.Next
+				cur.Next = nil
+			}
 
-            prev.Next = merge(head1, head2)
+			prev.Next = merge(head1, head2)
 
-            for prev.Next != nil {
-                prev = prev.Next
-            }
-            cur = next
-        }
-    }
-    return dummyHead.Next
+			for prev.Next != nil {
+				prev = prev.Next
+			}
+			cur = next
+		}
+	}
+	return dummyHead.Next
 }
 ```
 
@@ -2500,13 +2526,12 @@ func sortList(head *ListNode) *ListNode {
 
 Difficulty: **简单**
 
-
 颠倒给定的 32 位无符号整数的二进制位。
 
 **提示：**
 
-*   请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
-*   在 Java 中，编译器使用记法来表示有符号整数。因此，在上面的 **示例 2** 中，输入表示有符号整数 `-3`，输出表示有符号整数 `-1073741825`。
+* 请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
+* 在 Java 中，编译器使用记法来表示有符号整数。因此，在上面的 **示例 2** 中，输入表示有符号整数 `-3`，输出表示有符号整数 `-1073741825`。
 
 **进阶**:  
 如果多次调用这个函数，你将如何优化你的算法？
@@ -2549,15 +2574,16 @@ Difficulty: **简单**
 
 **提示：**
 
-*   输入是一个长度为 `32` 的二进制字符串
-
+* 输入是一个长度为 `32` 的二进制字符串
 
 #### Solution
 
 Language: ****
 
-```
-​func reverseBits(num uint32) uint32 {
+```go
+package main
+
+func reverseBits(num uint32) uint32 {
 	var sum uint32
 	for i := 0; i < 32 && num > 0; i++ {
 		sum += (num & 1) << (31 - i)
@@ -2571,13 +2597,15 @@ Language: ****
 
 Difficulty: **中等**
 
-
-给定一个单链表 _L_：_L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">1</sub>→…→_L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">n ，</sub>  
-将其重新排列后变为： _L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">_n_</sub>→_L_<sub style="display: inline;">1</sub>→_L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">2</sub>→_L_<sub style="display: inline;">_n_-2</sub>→…
+给定一个单链表 _L_：_L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">1</sub>→…→_
+L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">n ，</sub>  
+将其重新排列后变为： _L_<sub style="display: inline;">0</sub>→_L_<sub style="display: inline;">_n_</sub>→_
+L_<sub style="display: inline;">1</sub>→_L_<sub style="display: inline;">_n_-1</sub>→_L_<sub style="display: inline;">
+2</sub>→_L_<sub style="display: inline;">_n_-2</sub>→…
 
 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
-**示例 1:**
+**示例 1:**
 
 ```
 给定链表 1->2->3->4, 重新排列为 1->4->2->3.
@@ -2589,21 +2617,22 @@ Difficulty: **中等**
 给定链表 1->2->3->4->5, 重新排列为 1->5->2->4->3.
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
  *     Next *ListNode
  * }
  */
-func reorderList(head *ListNode)  {
-    if head == nil || head.Next == nil || head.Next.Next == nil {
+func reorderList(head *ListNode) {
+	if head == nil || head.Next == nil || head.Next.Next == nil {
 		return
 	}
 	list := make([]*ListNode, 0)
@@ -2625,10 +2654,10 @@ func reorderList(head *ListNode)  {
 
 Difficulty: **简单**
 
-
 给定一个链表，判断链表中是否有环。
 
-如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 `pos` 是 `-1`，则在该链表中没有环。**注意：`pos` 不作为参数进行传递**，仅仅是为了标识链表的实际情况。
+如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 `pos` 是 `-1`
+，则在该链表中没有环。**注意：`pos` 不作为参数进行传递**，仅仅是为了标识链表的实际情况。
 
 如果链表中存在环，则返回 `true` 。 否则，返回 `false` 。
 
@@ -2646,7 +2675,7 @@ Difficulty: **简单**
 解释：链表中有一个环，其尾部连接到第二个节点。
 ```
 
-**示例 2：**
+**示例 2：**
 
 ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png)
 
@@ -2668,17 +2697,18 @@ Difficulty: **简单**
 
 **提示：**
 
-*   链表中节点的数目范围是 `[0, 10<sup>4</sup>]`
-*   `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
-*   `pos` 为 `-1` 或者链表中的一个 **有效索引** 。
-
+* 链表中节点的数目范围是 `[0, 10<sup>4</sup>]`
+* `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
+* `pos` 为 `-1` 或者链表中的一个 **有效索引** 。
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -2686,7 +2716,7 @@ Language: ****
  * }
  */
 func hasCycle(head *ListNode) bool {
-    if head == nil || head.Next == nil {
+	if head == nil || head.Next == nil {
 		return false
 	}
 	if head.Next.Next == head {
@@ -2709,8 +2739,7 @@ func hasCycle(head *ListNode) bool {
 
 Difficulty: **中等**
 
-
-给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 `null`。
+给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 `null`。
 
 为了表示给定链表中的环，我们使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 `pos` 是 `-1`，则在该链表中没有环。**注意，`pos` 仅仅是用于标识环的情况，并不会作为参数传递到函数中。**
 
@@ -2718,7 +2747,7 @@ Difficulty: **中等**
 
 **进阶：**
 
-*   你是否可以使用 `O(1)` 空间解决此题？
+* 你是否可以使用 `O(1)` 空间解决此题？
 
 **示例 1：**
 
@@ -2730,7 +2759,7 @@ Difficulty: **中等**
 解释：链表中有一个环，其尾部连接到第二个节点。
 ```
 
-**示例 2：**
+**示例 2：**
 
 ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png)
 
@@ -2752,17 +2781,18 @@ Difficulty: **中等**
 
 **提示：**
 
-*   链表中节点的数目范围在范围 `[0, 10<sup>4</sup>]` 内
-*   `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
-*   `pos` 的值为 `-1` 或者链表中的一个有效索引
-
+* 链表中节点的数目范围在范围 `[0, 10<sup>4</sup>]` 内
+* `-10<sup>5</sup> <= Node.val <= 10<sup>5</sup>`
+* `pos` 的值为 `-1` 或者链表中的一个有效索引
 
 #### Solution
 
 Language: ****
 
-```
-​/**
+```go
+package main
+
+/**
  * Definition for singly-linked list.
  * type ListNode struct {
  *     Val int
@@ -2806,11 +2836,10 @@ func detectCycle(head *ListNode) *ListNode {
 
 Difficulty: **中等**
 
+编写一个高效的算法来判断 `m x n` 矩阵中，是否存在一个目标值。该矩阵具有如下特性：
 
-编写一个高效的算法来判断 `m x n` 矩阵中，是否存在一个目标值。该矩阵具有如下特性：
-
-*   每行中的整数从左到右按升序排列。
-*   每行的第一个整数大于前一行的最后一个整数。
+* 每行中的整数从左到右按升序排列。
+* 每行的第一个整数大于前一行的最后一个整数。
 
 **示例 1：**
 
@@ -2832,18 +2861,19 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `m == matrix.length`
-*   `n == matrix[i].length`
-*   `1 <= m, n <= 100`
-*   `-10<sup>4</sup> <= matrix[i][j], target <= 10<sup>4</sup>`
-
+* `m == matrix.length`
+* `n == matrix[i].length`
+* `1 <= m, n <= 100`
+* `-10<sup>4</sup> <= matrix[i][j], target <= 10<sup>4</sup>`
 
 #### Solution
 
 Language: ****
 
-```
-​func searchMatrix(matrix [][]int, target int) bool {
+```go
+package main
+
+func searchMatrix(matrix [][]int, target int) bool {
 	length := len(matrix)
 	left := 0
 	right := length
@@ -2881,11 +2911,9 @@ Language: ****
 
 ```
 
-
 ### [234\. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
 
 Difficulty: **简单**
-
 
 请判断一个链表是否为回文链表。
 
@@ -2904,15 +2932,16 @@ Difficulty: **简单**
 ```
 
 **进阶：**  
-你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
-
+你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
 
 #### Solution
 
 Language: ****
 
-```
-​func isPalindrome(head *ListNode) bool {
+```go
+package main
+
+func isPalindrome(head *ListNode) bool {
 	var recursivelyCheck func(*ListNode) bool
 	recursivelyCheck = func(curNode *ListNode) bool {
 		if curNode != nil {
@@ -2934,19 +2963,19 @@ Language: ****
 
 Difficulty: **中等**
 
-
 给你一个长度为 `n` 的链表，每个节点包含一个额外增加的随机指针 `random` ，该指针可以指向链表中的任何节点或空节点。
 
-构造这个链表的 。 深拷贝应该正好由 `n` 个 **全新** 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 `next` 指针和 `random` 指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。**复制链表中的指针都不应指向原链表中的节点** 。
+构造这个链表的 。 深拷贝应该正好由 `n` 个 **全新** 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 `next` 指针和 `random`
+指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。**复制链表中的指针都不应指向原链表中的节点** 。
 
 例如，如果原链表中有 `X` 和 `Y` 两个节点，其中 `X.random --> Y` 。那么在复制链表中对应的两个节点 `x` 和 `y` ，同样有 `x.random --> y` 。
 
 返回复制链表的头节点。
 
-用一个由 `n` 个节点组成的链表来表示输入/输出中的链表。每个节点用一个 `[val, random_index]` 表示：
+用一个由 `n` 个节点组成的链表来表示输入/输出中的链表。每个节点用一个 `[val, random_index]` 表示：
 
-*   `val`：一个表示 `Node.val` 的整数。
-*   `random_index`：随机指针指向的节点索引（范围从 `0` 到 `n-1`）；如果不指向任何节点，则为  `null` 。
+* `val`：一个表示 `Node.val` 的整数。
+* `random_index`：随机指针指向的节点索引（范围从 `0` 到 `n-1`）；如果不指向任何节点，则为  `null` 。
 
 你的代码 **只** 接受原链表的头节点 `head` 作为传入参数。
 
@@ -2987,17 +3016,18 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `0 <= n <= 1000`
-*   `-10000 <= Node.val <= 10000`
-*   `Node.random` 为空（null）或指向链表中的节点。
-
+* `0 <= n <= 1000`
+* `-10000 <= Node.val <= 10000`
+* `Node.random` 为空（null）或指向链表中的节点。
 
 #### Solution
 
 Language: ****
 
-```
-​func copyRandomList(head *Node) *Node {
+```go
+package main
+
+func copyRandomList(head *Node) *Node {
 	if head == nil {
 		return head
 	}
@@ -3030,7 +3060,6 @@ Language: ****
 
 Difficulty: **简单**
 
-
 给定一个**非空**整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
 **说明：**
@@ -3044,20 +3073,21 @@ Difficulty: **简单**
 输出: 1
 ```
 
-**示例 2:**
+**示例 2:**
 
 ```
 输入: [4,1,2,1,2]
 输出: 4
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​func singleNumber(nums []int) int {
+```go
+package main
+
+func singleNumber(nums []int) int {
 	for i := 1; i < len(nums); i++ {
 		nums[0] ^= nums[i]
 	}
@@ -3068,7 +3098,6 @@ Language: ****
 ### [137\. 只出现一次的数字 II](https://leetcode-cn.com/problems/single-number-ii/)
 
 Difficulty: **中等**
-
 
 给定一个**非空**整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
 
@@ -3083,20 +3112,21 @@ Difficulty: **中等**
 输出: 3
 ```
 
-**示例 2:**
+**示例 2:**
 
 ```
 输入: [0,1,0,1,0,1,99]
 输出: 99
 ```
 
-
 #### Solution
 
 Language: ****
 
-```
-​func singleNumber(nums []int) int {
+```go
+package main
+
+func singleNumber(nums []int) int {
 	a, b := 0, 0
 	for _, num := range nums {
 		b = (^a) & (b ^ num)
@@ -3110,8 +3140,7 @@ Language: ****
 
 Difficulty: **中等**
 
-
-给定一个整数数组 `nums`，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 **任意顺序** 返回答案。
+给定一个整数数组 `nums`，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 **任意顺序** 返回答案。
 
 **进阶：**你的算法应该具有线性时间复杂度。你能否仅使用常数空间复杂度来实现？
 
@@ -3139,17 +3168,18 @@ Difficulty: **中等**
 
 **提示：**
 
-*   `2 <= nums.length <= 3 * 10<sup>4</sup>`
-*   `-2<sup>31</sup> <= nums[i] <= 2<sup>31</sup> - 1`
-*   除两个只出现一次的整数外，`nums` 中的其他数字都出现两次
-
+* `2 <= nums.length <= 3 * 10<sup>4</sup>`
+* `-2<sup>31</sup> <= nums[i] <= 2<sup>31</sup> - 1`
+* 除两个只出现一次的整数外，`nums` 中的其他数字都出现两次
 
 #### Solution
 
 Language: ****
 
-```
-​func singleNumber(nums []int) []int {
+```go
+package main
+
+func singleNumber(nums []int) []int {
 	diff := 0
 	for i := 0; i < len(nums); i++ {
 		diff ^= nums[i]
@@ -3171,13 +3201,12 @@ Language: ****
 
 ### [90\. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)
 
-Difficulty: **   示例 1： 输入：nums = [1,2,2] 输出：[[],[1],[1,2],[1,2,2],[2],[2,2]] 示例 2： 输入：nums = [0] 输出：[[],[0]]   提示： 1 <= nums.length <= 10 -10 <= nums[i] <= 10 **
-
+Difficulty: **   示例 1： 输入：nums = [1,2,2] 输出：[[],[1],[1,2],[1,2,2],[2],[2,2]] 示例 2： 输入：nums = [0] 输出：[[],[0]]   提示： 1 <=
+nums.length <= 10 -10 <= nums[i] <= 10 **
 
 给你一个整数数组 `nums` ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。
 
 解集 **不能** 包含重复的子集。返回的解集中，子集可以按 **任意顺序** 排列。
-
 
 **示例 1：**
 
@@ -3195,16 +3224,18 @@ Difficulty: **   示例 1： 输入：nums = [1,2,2] 输出：[[],[1],[1,2],[1,
 
 **提示：**
 
-*   `1 <= nums.length <= 10`
-*   `-10 <= nums[i] <= 10`
-
+* `1 <= nums.length <= 10`
+* `-10 <= nums[i] <= 10`
 
 #### Solution
 
 Language: ****
 
-```
-​var res [][]int
+```go
+package main
+
+var res [][]int
+
 func subsetsWithDup(nums []int) [][]int {
 	res = make([][]int, 0)
 	sort.Ints(nums)
@@ -3212,12 +3243,12 @@ func subsetsWithDup(nums []int) [][]int {
 	return res
 }
 
-func dfs(temp, nums []int, start int){
+func dfs(temp, nums []int, start int) {
 	tmp := make([]int, len(temp))
 	copy(tmp, temp)
 	res = append(res, tmp)
-	for i := start; i < len(nums); i++{
-		if i > start && nums[i] == nums[i-1]{ // skip
+	for i := start; i < len(nums); i++ {
+		if i > start && nums[i] == nums[i-1] { // skip
 			continue
 		}
 		temp = append(temp, nums[i])
@@ -3231,13 +3262,12 @@ func dfs(temp, nums []int, start int){
 
 Difficulty: **简单**
 
-
 编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为）。
 
 **提示：**
 
-*   请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
-*   在 Java 中，编译器使用记法来表示有符号整数。因此，在上面的 **示例 3** 中，输入表示有符号整数 `-3`。
+* 请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
+* 在 Java 中，编译器使用记法来表示有符号整数。因此，在上面的 **示例 3** 中，输入表示有符号整数 `-3`。
 
 **示例 1：**
 
@@ -3265,19 +3295,20 @@ Difficulty: **简单**
 
 **提示：**
 
-*   输入必须是长度为 `32` 的 **二进制串** 。
+* 输入必须是长度为 `32` 的 **二进制串** 。
 
 **进阶**：
 
-*   如果多次调用这个函数，你将如何优化你的算法？
-
+* 如果多次调用这个函数，你将如何优化你的算法？
 
 #### Solution
 
 Language: ****
 
-```
-​func hammingWeight(num uint32) int {
+```go
+package main
+
+func hammingWeight(num uint32) int {
 	sum := 0
 	for i := 0; i < 32; i++ {
 		if num&1 == 1 {
@@ -3293,8 +3324,7 @@ Language: ****
 
 Difficulty: **中等**
 
-
-给定一个非负整数 **num**。对于 **0 ≤ i ≤ num** 范围中的每个数字 **i **，计算其二进制数中的 1 的数目并将它们作为数组返回。
+给定一个非负整数 **num**。对于 **0 ≤ i ≤ num** 范围中的每个数字 **i **，计算其二进制数中的 1 的数目并将它们作为数组返回。
 
 **示例 1:**
 
@@ -3303,7 +3333,7 @@ Difficulty: **中等**
 输出: [0,1,1]
 ```
 
-**示例 2:**
+**示例 2:**
 
 ```
 输入: 5
@@ -3312,17 +3342,18 @@ Difficulty: **中等**
 
 **进阶:**
 
-*   给出时间复杂度为**O(n*sizeof(integer))**的解答非常容易。但你可以在线性时间**O(n)**内用一趟扫描做到吗？
-*   要求算法的空间复杂度为**O(n)**。
-*   你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如 C++ 中的 **__builtin_popcount**）来执行此操作。
-
+* 给出时间复杂度为**O(n*sizeof(integer))**的解答非常容易。但你可以在线性时间**O(n)**内用一趟扫描做到吗？
+* 要求算法的空间复杂度为**O(n)**。
+* 你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如 C++ 中的 **__builtin_popcount**）来执行此操作。
 
 #### Solution
 
 Language: ****
 
-```
-​func countBits(num int) []int {
+```go
+package main
+
+func countBits(num int) []int {
 	res := make([]int, 0)
 	thisOne := 1
 	nextOne := 2
@@ -3339,4 +3370,68 @@ Language: ****
 	}
 	return res
 }
+```
+
+### [201\. 数字范围按位与](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
+
+Difficulty: **中等**
+
+给你两个整数 `left` 和 `right` ，表示区间 `[left, right]` ，返回此区间内所有数字 **按位与** 的结果（包含 `left` 、`right` 端点）。
+
+**示例 1：**
+
+```
+输入：left = 5, right = 7
+输出：4
+```
+
+**示例 2：**
+
+```
+输入：left = 0, right = 0
+输出：0
+```
+
+**示例 3：**
+
+```
+输入：left = 1, right = 2147483647
+输出：0
+```
+
+**提示：**
+
+* `0 <= left <= right <= 2<sup>31</sup> - 1`
+
+#### Solution
+
+Language: ****
+
+```go
+package main
+
+func rangeBitwiseAnd(left int, right int) int {
+	if left == right {
+		return left & right
+	}
+
+	if right >= left<<2 {
+		return 0
+	}
+	end := 0
+
+	for i := 0; i < 32; i++ {
+		if left <= end && right > end {
+			return 0
+		}
+		if end >= right {
+			e := end >> 1
+			t := end ^ e
+			return t | (rangeBitwiseAnd(left&e, right&e))
+		}
+		end = (end << 1) + 1
+	}
+	return 0
+}
+
 ```

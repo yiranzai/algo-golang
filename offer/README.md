@@ -5,11 +5,12 @@
 ---
 
 <!--ts-->
-   * [剑指 Offer](#剑指-offer)
-      * [目录](#目录)
-         * [<a href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/" rel="nofollow">剑指 Offer 12. 矩阵中的路径</a>](#剑指-offer-12-矩阵中的路径)
+
+* [剑指 Offer](#剑指-offer)
+    * [目录](#目录)
+        * [<a href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/" rel="nofollow">剑指 Offer 12. 矩阵中的路径</a>](#剑指-offer-12-矩阵中的路径)
             * [Solution](#solution)
-         * [<a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/" rel="nofollow">剑指 Offer 13. 机器人的运动范围</a>](#剑指-offer-13-机器人的运动范围)
+        * [<a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/" rel="nofollow">剑指 Offer 13. 机器人的运动范围</a>](#剑指-offer-13-机器人的运动范围)
             * [Solution](#solution-1)
 
 <!-- Added by: runner, at: Wed Mar 31 15:24:40 UTC 2021 -->
@@ -22,7 +23,8 @@
 
 Difficulty: **中等**
 
-请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的 3×4 的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。
+请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的 3×4
+的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。
 
 [["a","**b**","c","e"],  
 ["s","**f**","**c**","s"],  
@@ -56,6 +58,8 @@ Difficulty: **中等**
 Language: **GO**
 
 ```go
+package main
+
 var (
 	lengthX int
 	lengthY int
@@ -157,7 +161,8 @@ func searchString(board [][]byte, word []byte, x, y int) bool {
 
 Difficulty: **中等**
 
-地上有一个 m 行 n 列的方格，从坐标 `[0,0]` 到坐标 `[m-1,n-1]` 。一个机器人从坐标 `[0, 0]` 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于 k 的格子。例如，当 k 为 18 时，机器人能够进入方格 [35, 37] ，因为 3+5+3+7=18。但它不能进入方格 [35, 38]，因为 3+5+3+8=19。请问该机器人能够到达多少个格子？
+地上有一个 m 行 n 列的方格，从坐标 `[0,0]` 到坐标 `[m-1,n-1]` 。一个机器人从坐标 `[0, 0]` 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于
+k 的格子。例如，当 k 为 18 时，机器人能够进入方格 [35, 37] ，因为 3+5+3+7=18。但它不能进入方格 [35, 38]，因为 3+5+3+8=19。请问该机器人能够到达多少个格子？
 
 **示例 1：**
 
@@ -183,38 +188,40 @@ Difficulty: **中等**
 Language: **GO**
 
 ```go
-​func movingCount(m int, n int, k int) int {
-var baseY, count int
-var res [][]bool
-res = make([][]bool, m)
-count = 0
-for y := 0; y < m; y++ {
-baseY = sumByte(y)
-if baseY > k {
-break
-}
-res[y] = make([]bool, n)
-for x := 0; x < n; x++ {
-// 当上边或者左边已经遍历过且是可达的,或者处于起点
-if (x > 0 && res[y][x-1] == true) || (y > 0 && res[y-1][x] == true) || (x == 0 && y == 0) {
-if sumByte(x) <= k-baseY {
-res[y][x] = true
-count++
-}
-}
-}
-}
-return count
+package main
+
+func movingCount(m int, n int, k int) int {
+	var baseY, count int
+	var res [][]bool
+	res = make([][]bool, m)
+	count = 0
+	for y := 0; y < m; y++ {
+		baseY = sumByte(y)
+		if baseY > k {
+			break
+		}
+		res[y] = make([]bool, n)
+		for x := 0; x < n; x++ {
+			// 当上边或者左边已经遍历过且是可达的,或者处于起点
+			if (x > 0 && res[y][x-1] == true) || (y > 0 && res[y-1][x] == true) || (x == 0 && y == 0) {
+				if sumByte(x) <= k-baseY {
+					res[y][x] = true
+					count++
+				}
+			}
+		}
+	}
+	return count
 }
 
 //sumByte 统计数位
 func sumByte(num int) int {
-if num == 100 {
-return 1
-}
-if num < 10 {
-return num
-}
-return num%10 + num/10
+	if num == 100 {
+		return 1
+	}
+	if num < 10 {
+		return num
+	}
+	return num%10 + num/10
 }
 ```

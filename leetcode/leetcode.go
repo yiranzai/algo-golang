@@ -1593,3 +1593,35 @@ func countBits(num int) []int {
 	}
 	return res
 }
+
+// https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/
+func rangeBitwiseAnd(left int, right int) int {
+	if left == right {
+		return left & right
+	}
+
+	if right >= left<<2 {
+		return 0
+	}
+	end := 0
+
+	for i := 0; i < 32; i++ {
+		if left <= end && right > end {
+			return 0
+		}
+		if end >= right {
+			e := end >> 1
+			t := end ^ e
+			return t | (rangeBitwiseAnd(left&e, right&e))
+		}
+		end = (end << 1) + 1
+	}
+	return 0
+}
+
+func rangeBitwiseAnd2(m int, n int) int {
+	for m < n {
+		n &= (n - 1)
+	}
+	return n
+}

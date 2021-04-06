@@ -3173,3 +3173,31 @@ func Test_countBits(t *testing.T) {
 	assert.DeepEqual(t, countBits(2), []int{0, 1, 1})
 	assert.DeepEqual(t, countBits(5), []int{0, 1, 1, 2, 1, 2})
 }
+
+func Test_rangeBitwiseAnd(t *testing.T) {
+	assert.Equal(t, rangeBitwiseAnd((1<<32)-2, (1<<32)-1), (1<<32)-2)
+
+	assert.Equal(t, rangeBitwiseAnd(5, 7), 4)
+	assert.Equal(t, rangeBitwiseAnd(5, 10), 0)
+	assert.Equal(t, rangeBitwiseAnd((1<<30)-1, (1<<31)-1), 0)
+
+	assert.Equal(t, rangeBitwiseAnd((1<<31)-2, (1<<31)-1), (1<<31)-2)
+}
+
+func Benchmark_rangeBitwiseAnd2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		rangeBitwiseAnd2(5, 7)
+		rangeBitwiseAnd2(5, 10)
+		rangeBitwiseAnd2((1<<30)-1, (1<<31)-1)
+		rangeBitwiseAnd2((1<<31)-2, (1<<31)-1)
+	}
+}
+
+func Benchmark_rangeBitwiseAnd(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		rangeBitwiseAnd(5, 7)
+		rangeBitwiseAnd(5, 10)
+		rangeBitwiseAnd((1<<30)-1, (1<<31)-1)
+		rangeBitwiseAnd((1<<31)-2, (1<<31)-1)
+	}
+}
