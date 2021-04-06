@@ -7,11 +7,25 @@
 ---
 
 <!--ts-->
+   * [排序](#排序)
+      * [目录](#目录)
+      * [<a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" rel="nofollow">排序算法</a>](#排序算法)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" rel="nofollow">冒泡排序</a>](#冒泡排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F" rel="nofollow">快速排序</a>](#快速排序)
+            * [递归原地快排](#递归原地快排)
+            * [循环原地快排](#循环原地快排)
+            * [递归三切快排](#递归三切快排)
+            * [循环三切快排](#循环三切快排)
+         * [<a href="https://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F" rel="nofollow">选择排序</a>](#选择排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F" rel="nofollow">插入排序</a>](#插入排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%A0%86%E6%8E%92%E5%BA%8F" rel="nofollow">堆排序</a>](#堆排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F" rel="nofollow">归并排序</a>](#归并排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F" rel="nofollow">希尔排序</a>](#希尔排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F" rel="nofollow">计数排序</a>](#计数排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F" rel="nofollow">桶排序</a>](#桶排序)
+         * [<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F" rel="nofollow">基数排序</a>](#基数排序)
 
-* [排序](#排序)
-    * [目录](#目录)
-
-<!-- Added by: runner, at: Wed Mar 31 15:24:40 UTC 2021 -->
+<!-- Added by: runner, at: Tue Apr  6 15:22:27 UTC 2021 -->
 
 <!--te-->
 
