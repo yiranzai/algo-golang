@@ -95,8 +95,12 @@
             * [Solution](#solution-42)
          * [<a href="https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/" rel="nofollow">201. 数字范围按位与</a>](#201-数字范围按位与)
             * [Solution](#solution-43)
+         * [<a href="https://leetcode-cn.com/problems/lru-cache/" rel="nofollow">146. LRU 缓存机制</a>](#146-lru-缓存机制)
+            * [Solution](#solution-44)
+         * [<a href="https://leetcode-cn.com/problems/lfu-cache/" rel="nofollow">460. LFU 缓存</a>](#460-lfu-缓存)
+            * [Solution](#solution-45)
 
-<!-- Added by: runner, at: Tue Apr  6 15:22:27 UTC 2021 -->
+<!-- Added by: runner, at: Wed Apr  7 14:47:19 UTC 2021 -->
 
 <!--te-->
 
