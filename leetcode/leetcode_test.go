@@ -2697,7 +2697,7 @@ func Test_Constructor(t *testing.T) {
 	var head *leetcode.TreeNode
 
 	head = leetcode.GenerateTree([]interface{}{0, 7, 3, 15, 1, 4, 9, 20})
-	obj := Constructor(head)
+	obj := BSTConstructor(head)
 	assert.Equal(t, obj.Next(), 1)
 	assert.Equal(t, obj.Next(), 3)
 	assert.Equal(t, obj.Next(), 4)
@@ -3200,4 +3200,60 @@ func Benchmark_rangeBitwiseAnd(b *testing.B) {
 		rangeBitwiseAnd((1<<30)-1, (1<<31)-1)
 		rangeBitwiseAnd((1<<31)-2, (1<<31)-1)
 	}
+}
+
+func Test_LRUConstructor(t *testing.T) {
+	lru := LRUConstructor(2)
+	lru.Put(1, 1)
+	lru.Put(2, 2)
+	assert.Equal(t, lru.Get(1), 1)
+	lru.Put(3, 3)
+	assert.Equal(t, lru.Get(2), -1)
+	lru.Put(4, 4)
+	assert.Equal(t, lru.Get(1), -1)
+	assert.Equal(t, lru.Get(3), 3)
+	assert.Equal(t, lru.Get(4), 4)
+
+	//["LRUCache","put","put","get","put","get","put","get","get","get"]
+	//	[[2],[1,0],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+	//	[null,null,null,0,null,-1,null,-1,3,4]
+	lru = LRUConstructor(2)
+	lru.Put(1, 0)
+	lru.Put(2, 2)
+	assert.Equal(t, lru.Get(1), 0)
+	lru.Put(3, 3)
+	assert.Equal(t, lru.Get(2), -1)
+	lru.Put(4, 4)
+	assert.Equal(t, lru.Get(1), -1)
+	assert.Equal(t, lru.Get(3), 3)
+	assert.Equal(t, lru.Get(4), 4)
+
+}
+
+func Test_LRUConstructor2(t *testing.T) {
+	lru := ConstructorLRU(2)
+	lru.Put(1, 1)
+	lru.Put(2, 2)
+	assert.Equal(t, lru.Get(1), 1)
+	lru.Put(3, 3)
+	assert.Equal(t, lru.Get(2), -1)
+	lru.Put(4, 4)
+	assert.Equal(t, lru.Get(1), -1)
+	assert.Equal(t, lru.Get(3), 3)
+	assert.Equal(t, lru.Get(4), 4)
+
+	//["LRUCache","put","put","get","put","get","put","get","get","get"]
+	//	[[2],[1,0],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+	//	[null,null,null,0,null,-1,null,-1,3,4]
+	lru = ConstructorLRU(2)
+	lru.Put(1, 0)
+	lru.Put(2, 2)
+	assert.Equal(t, lru.Get(1), 0)
+	lru.Put(3, 3)
+	assert.Equal(t, lru.Get(2), -1)
+	lru.Put(4, 4)
+	assert.Equal(t, lru.Get(1), -1)
+	assert.Equal(t, lru.Get(3), 3)
+	assert.Equal(t, lru.Get(4), 4)
+
 }

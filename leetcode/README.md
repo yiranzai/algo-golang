@@ -3436,3 +3436,234 @@ func rangeBitwiseAnd(left int, right int) int {
 }
 
 ```
+
+### [146\. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+
+Difficulty: **运用你所掌握的数据结构，设计和实现一个 LRU (最近最少使用) 缓存机制 。**
+
+运用你所掌握的数据结构，设计和实现一个 。
+
+实现 `LRUCache` 类：
+
+* `LRUCache(int capacity)` 以正整数作为容量 `capacity` 初始化 LRU 缓存
+* `int get(int key)` 如果关键字 `key` 存在于缓存中，则返回关键字的值，否则返回 `-1` 。
+* `void put(int key, int value)` 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
+
+**进阶**：你是否可以在 `O(1)` 时间复杂度内完成这两种操作？
+
+**示例：**
+
+```
+输入
+["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+输出
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+解释
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // 缓存是 {1=1}
+lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+lRUCache.get(1);    // 返回 1
+lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+lRUCache.get(2);    // 返回 -1 (未找到)
+lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+lRUCache.get(1);    // 返回 -1 (未找到)
+lRUCache.get(3);    // 返回 3
+lRUCache.get(4);    // 返回 4
+```
+
+**提示：**
+
+* `1 <= capacity <= 3000`
+* `0 <= key <= 3000`
+* `0 <= value <= 10<sup>4</sup>`
+* 最多调用 `3 * 10<sup>4</sup>` 次 `get` 和 `put`
+
+#### Solution
+
+Language: ****
+
+```go
+package main
+
+import "container/list"
+
+type LRUCache struct {
+	limit  int
+	list   *list.List
+	eMap   map[int]*list.Element
+	values map[int]int
+}
+
+func Constructor(capacity int) LRUCache {
+	return LRUCache{limit: capacity, list: list.New(), eMap: make(map[int]*list.Element), values: make(map[int]int)}
+}
+
+func (this *LRUCache) Get(key int) int {
+	if e, ok := this.eMap[key]; ok {
+		this.list.Remove(e)
+		front := this.list.PushFront(key)
+		this.eMap[key] = front
+		return this.values[key]
+	}
+	return -1
+}
+
+func (this *LRUCache) Put(key int, value int) {
+	length := this.list.Len()
+	if e, ok := this.eMap[key]; ok {
+		this.list.Remove(e)
+	} else if length >= this.limit {
+		back := this.list.Back()
+		this.list.Remove(back)
+		delete(this.eMap, back.Value.(int))
+		delete(this.values, back.Value.(int))
+	}
+	front := this.list.PushFront(key)
+	this.eMap[key] = front
+	this.values[key] = value
+}
+```
+
+```go
+package main
+
+type LRUCache struct {
+	head, tail *Node
+	keys       map[int]*Node
+	capacity   int
+}
+
+type Node struct {
+	key, val   int
+	prev, next *Node
+}
+
+func Constructor(capacity int) LRUCache {
+	return LRUCache{keys: make(map[int]*Node), capacity: capacity}
+}
+
+func (this *LRUCache) Get(key int) int {
+	if node, ok := this.keys[key]; ok {
+		this.Remove(node)
+		this.Add(node)
+		return node.val
+	}
+	return -1
+}
+
+func (this *LRUCache) Put(key int, value int) {
+	if node, ok := this.keys[key]; ok {
+		node.val = value
+		this.Remove(node)
+		this.Add(node)
+		return
+	} else {
+		node = &Node{key: key, val: value}
+		this.keys[key] = node
+		this.Add(node)
+	}
+	if len(this.keys) > this.capacity {
+		delete(this.keys, this.tail.key)
+		this.Remove(this.tail)
+	}
+}
+
+func (this *LRUCache) Add(node *Node) {
+	node.prev = nil
+	node.next = this.head
+	if this.head != nil {
+		this.head.prev = node
+	}
+	this.head = node
+	if this.tail == nil {
+		this.tail = node
+		this.tail.next = nil
+	}
+}
+
+func (this *LRUCache) Remove(node *Node) {
+	if node == this.head {
+		this.head = node.next
+		if node.next != nil {
+			node.next.prev = nil
+		}
+		node.next = nil
+		return
+	}
+	if node == this.tail {
+		this.tail = node.prev
+		node.prev.next = nil
+		node.prev = nil
+		return
+	}
+	node.prev.next = node.next
+	node.next.prev = node.prev
+}
+```
+
+### [460\. LFU 缓存](https://leetcode-cn.com/problems/lfu-cache/)
+
+Difficulty: **困难**
+
+请你为 缓存算法设计并实现数据结构。
+
+实现 `LFUCache` 类：
+
+* `LFUCache(int capacity)` - 用数据结构的容量 `capacity` 初始化对象
+* `int get(int key)` - 如果键存在于缓存中，则获取键的值，否则返回 -1。
+* `void put(int key, int value)` -
+  如果键已存在，则变更其值；如果键不存在，请插入键值对。当缓存达到其容量时，则应该在插入新项之前，使最不经常使用的项无效。在此问题中，当存在平局（即两个或更多个键具有相同使用频率）时，应该去除 **最久未使用** 的键。
+
+**注意**「项的使用次数」就是自插入该项以来对其调用 `get` 和 `put` 函数的次数之和。使用次数会在对应项被移除后置为 0 。
+
+为了确定最不常使用的键，可以为缓存中的每个键维护一个 **使用计数器** 。使用计数最小的键是最久未使用的键。
+
+当一个键首次插入到缓存中时，它的使用计数器被设置为 `1` (由于 put 操作)。对缓存中的键执行 `get` 或 `put` 操作，使用计数器的值将会递增。
+
+**示例：**
+
+```
+输入：
+["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+输出：
+[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+
+解释：
+// cnt(x) = 键 x 的使用计数
+// cache=[] 将显示最后一次使用的顺序（最左边的元素是最近的）
+LFUCache lFUCache = new LFUCache(2);
+lFUCache.put(1, 1);   // cache=[1,_], cnt(1)=1
+lFUCache.put(2, 2);   // cache=[2,1], cnt(2)=1, cnt(1)=1
+lFUCache.get(1);      // 返回 1
+                      // cache=[1,2], cnt(2)=1, cnt(1)=2
+lFUCache.put(3, 3);   // 去除键 2 ，因为 cnt(2)=1 ，使用计数最小
+                      // cache=[3,1], cnt(3)=1, cnt(1)=2
+lFUCache.get(2);      // 返回 -1（未找到）
+lFUCache.get(3);      // 返回 3
+                      // cache=[3,1], cnt(3)=2, cnt(1)=2
+lFUCache.put(4, 4);   // 去除键 1 ，1 和 3 的 cnt 相同，但 1 最久未使用
+                      // cache=[4,3], cnt(4)=1, cnt(3)=2
+lFUCache.get(1);      // 返回 -1（未找到）
+lFUCache.get(3);      // 返回 3
+                      // cache=[3,4], cnt(4)=1, cnt(3)=3
+lFUCache.get(4);      // 返回 4
+                      // cache=[3,4], cnt(4)=2, cnt(3)=3
+```
+
+**提示：**
+
+* `0 <= capacity, key, value <= 10<sup>4</sup>`
+* 最多调用 `10<sup>5</sup>` 次 `get` 和 `put` 方法
+
+**进阶：**你可以为这两种操作设计时间复杂度为 `O(1)` 的实现吗？
+
+#### Solution
+
+Language: ****
+
+```
+​
+```
