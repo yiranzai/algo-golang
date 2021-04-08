@@ -3257,3 +3257,159 @@ func Test_LRUConstructor2(t *testing.T) {
 	assert.Equal(t, lru.Get(4), 4)
 
 }
+
+func Test_LFUConstructor(t *testing.T) {
+	var lfu LFUCache
+
+	// ["LFUCache","put","put","get","get","get","put","put","get","get","get","get"]
+	// [[3],[2,2],[1,1],[2],[1],[2],[3,3],[4,4],[3],[2],[1],[4]]
+
+	lfu = ConstructorLFU(3)
+	lfu.Put(2, 2)
+	lfu.Put(1, 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	lfu.Put(3, 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  输入
+	//  ["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"]
+	//	[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+	//	输出：
+	//	[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+
+	lfu = ConstructorLFU(2)
+	lfu.Put(1, 1)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  ["LFUCache","put","put","get","put","get","put","get","get","get"]
+	//	[[2],[1,0],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+	//	[null,null,null,0,null,-1,null,0,-1,4]
+	lfu = ConstructorLFU(2)
+	lfu.Put(1, 0)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 0)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), 0)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(4), 4)
+}
+
+func Test_LFUConstructor2(t *testing.T) {
+	var lfu LFUCache2
+
+	// ["LFUCache","put","put","get","get","get","put","put","get","get","get","get"]
+	// [[3],[2,2],[1,1],[2],[1],[2],[3,3],[4,4],[3],[2],[1],[4]]
+
+	lfu = LFUConstructor(3)
+	lfu.Put(2, 2)
+	lfu.Put(1, 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	lfu.Put(3, 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  输入
+	//  ["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"]
+	//	[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+	//	输出：
+	//	[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+
+	lfu = LFUConstructor(2)
+	lfu.Put(1, 1)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  ["LFUCache","put","put","get","put","get","put","get","get","get"]
+	//	[[2],[1,0],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+	//	[null,null,null,0,null,-1,null,0,-1,4]
+	lfu = LFUConstructor(2)
+	lfu.Put(1, 0)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 0)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), 0)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(4), 4)
+}
+
+func Test_LFUConstructor3(t *testing.T) {
+	var lfu LFUCache3
+
+	// ["LFUCache","put","put","get","get","get","put","put","get","get","get","get"]
+	// [[3],[2,2],[1,1],[2],[1],[2],[3,3],[4,4],[3],[2],[1],[4]]
+
+	lfu = LFConstructor(3)
+	lfu.Put(2, 2)
+	lfu.Put(1, 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(2), 2)
+	lfu.Put(3, 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(2), 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  输入
+	//  ["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"]
+	//	[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+	//	输出：
+	//	[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+
+	lfu = LFConstructor(2)
+	lfu.Put(1, 1)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 1)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), -1)
+	assert.Equal(t, lfu.Get(3), 3)
+	assert.Equal(t, lfu.Get(4), 4)
+
+	//  ["LFUCache","put","put","get","put","get","put","get","get","get"]
+	//	[[2],[1,0],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+	//	[null,null,null,0,null,-1,null,0,-1,4]
+	lfu = LFConstructor(2)
+	lfu.Put(1, 0)
+	lfu.Put(2, 2)
+	assert.Equal(t, lfu.Get(1), 0)
+	lfu.Put(3, 3)
+	assert.Equal(t, lfu.Get(2), -1)
+	lfu.Put(4, 4)
+	assert.Equal(t, lfu.Get(1), 0)
+	assert.Equal(t, lfu.Get(3), -1)
+	assert.Equal(t, lfu.Get(4), 4)
+}
