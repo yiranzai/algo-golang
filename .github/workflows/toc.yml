@@ -2,32 +2,24 @@ name: TOC
 
 on:
   push:
-    branches: 
+    branches:
     - main
     - master
-
-    paths: 
-    - README.md
-    - offer/README.md
-    - leetcode/README.md
-    - sort/README.md
-    - go-algorithm-pattern/README.md
-
+  pull_request:
+    branches:
+    - main
+    - master
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc -o gh-md-toc
-          chmod a+x gh-md-toc
-          ./gh-md-toc --insert --no-backup README.md
-          ./gh-md-toc --insert --no-backup offer/README.md
-          ./gh-md-toc --insert --no-backup leetcode/README.md
-          ./gh-md-toc --insert --no-backup sort/README.md
-          ./gh-md-toc --insert --no-backup go-algorithm-pattern/README.md
-          rm -rf ./gh-md-toc
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Auto update markdown TOC
+    - uses: actions/checkout@v2
+    - run: |
+        curl https://raw.githubusercontent.com/yiranzai/github-markdown-toc/master/gh-md-toc -o gh-md-toc
+        chmod a+x gh-md-toc
+        ./gh-md-toc --insert --no-backup --auto --head --all
+        rm -rf ./gh-md-toc
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Auto update markdown TOC
