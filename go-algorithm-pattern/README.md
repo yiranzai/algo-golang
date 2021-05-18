@@ -5,10 +5,10 @@
 ---
 
 <!--ts-->
-   * [Pattern](./go-algorithm-pattern/README.md#pattern)
-      * [目录](./go-algorithm-pattern/README.md#目录)
+   * [Pattern](README.md#pattern)
+      * [目录](README.md#目录)
 
-<!-- Added by: runner, at: Sat Apr 10 10:11:36 UTC 2021 -->
+<!-- Added by: runner, at: Tue May 18 02:24:58 UTC 2021 -->
 
 <!--te-->
 

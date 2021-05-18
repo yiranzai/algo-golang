@@ -14,16 +14,16 @@ golang algo.
 ---
 
 <!--ts-->
-   * [golang](./README.md#golang)
-      * [目录](./README.md#目录)
-      * [Algo](./README.md#algo)
-         * [1. <a href="./offer/README.md">剑指Offer</a>](./README.md#1-剑指offer)
-         * [2. <a href="./leetcode/README.md">Leetcode</a>](./README.md#2-leetcode)
-         * [3. <a href="./sort/README.md">常用排序</a>](./README.md#3-常用排序)
-         * [4. <a href="./go-algorithm-pattern/README.md">模板</a>](./README.md#4-模板)
-      * [License](./README.md#license)
+   * [golang](README.md#golang)
+      * [目录](README.md#目录)
+      * [Algo](README.md#algo)
+         * [1. <a href="./offer/README.md">剑指Offer</a>](README.md#1-剑指offer)
+         * [2. <a href="./leetcode/README.md">Leetcode</a>](README.md#2-leetcode)
+         * [3. <a href="./sort/README.md">常用排序</a>](README.md#3-常用排序)
+         * [4. <a href="./go-algorithm-pattern/README.md">模板</a>](README.md#4-模板)
+      * [License](README.md#license)
 
-<!-- Added by: runner, at: Sat Apr 10 10:11:37 UTC 2021 -->
+<!-- Added by: runner, at: Tue May 18 02:25:02 UTC 2021 -->
 
 <!--te-->
 
