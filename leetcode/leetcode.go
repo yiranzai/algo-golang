@@ -1628,7 +1628,7 @@ func rangeBitwiseAnd2(m int, n int) int {
 	return n
 }
 
-// https://leetcode-cn.com/problems/lru-cache/
+// LRUCache1 https://leetcode-cn.com/problems/lru-cache/
 type LRUCache1 struct {
 	limit  int
 	list   *list.List
@@ -1747,7 +1747,7 @@ func (this *LRUCache) Remove(node *Node) {
  * obj.Put(key,value);
  */
 
-// https://leetcode-cn.com/problems/lfu-cache/
+// LFUCache https://leetcode-cn.com/problems/lfu-cache/
 type LFUCache struct {
 	keys     map[int]*LFUNode
 	list     map[int]*LFUList
@@ -2065,4 +2065,726 @@ func (pq *PriorityQueue) update(item *Item, value int, frequency int, count int)
 	item.count = count
 	item.frequency = frequency
 	heap.Fix(pq, item.index)
+}
+
+// AcNode AC自动机的节点
+type AcNode struct {
+	next map[byte]int
+	deep int
+	over int
+	fail int
+}
+
+// AC AC算法，全名Alfred-Corasick自动机算法，这是一种多模式匹配的算法。这种算法某种程度上可说是
+// KMP算法的多模式版本。事实上，如果只给AC算法提供一个字符串来生成AC自动机，就会发现，AC自动机
+// 的goto链就是模式串，而fail链正是next数组的AC自动机版本。作为KMP算法的扩展版本，AC算法主要
+// 用于多模式匹配。AC算法的预处理过程包括两个部分，其一是根据多个模式串构造Trie树的构建，其二是
+// 在Trie树上添加fail“指针”，亦即匹配失败时改变当前活动节点为其指向的节点。类型AC表示由一系列
+// 节点构成的AC自动机。
+type AC struct {
+	State []AcNode
+	Final []string
+	Count int
+}
+
+// NewAC 创建一个AC自动机，使用模式串本身作为其命名
+func NewAC(ts []string) *AC {
+	this := new(AC)
+	for _, t := range ts {
+		this.Add(t)
+	}
+	this.Prepare()
+	return this
+}
+
+// 清空结构体，以重新生成多模式匹配
+func (this *AC) Reset() {
+	this.State = nil
+	this.Final = nil
+	this.Count = 0
+}
+
+// 向AC自动机中添加模式串
+func (this *AC) Add(temp string) {
+	p := len(this.Final)
+	this.Final = append(this.Final, temp)
+	if this.Count == 0 {
+		this.newAcNode()
+	}
+	this.incStr(p, 0, temp)
+}
+
+// 重新生成fail指针，每次添加完一到多个新的模式串之后，在匹配文本串之前，都应执行Prepare方法
+func (this *AC) Prepare() {
+	type cell struct {
+		pre int
+		chr byte
+		now int
+	}
+	this.State[0].deep = 0
+	stack := make([]cell, this.Count)
+	for i, j := 0, 1; j < this.Count; i++ {
+		t := stack[i].now
+		p := &this.State[t]
+		if p.next != nil {
+			for k, v := range p.next {
+				this.State[v].deep = p.deep + 1
+				stack[j] = cell{t, k, v}
+				j++
+			}
+		}
+	}
+	for i := 1; i < this.Count; i++ {
+		v := stack[i]
+		s := &this.State[v.now] // 当前节点
+		if v.pre != 0 {
+			p := &this.State[v.pre] // 当前节点的父节点
+			t := p.fail             // 父节点的fail指针
+			for {
+				if t < 0 {
+					s.fail = 0
+					break
+				}
+				p = &this.State[t]
+				t = p.fail
+				if p.next != nil {
+					if n, ok := p.next[v.chr]; ok {
+						s.fail = n
+						break
+					}
+				}
+			}
+		} else {
+			s.fail = 0
+		}
+	}
+	this.State[0].fail = 0
+}
+
+// 搜索第一个匹配的位置，返回起始位置下标和模式串的下标，没有返回-1，-1
+func (this *AC) Index(s []byte) (int, int) {
+	t := 0
+	for i, l := 0, len(s); i < l; {
+		p := &this.State[t]
+		if p.over >= 0 {
+			return i - p.deep, p.over
+		}
+		if j, ok := p.next[s[i]]; ok {
+			i, t = i+1, j
+		} else {
+			t = p.fail
+		}
+	}
+	return -1, -1
+}
+
+// 搜索所有匹配的位置，[2]int成员分别是起始位置下标和模式串的下标，没有返回nil
+func (this *AC) Find(s []byte) (o [][2]int) {
+	t := 0
+	for i, l := 0, len(s); i < l; {
+		p := &this.State[t]
+		if p.over >= 0 {
+			o = append(o, [2]int{i - p.deep, p.over})
+		}
+		if j, ok := p.next[s[i]]; ok {
+			i, t = i+1, j
+		} else {
+			t = p.fail
+		}
+	}
+	return
+}
+
+// 为了方便存储Trie树，将之做成了list形式，所以必须使用本方法来提供新的节点
+func (this *AC) newAcNode() int {
+	n := this.Count
+	this.State = append(this.State, AcNode{deep: -1, over: -1, fail: -1})
+	this.Count++
+	return n
+}
+
+// 以某个节点为根节点，向下生成Trie树，支持字符集匹配
+func (this *AC) incStr(p, n int, s string) {
+	st := &this.State[n]
+	if s == "" {
+		st.over = p
+		return
+	}
+	head, tail := s[0], s[1:]
+	if st.next == nil {
+		st.next = make(map[byte]int)
+	}
+	i, ok := st.next[head]
+	if !ok {
+		i = this.newAcNode()         // 注意本行执行后，st指针很可能失效！
+		this.State[n].next[head] = i // 所以要用回this.State[n]
+	}
+	this.incStr(p, i, tail)
+}
+
+// Brute-Force算法，即暴力搜索算法，最基本的字符串比对算法，首先对齐模式串和文本串的0位，然后
+// 进行匹配，匹配失败则模式串向右移动一位，再次重新匹配，依次进行下去。
+type StrBF struct {
+	temp string
+}
+
+// 创建一个StrBF对象
+func NewStrBF(s string) *StrBF {
+	return &StrBF{s}
+}
+
+// 搜索第一个匹配的位置，没有返回-1
+func (this StrBF) Index(s []byte) int {
+	p := len(this.temp)
+	q := len(s)
+	for i := 0; i+p < q; i++ {
+		if Compare(this.temp, s[i:]) {
+			return i
+		}
+	}
+	return -1
+}
+
+// 搜索所有匹配的位置，没有返回nil
+func (this StrBF) Find(s []byte) (o []int) {
+	p := len(this.temp)
+	q := len(s)
+	for i := 0; i+p < q; i++ {
+		if Compare(this.temp, s[i:]) {
+			o = append(o, i)
+		}
+	}
+	return
+}
+
+// 固定位置匹配string格式的模式串和[]byte格式的文本串
+func Compare(t string, s []byte) bool {
+	for i, l := 0, len(t); i < l; i++ {
+		if t[i] != s[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// StrBM算法，即Boyer-Moore算法。这是一种目前常用的字符串匹配算法。horspool算法是其简化版。该
+// 算法除了使用了horspool算法里用到的根据字符最后出现位置挪动模式串的原理外，还利用已经匹配的
+// 后缀序列：如果该序列在模式串出现多次，则挪动模式串对齐倒数第二次出现的位置；如果后缀在模式串
+// 中只出现末尾那一次，则使用模式串的前缀去匹配该后缀序列的后缀，取其最长匹配序列对齐；如果两者
+// 没有非空的匹配序列，则模式串与当前文本串匹配右侧末端位置后面一个字符对齐。StrBM算法利用这两个规
+// 则，选择移动距离最长的来挪动模式串，从而提升匹配速度。改进算法将horspool对齐规则替换为更好
+// 的sunday规则（horspool和sunday规则基本一致，只是对齐指示字符不同）。
+type StrBM struct {
+	char [256]int
+	next []int
+	temp string
+}
+
+// 创建一个StrBM对象
+// char数组记录了某个字符最后一次出现在模式串时，模式串到该字符的前缀的长度，否则为0。next切片
+// 储存模式串后缀s[i:]对应的内部从右往左数第二个匹配以及其前端序列的总长度；如果不存在内部匹配
+// 则储存与该后缀的某个后缀匹配的最长模式串前缀的长度；如果也不存在则设置为0。next切片最后一个
+// 元素表示未匹配到后缀时（即匹配的后缀为空字符）的情况，即0。
+func NewStrBM(s string) *StrBM {
+	l := len(s)
+	t := new(StrBM)
+	t.temp = s
+	for i := 0; i < l; i++ {
+		t.char[int(s[i])] = i + 1
+	}
+	t.next = make([]int, l+1)
+	for i := l - 1; i >= 0; i-- {
+		j, d := i-1, l-i
+		for ; j >= 0; j-- {
+			if s[j:j+d] == s[i:] {
+				break
+			}
+		}
+		if j >= 0 {
+			t.next[i] = j + d
+			continue
+		}
+		for d--; d > 0; d-- {
+			if s[l-d:] == s[:d] {
+				break
+			}
+		}
+		t.next[i] = d
+	}
+	return t
+}
+
+// 搜索第一个匹配的位置，没有返回-1
+func (this *StrBM) Index(s []byte) int {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			return k + 1
+		}
+		if i < q {
+			i += p - this.char[int(s[i])] // 采用sunday规则
+		}
+		k += p - this.next[j+1]
+		if i < k {
+			i = k
+		}
+	}
+	return -1
+}
+
+// 搜索所有匹配的位置，没有返回nil
+func (this *StrBM) Find(s []byte) (o []int) {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			o = append(o, k+1)
+		}
+		if i < q {
+			i += p - this.char[int(s[i])] // 采用sunday规则
+		}
+		k += p - this.next[j+1]
+		if i < k {
+			i = k
+		}
+	}
+	return
+}
+
+// Strhorspool算法的核心是利用字符在模式串中最后出现的位置来挪动模式串，模式串的移动是从左向右，
+// 但匹配时却是从右向左。匹配过程中遇到不匹配字符时，移动模式串使文本串该字符与模式串中最后一个
+// 该字符对齐，对齐最后一个的目的是防止漏解。如果模式串中不存在该字符，则移动模式串对齐该字符之
+// 后的那个字符。算法关键是生成一个某字符在模式串最后出现位置的数组。注意根据该规则进行对齐可能
+// 导致模式串反向移动，此时应将模式串强制右移一位。Strhorspool算法与sunday算法类似，区别在于用于
+// 对齐模式串的指示字符不同。
+type StrHorspool struct {
+	char [256]int
+	temp string
+}
+
+// 创建一个StrHorspool对象
+// char数组记录了某个字符最后一次出现在模式串时，模式串到该字符的前缀的长度，否则为0
+func NewStrHorspool(s string) *StrHorspool {
+	t := new(StrHorspool)
+	t.temp = s
+	for i := 0; i < len(s); i++ {
+		t.char[int(s[i])] = i + 1
+	}
+	return t
+}
+
+// 搜索第一个匹配的位置，没有返回-1
+func (this *StrHorspool) Index(s []byte) int {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			return k + 1
+		}
+		if k += p - this.char[int(s[k])]; i < k {
+			i = k
+		}
+	}
+	return -1
+}
+
+// 搜索所有匹配的位置，没有返回nil
+func (this *StrHorspool) Find(s []byte) (o []int) {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			o = append(o, k+1)
+		}
+		if k += p - this.char[int(s[k])]; i < k {
+			i = k
+		}
+	}
+	return
+}
+
+// StrKMP算法，全名Knuth-Morris-Pratt算法。其理论是，在进行字符串匹配时，如果遇到匹配失败的情
+// 况，则根据已经匹配的部分挪动模式串的位置，使模式串的某个前缀与已匹配部分的某个后缀成功匹配，
+// 并要求挪动距离最短即匹配长度最大，这是为了避免错失成功的匹配。注意，所谓“已匹配的部分”很明显
+// 也是模式串的某个前缀。因此，StrKMP算法的关键是计算出模式串的某个前缀对应的最长的可作为其真后缀
+// 的另一模式串前缀（显然也是该前缀的前缀），这里称其为最长双配序列。对模式串s建立一个整数数组，
+// 称为n，n[i]的值为s[:i]的最长双配序列的长度。这一数组即被称为next数组。构建next数组的过程
+// 和根据next数组进行匹配的过程是有异曲同工之妙的。
+type StrKMP struct {
+	next []int
+	temp string
+}
+
+// 生成一个StrKMP对象，内部包含模式串和计算好的next数组。
+func NewStrKMP(s string) *StrKMP {
+	l := len(s)
+	n := make([]int, l+1)
+
+	// n[i]表示s长度为i的前缀s[:i]的最长双配序列的长度
+	// 很显然n[0]、n[1]都是0，从n[2]开始算起
+	for i, j := 2, 0; i <= l; {
+		// 已知j=n[i-1]，亦即s[:i-1]的最长双配序列的长度
+		// 则s[i-1]表示s[:i-1]后的第一个字符
+		// s[j]表示s[:i-1]的最长双配序列后的第一个字符
+		if s[i-1] == s[j] { // 说明s[:i]的最长双配序列的长度为j+1
+			n[i] = j + 1    // 对n[i]赋值
+			i, j = i+1, j+1 // 更新i、j，进入下一轮循环
+		} else { // 字符不匹配，则需要寻找次长双配序列再次测试
+			if j == 0 { // 空双配序列也不能满足延伸的要求s[i-1] == s[j]
+				// n[i]为0，即默认值
+				i++ // 注意j为0不需要赋值，进入下一轮循环
+			} else { // 测试次长双配序列
+				j = n[j] // 次长双配序列必然是最长双配序列的最长双配序列
+			}
+		}
+	}
+	return &StrKMP{n, s}
+}
+
+// 搜索第一个匹配的位置，没有返回-1
+func (this *StrKMP) Index(s []byte) int {
+	t := this.temp
+	p := len(t)
+	q := len(s)
+	i, j := 0, 0
+	for i+p < j+q {
+		if s[i] == t[j] {
+			i, j = i+1, j+1
+			if j == p {
+				return i - p
+			}
+		} else if j == 0 {
+			i++
+		} else {
+			j = this.next[j]
+		}
+	}
+	return -1
+}
+
+// 搜索所有匹配的位置，没有返回nil
+func (this *StrKMP) Find(s []byte) (o []int) {
+	t := this.temp
+	p := len(t)
+	q := len(s)
+	i, j := 0, 0
+	for i+p < j+q {
+		if s[i] == t[j] {
+			i, j = i+1, j+1
+			if j == p {
+				o = append(o, i-p)
+				j = this.next[j]
+			}
+		} else {
+			if j == 0 {
+				i++
+			} else {
+				j = this.next[j]
+			}
+		}
+	}
+	return
+}
+
+// StrRK算法，即Robin-Karp算法，哈希检索算法。宗旨是对模式串求哈希ID，对匹配的文本也依次求哈希
+// ID，在两个ID一致的进行逐字符比对的复核。该算法的关键是不能对每个哈希ID都要重新计算，这样算
+// 法复杂度不会改变，而应采用由旧的ID根据新字符生成新的ID的哈希算法，比如说，累加求和，以及求
+// 异或运算。复核是必须的，因为很可能存在哈希碰撞的情况。
+type StrRK struct {
+	Hash
+	temp string
+	sign int
+}
+
+// 用于StrRK算法的hash接口
+type Hash interface {
+	Feed(byte) // 吃进一个字符
+	Free(byte) // 释放一个字符
+	Reset()    // 重启hash缓存
+	Sum() int  // 当前hash缓存
+}
+
+// 根据模式串和hash算法创建一个StrRK算法的对象
+func NewStrRK(s string, h Hash) *StrRK {
+	h.Reset()
+	for i := 0; i < len(s); i++ {
+		h.Feed(s[i])
+	}
+	return &StrRK{h, s, h.Sum()}
+}
+
+// 搜索第一个匹配的位置，没有返回-1
+func (this *StrRK) Index(s []byte) int {
+	p := len(this.temp)
+	q := len(s)
+	this.Reset()
+	for i := 0; i < p; i++ {
+		this.Feed(s[i])
+	}
+	// i,j分别表示生成下一个ID需要释放和接收的文本串字符的下标
+	for i, j := 0, p; j < q; i, j = i+1, j+1 {
+		if this.Sum() == this.sign {
+			if Compare(this.temp, s[i:]) {
+				return i
+			}
+		}
+		this.Feed(s[j])
+		this.Free(s[i])
+	}
+	return -1
+}
+
+// Find 搜索所有匹配的位置，没有返回nil
+func (this *StrRK) Find(s []byte) (o []int) {
+	p := len(this.temp)
+	q := len(s)
+	this.Reset()
+	for i := 0; i < p; i++ {
+		this.Feed(s[i])
+	}
+	// i,j分别表示生成下一个ID需要释放和接收的文本串字符的下标
+	for i, j := 0, p; j < q; i, j = i+1, j+1 {
+		if this.Sum() == this.sign {
+			if Compare(this.temp, s[i:]) {
+				o = append(o, i)
+			}
+		}
+		this.Feed(s[j])
+		this.Free(s[i])
+	}
+	return
+}
+
+// ExclusiveOr 利用异或运算实现了Hash接口
+type ExclusiveOr int
+
+func (this *ExclusiveOr) Feed(c byte) {
+	*this ^= ExclusiveOr(c)
+}
+
+func (this *ExclusiveOr) Free(c byte) {
+	*this ^= ExclusiveOr(c)
+}
+
+func (this *ExclusiveOr) Reset() {
+	*this = 0
+}
+
+func (this *ExclusiveOr) Sum() int {
+	return int(*this)
+}
+
+// PlusMinus 利用加减运算实现了Hash接口
+type PlusMinus int
+
+func (this *PlusMinus) Feed(c byte) {
+	*this += PlusMinus(c)
+}
+
+func (this *PlusMinus) Free(c byte) {
+	*this -= PlusMinus(c)
+}
+
+func (this *PlusMinus) Reset() {
+	*this = 0
+}
+
+func (this *PlusMinus) Sum() int {
+	return int(*this)
+}
+
+// StrSunday StrSunday算法的核心是利用字符在模式串中最后出现的位置来挪动模式串，模式串的移动是从左向右，但
+// 匹配时却是从右向左。匹配过程中遇到不匹配字符时，以当前对齐位置下模式串末尾字符对应的文本串字
+// 符的下一个字符作为标准，移动模式串使模式串中最后一个该字符与文本串该字符对齐，对齐最后一个的
+// 目的是防止漏解。如果模式串中不存在该字符，则移动模式串对齐该字符之后的那个位置。算法关键是生
+// 成一个某字符在模式串最后出现位置的数组。因为以模式串末尾后的字符为标准对齐，不会出现模式串退
+// 步的情况。StrSunday算法与horspool算法类似，区别在于用于对齐模式串的指示字符不同。
+type StrSunday struct {
+	char [256]int
+	temp string
+}
+
+// NewStrSunday 创建一个StrSunday对象
+// char数组记录了某个字符最后一次出现在模式串时，模式串到该字符的前缀的长度，否则为0
+func NewStrSunday(s string) *StrSunday {
+	t := new(StrSunday)
+	t.temp = s
+	for i := 0; i < len(s); i++ {
+		t.char[int(s[i])] = i + 1
+	}
+	return t
+}
+
+// Index 搜索第一个匹配/**/的位置，没有返回-1
+func (this *StrSunday) Index(s []byte) int {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			return k + 1
+		}
+		if i < q {
+			i = i + p - this.char[int(s[i])]
+		}
+	}
+	return -1
+}
+
+// Find 搜索所有匹配的位置，没有返回nil
+func (this *StrSunday) Find(s []byte) (o []int) {
+	var (
+		p       = len(this.temp)
+		q       = len(s)
+		i, j, k int
+	)
+	for i = p - 1; i < q; {
+		i, j, k = i+1, p-1, i
+		for ; j >= 0; j, k = j-1, k-1 {
+			if this.temp[j] != s[k] {
+				break
+			}
+		}
+		if j < 0 {
+			o = append(o, k+1)
+		}
+		if i < q {
+			i = i + p - this.char[int(s[i])]
+		}
+	}
+	return
+}
+
+//SundayStrStr SundayStrStr
+func SundayStrStr(haystack, needle string) int {
+	if needle == "" { //排除特殊情况
+		return 0
+	}
+	m := make(map[byte]int, len(needle))
+	for i := 0; i < len(needle); i++ {
+		m[needle[i]] = i //记录模式串每一个字符的位置(重复取最右边)
+	}
+	j := 0 //模式串指针
+	for i := 0; i < len(haystack); i++ {
+		if haystack[i] != needle[j] {
+			//如果发生不匹配,i跳到主串对应模式串长度下一个字符
+			i = len(needle) - j + i
+			if i >= len(haystack) { //i越界haystack说明找不到
+				return -1
+			}
+			v, ok := m[haystack[i]]
+			if ok { //字符存在于模式串中,则用该字符对齐主串与模式串,从模式串头开始比较
+				j = 0
+				i = i - v - 1
+				continue
+			} else { //字符不存在于模式串中,模式串直接滑动到该字符的下一位从模式串头比较
+				j = 0
+				continue
+			}
+		}
+		if j == len(needle)-1 {
+			return i + 1 - len(needle)
+		}
+		j++
+	}
+	return -1
+}
+
+// KMPStrStr KMPStrStr
+func KMPStrStr(haystack, needle string) int {
+	//KMP改进算法   模式串连续重复字符超过2个,如"aaaaaag"
+	n, m := len(haystack), len(needle)
+	//排除 needle=""
+	if m == 0 {
+		return 0
+	}
+	//next数组表示模式串当前位(从0数)的最长公共前后缀
+	//nextval是对next的改进,模式串连续重复字符超过2个的情况
+	nextval := make([]int, m)
+	for i, j := 1, 0; i < m; i++ {
+		for j > 0 && needle[i] != needle[j] {
+			j = nextval[j-1]
+		}
+		if needle[i] == needle[j] {
+			j++
+		}
+		nextval[i] = j
+		//如果与上一个字符相同b并且与下一个字符相同,则nextval与上一个字符相等
+		if i < m-1 && needle[i] == needle[i-1] && needle[i] == needle[i+1] {
+			nextval[i] = nextval[i-1]
+		}
+	}
+	//遍历haystack
+	for i, j := 0, 0; i < n; i++ {
+		for j > 0 && haystack[i] != needle[j] {
+			j = nextval[j-1]
+		}
+		if haystack[i] == needle[j] {
+			j++
+		}
+		if j == m {
+			return i - m + 1
+		}
+	}
+	return -1
+}
+
+//BoomStrStr BoomStrStr
+func BoomStrStr(haystack string, needle string) int {
+	if needle == "" {
+		return 0
+	}
+	for i := 0; i <= len(haystack)-len(needle); i++ {
+		if haystack[i] == needle[0] {
+			if haystack[i:i+len(needle)] == needle {
+				return i
+			}
+		}
+	}
+	return -1
 }
