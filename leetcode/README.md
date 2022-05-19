@@ -99,8 +99,11 @@
             * [Solution](README.md#solution-44)
          * [<a href="https://leetcode-cn.com/problems/lfu-cache/" rel="nofollow">460. LFU 缓存</a>](README.md#460-lfu-缓存)
             * [Solution](README.md#solution-45)
+   * [<a href="https://leetcode.cn/problems/implement-strstr/" rel="nofollow">28. 实现 strStr()</a>](README.md#28-实现-strstr)
+      * [Description](README.md#description)
+      * [Solution](README.md#solution-46)
 
-<!-- Added by: runner, at: Tue May 18 02:25:00 UTC 2021 -->
+<!-- Added by: runner, at: Thu May 19 15:53:09 UTC 2022 -->
 
 <!--te-->
 
