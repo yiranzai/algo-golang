@@ -7,18 +7,6 @@ import (
 	"gotest.tools/v3/assert"
 )
 
-var BigTxt string
-
-//func init() {
-//	b, err := ioutil.ReadFile("data.txt") // just pass the file name
-//
-//	if err != nil {
-//		fmt.Print(err)
-//	}
-//
-//	BigTxt = string(b) // convert content to a 'string'
-//}
-
 func Test_isAnagram(t *testing.T) {
 	assert.Equal(t, isAnagram("first", "fisrt"), true)
 
@@ -36,11 +24,11 @@ func Test_minimumTotal(t *testing.T) {
 
 }
 
-func Benchmark_minimumTotal(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		minimumTotal(bigTirangleArray)
-	}
-}
+//func Benchmark_minimumTotal(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		minimumTotal(bigTirangleArray)
+//	}
+//}
 
 func Test_longestConsecutive(t *testing.T) {
 	assert.Equal(t, longestConsecutive([]int{100, 4, 200, 1, 3, 2}), 4)
@@ -1224,19 +1212,19 @@ func Test_partition2(t *testing.T) {
 	leetcode.LoopEqualList(t, partition2(head, 6), []int{1, 4, 3, 2, 5, 2, 6})
 }
 
-func Benchmark_partition(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
-		partition(head, 3)
-	}
-}
+//func Benchmark_partition(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+//		partition(head, 3)
+//	}
+//}
 
-func Benchmark_partition2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
-		partition2(head, 3)
-	}
-}
+//func Benchmark_partition2(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		head := leetcode.GenerateList([]int{1, 4, 3, 2, 5, 2})
+//		partition2(head, 3)
+//	}
+//}
 
 func Test_sortList(t *testing.T) {
 	var head *leetcode.ListNode
@@ -1260,11 +1248,11 @@ func Test_sortList(t *testing.T) {
 	leetcode.LoopEqualList(t, sortList(head), []int{})
 }
 
-func Benchmark_sortList(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		sortList(leetcode.GenerateList(bigRepeatArray))
-	}
-}
+//func Benchmark_sortList(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		sortList(leetcode.GenerateList(bigRepeatArray))
+//	}
+//}
 
 func Test_reverseBits(t *testing.T) {
 	assert.Equal(
@@ -1562,23 +1550,23 @@ func Test_rangeBitwiseAnd(t *testing.T) {
 	assert.Equal(t, rangeBitwiseAnd((1<<31)-2, (1<<31)-1), (1<<31)-2)
 }
 
-func Benchmark_rangeBitwiseAnd2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		rangeBitwiseAnd2(5, 7)
-		rangeBitwiseAnd2(5, 10)
-		rangeBitwiseAnd2((1<<30)-1, (1<<31)-1)
-		rangeBitwiseAnd2((1<<31)-2, (1<<31)-1)
-	}
-}
+//func Benchmark_rangeBitwiseAnd2(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		rangeBitwiseAnd2(5, 7)
+//		rangeBitwiseAnd2(5, 10)
+//		rangeBitwiseAnd2((1<<30)-1, (1<<31)-1)
+//		rangeBitwiseAnd2((1<<31)-2, (1<<31)-1)
+//	}
+//}
 
-func Benchmark_rangeBitwiseAnd(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		rangeBitwiseAnd(5, 7)
-		rangeBitwiseAnd(5, 10)
-		rangeBitwiseAnd((1<<30)-1, (1<<31)-1)
-		rangeBitwiseAnd((1<<31)-2, (1<<31)-1)
-	}
-}
+//func Benchmark_rangeBitwiseAnd(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		rangeBitwiseAnd(5, 7)
+//		rangeBitwiseAnd(5, 10)
+//		rangeBitwiseAnd((1<<30)-1, (1<<31)-1)
+//		rangeBitwiseAnd((1<<31)-2, (1<<31)-1)
+//	}
+//}
 
 func Test_LRUConstructor(t *testing.T) {
 	lru := LRUConstructor(2)
@@ -1790,82 +1778,4 @@ func Test_LFUConstructor3(t *testing.T) {
 	assert.Equal(t, lfu.Get(1), 0)
 	assert.Equal(t, lfu.Get(3), -1)
 	assert.Equal(t, lfu.Get(4), 4)
-}
-
-func Test_AC_Index_BigTxt(t *testing.T) {
-	AC := NewAC([]string{BigTxt})
-	index, b := AC.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-	assert.Equal(t, b, 10)
-}
-func Test_StrBF_Index_BigTxt(t *testing.T) {
-	StrBF := NewStrBF(BigTxt)
-	index := StrBF.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrBM_Index_BigTxt(t *testing.T) {
-	StrBM := NewStrBM(BigTxt)
-	index := StrBM.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrHorspool_Index_BigTxt(t *testing.T) {
-	StrHorspool := NewStrHorspool(BigTxt)
-	index := StrHorspool.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrKMP_Index_BigTxt(t *testing.T) {
-	StrKMP := NewStrKMP(BigTxt)
-	index := StrKMP.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrRK_Index_BigTxt(t *testing.T) {
-	var hash *ExclusiveOr
-	StrRK := NewStrRK(BigTxt, hash)
-	index := StrRK.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrSunday_Index_BigTxt(t *testing.T) {
-	StrSunday := NewStrSunday(BigTxt)
-	index := StrSunday.Index([]byte("人界与这个世界的屏障被击穿"))
-	assert.Equal(t, index, 10)
-}
-
-func Test_AC_Index_Normal(t *testing.T) {
-	AC := NewAC([]string{"十六"})
-	index, b := AC.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-	assert.Equal(t, b, 10)
-}
-func Test_StrBF_Index_Normal(t *testing.T) {
-	StrBF := NewStrBF("十六")
-	index := StrBF.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrBM_Index_Normal(t *testing.T) {
-	StrBM := NewStrBM("十六")
-	index := StrBM.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrHorspool_Index_Normal(t *testing.T) {
-	StrHorspool := NewStrHorspool("十六")
-	index := StrHorspool.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrKMP_Index_Normal(t *testing.T) {
-	StrKMP := NewStrKMP("十六")
-	index := StrKMP.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrRK_Index_Normal(t *testing.T) {
-	var hash *ExclusiveOr
-	a := ExclusiveOr(0)
-	hash = &a
-	StrRK := NewStrRK("十六", hash)
-	index := StrRK.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
-}
-func Test_StrSunday_Index_Normal(t *testing.T) {
-	StrSunday := NewStrSunday("十六")
-	index := StrSunday.Index([]byte("大激动地说sad拿都拿的石窟和大家卡第十六届大连科技"))
-	assert.Equal(t, index, 10)
 }
